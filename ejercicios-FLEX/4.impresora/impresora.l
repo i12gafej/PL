@@ -1,9 +1,8 @@
 %{
     #include <stdio.h>
-<<<<<<< HEAD
-=======
+
     #include <stdlib.h>
->>>>>>> 6233458 (finalizado)
+
 
     /*DECLARACION DE VARIABLES GLOBALES*/
     int *vector = NULL; /*Vector de Dias*/
