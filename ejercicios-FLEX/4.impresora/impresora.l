@@ -88,11 +88,7 @@ nombre [a-zA-Z0-9]+\.[a-z]+
     BEGIN(BASURA);
 }
 <Q2>" "{nombre} {
-<<<<<<< HEAD
-    printf("Nueva impresion aceptada <%s>\n", yytext);
-=======
     fprintf(yyout, "Nueva impresion aceptada <%s>\n", yytext);
->>>>>>> 6233458 (finalizado)
     if(existe_dia(*aux) == -1){
         vector = (int*)realloc(vector, sizeof(int)*(i+1));/*Todo bien, añadimos el ultimo al vector*/
         vector[i] = *aux;
