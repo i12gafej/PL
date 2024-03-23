@@ -1,5 +1,9 @@
 %{
     #include <stdio.h>
+<<<<<<< HEAD
+=======
+    #include <stdlib.h>
+>>>>>>> 6233458 (finalizado)
 
     /*DECLARACION DE VARIABLES GLOBALES*/
     int *vector = NULL; /*Vector de Dias*/
@@ -58,11 +62,8 @@ nombre [a-zA-Z0-9]+\.[a-z]+
     int dia = fecha/1000000;
     int mes = (fecha/10000)%100;
     int anio = fecha%10000;
-    if(es_bisiesto(anio) == 1 && mes == 2 && dia > 29){
-        printf("Error de fecha\n");
-        BEGIN(BASURA);
-    }else if(es_bisiesto(anio) == 0 && mes == 2 && dia > 28){
-        printf("Error de fecha\n");
+    if((es_bisiesto(anio) == 1 && mes == 2 && dia > 29) || (es_bisiesto(anio) == 0 && mes == 2 && dia > 28)){
+        fprintf(yyout, "Error de fecha\n");
         BEGIN(BASURA);
     }else{
         if(existe_dia(fecha) == -1){ 
@@ -73,7 +74,7 @@ nombre [a-zA-Z0-9]+\.[a-z]+
         BEGIN(Q1);
     }    
 }
-. {printf("Error\n");
+. {fprintf(yyout, "Error\n");
     codigo_error = 0;
     BEGIN(BASURA);}
 <Q1>" "{hora}":"{minuto} {
@@ -83,11 +84,15 @@ nombre [a-zA-Z0-9]+\.[a-z]+
 }
 <Q1>" "*[^{hora}]":"*[^{minuto}] {
     codigo_error = 1;
-    printf("Error de hora\n");
+    fprintf(yyout, "Error de hora\n");
     BEGIN(BASURA);
 }
 <Q2>" "{nombre} {
+<<<<<<< HEAD
     printf("Nueva impresion aceptada <%s>\n", yytext);
+=======
+    fprintf(yyout, "Nueva impresion aceptada <%s>\n", yytext);
+>>>>>>> 6233458 (finalizado)
     if(existe_dia(*aux) == -1){
         vector = (int*)realloc(vector, sizeof(int)*(i+1));/*Todo bien, añadimos el ultimo al vector*/
         vector[i] = *aux;
@@ -100,7 +105,7 @@ nombre [a-zA-Z0-9]+\.[a-z]+
 <Q2>" "*[^{nombre}] {
     dias--;
     codigo_error = 1;
-    printf("Error de nombre\n");
+    fprintf(yyout, "Error de nombre\n");
     BEGIN(BASURA);
 }
 <BASURA>.* {
@@ -122,14 +127,12 @@ int main(int argc, char *argv[])
     case 3:  yyin=fopen(argv[1],"r"); 
                 yyout=fopen(argv[2],"w"); 
     }
-    printf("\n------------------------------------\n");
-    printf("               IMPRESORA\n");
-    printf("------------------------------------\n\n");
+    
     yylex();
-    printf("\n------------------------------------\n");
-    printf("\nNumero de documentos enviados a la impresora: %d\n\n", i);
-    printf("Numero medio de documentos enviados al dia: %d\n", calcular_media());
-    printf("\n------------------------------------\n");
+    fprintf(yyout, "\n------------------------------------\n");
+    fprintf(yyout, "\nNumero de documentos enviados a la impresora: %d\n\n", i);
+    fprintf(yyout, "Numero medio de documentos enviados al dia: %d\n", calcular_media());
+    fprintf(yyout, "\n------------------------------------\n");
 
   return 0;
 }

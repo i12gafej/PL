@@ -51,8 +51,8 @@ circulo c(i|í)rculo" "{coord}" "{numero}
             sscanf(yytext, "triangulo (%f %f) (%f %f) (%f %f)", &p1.x, &p1.y, &p2.x, &p2.y, &p3.x, &p3.y);
             float area = calcularAreaTriangulo(p1, p2, p3);
             float perimetro = calcularPerimetroTriangulo(p1, p2, p3);
-            printf("Triángulo: Área = %.2f\n", area);
-            printf("Triángulo: Perímetro = %.2f\n", perimetro);
+            fprintf(yyout, "Triángulo: Área = %.2f\n", area);
+            fprintf(yyout, "Triángulo: Perímetro = %.2f\n", perimetro);
             triangulos++;
         }
 {cuad} { 
@@ -60,8 +60,8 @@ circulo c(i|í)rculo" "{coord}" "{numero}
             sscanf(yytext, "cuadrado (%f %f) (%f %f)", &p1.x, &p1.y, &p2.x, &p2.y);
             float area = distancia(p1, p2) * distancia(p1, p2);
             float perimetro = 4 * distancia(p1, p2);
-            printf("Cuadrado: Área = %.2f\n", area);
-            printf("Cuadrado: Perímetro = %.2f\n", perimetro);
+            fprintf(yyout, "Cuadrado: Área = %.2f\n", area);
+            fprintf(yyout, "Cuadrado: Perímetro = %.2f\n", perimetro);
             cuadrados++;
         }
 {circulo} { 
@@ -71,13 +71,13 @@ circulo c(i|í)rculo" "{coord}" "{numero}
             sscanf(yytext, "circulo (%f %f) %f", &centro.x, &centro.y, &radio);
             float area = PI * radio * radio;
             float perimetro = 2 * PI * radio;
-            printf("Círculo: Área = %.2f\n", area);
-            printf("Círculo: Perímetro = %.2f\n", perimetro);
+            fprintf(yyout, "Círculo: Área = %.2f\n", area);
+            fprintf(yyout, "Círculo: Perímetro = %.2f\n", perimetro);
             circulos++;
         }
         
 # {return 0;}
-.* { printf("Error\n");}
+.* { fprintf(yyout, "Error de formato\n\n");}
 
 
 
@@ -99,9 +99,9 @@ int main(int argc, char *argv[])
 
     yylex();
 
-    printf("Número de triángulos: %d\n", triangulos);
-    printf("Número de cuadrados: %d\n", cuadrados);
-    printf("Número de círculos: %d\n", circulos);
+    fprintf(yyout, "\n\nNúmero de triángulos: %d\n", triangulos);
+    fprintf(yyout, "Número de cuadrados: %d\n", cuadrados);
+    fprintf(yyout, "Número de círculos: %d\n", circulos);
 
   
 

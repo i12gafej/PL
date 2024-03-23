@@ -13,8 +13,8 @@ correo          {usuario}@{entidad}\.{ext}
 
 /*****Zona de reglas******/
 %%
-{correo}       {correos++;}
-.*             {printf("Correo Erroneo\n");} 
+{correo}       {fprintf(yyout, "CORRECTO --> <%s>\n", yytext);correos++;}
+.*             {fprintf(yyout, "(X) Correo Erroneo --> <%s>\n", yytext);} 
 
 %%
 
@@ -30,9 +30,10 @@ int main(int argc, char *argv[])
    case 3:  yyin=fopen(argv[1],"r"); 
             yyout=fopen(argv[2],"w"); 
   }
+  system("clear");
   yylex();
 
-  fprintf(yyout, "Correos: %i\n", correos);
+  fprintf(yyout, "Correos en total: %i\n\n\n", correos);
 
   return 0;
 }

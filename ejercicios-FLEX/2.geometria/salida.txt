@@ -1,0 +1,16 @@
+Triángulo: Área = 0.00
+Triángulo: Perímetro = 8.00
+
+Cuadrado: Área = 50.00
+Cuadrado: Perímetro = 28.28
+
+Error de formato
+
+
+Círculo: Área = 254.47
+Círculo: Perímetro = 56.55
+
+
+Número de triángulos: 1
+Número de cuadrados: 1
+Número de círculos: 1
