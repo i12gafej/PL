@@ -1,5 +1,55 @@
 %{
 #include <stdio.h>
+#define NUMERO 257
+#define IDENTIFICADOR 258
+#define CADENA 259
+#define ASIGNACION 260
+#define ASIGNACION_SUMA 261
+#define ASIGNACION_RESTA 262
+#define ASIGNACION_PRODUCTO 263
+#define ASIGNACION_DIVISION 264
+#define SUMA 265
+#define RESTA 266
+#define PRODUCTO 267
+#define DIVISION 268
+#define DIVISION_ENTERA 269
+#define MODULO 270
+#define POTENCIA 271
+#define INCREMENTO 272
+#define DECREMENTO 273
+#define CONCAT 274
+#define MENOR 275
+#define MENORIGUAL 276
+#define MAYOR 277
+#define MAYORIGUAL 278
+#define IGUAL 279
+#define DISTINTO 280
+#define DISYUNCION 281
+#define CONJUNCION 282
+#define NEGACION 283
+#define FIN_SENTENCIA 284
+#define PARENTESIS_ABIERTO 285
+#define PARENTESIS_CERRADO 286
+#define INICIO 287
+#define FIN 288
+#define LEER 289
+#define ESCRIBIR 290
+#define SI 291
+#define ENTONCES 292
+#define SI_NO 293
+#define FIN_SI 294
+#define MIENTRAS 295
+#define HACER 296
+#define FIN_MIENTRAS 297
+#define REPETIR 298
+#define HASTA_QUE 299
+#define PARA 300
+#define DESDE 301
+#define HASTA 302
+#define PASO 303
+#define FIN_PARA 304
+#define COMENT 305
+
 char* imprimir_cadena_sin_comillas(char *yytext, int yyleng){
     int i;
     char* cadena = (char*)malloc(yyleng-1);
@@ -18,7 +68,7 @@ identificador  {letra}({ln}|(_)({ln}))*
 espacio        [ \n]
 espacios       {espacio}+
 cadena         '([^'\\]|\\.)*'
-asignacion         =
+asignacion         :=
 asignacionsuma     \+=
 asignacionresta    -=
 asignacionproducto \*=
@@ -49,70 +99,69 @@ parentesis_abierto  \(
 parentesis_cerrado  \)
 %option case-insensitive
 
-%x LB C1 C2
+%x C1 C2
 
 
 %%
-\t                          { fprintf(yyout, "\t");}
-{espacios}      { /* No hacer nada */ ;}
-{comentario_corto}            { fprintf(yyout, "Comentario corto: %s\n", yytext); }
-"<<"                    { yymore(); BEGIN(C1);}
-<C1>[^>]                { yymore();}
-<C1>">"                 { yymore(); BEGIN(C2);}
-<C2>[^>]                { yymore();BEGIN(C1);}
-<C2>">"                 { fprintf(yyout, "Comentario largo: \"%s\"\n", yytext);yymore(); BEGIN(0);}
-{cadena}                { fprintf(yyout, "Cadena: <%s>\n",imprimir_cadena_sin_comillas(yytext, yyleng)); }
-{asignacion}            { fprintf(yyout, "Asignacion: %s\n", yytext); }
-{asignacionsuma}        { fprintf(yyout, "Asignacion suma: %s\n", yytext); }
-{asignacionresta}       { fprintf(yyout, "Asignacion resta: %s\n", yytext); }
-{asignacionproducto}    { fprintf(yyout, "Asignacion producto: %s\n", yytext); }
-{asignaciondivision}    { fprintf(yyout, "Asignacion division: %s\n", yytext); }
-{suma}            {fprintf(yyout, "Suma\n");}
-{resta}           {fprintf(yyout, "Resta\n");}
-{producto}        {fprintf(yyout, "Producto\n");}
-{division}        {fprintf(yyout, "División\n");}
-{divisionentera}  {fprintf(yyout, "División entera\n");}
-{modulo}          {fprintf(yyout, "Módulo\n");}
-{potencia}        {fprintf(yyout, "Potencia\n");}
-{incremento}      {fprintf(yyout, "Incremento\n");}
-{decremento}      {fprintf(yyout, "Decremento\n");}
-{concatenacion}   {fprintf(yyout, "Concatenación\n");}
-{menor}           {fprintf(yyout, "Menor\n");}
-{menorigual}      {fprintf(yyout, "Menor o igual\n");}
-{mayor}           {fprintf(yyout, "Mayor\n");}
-{mayorigual}      {fprintf(yyout, "Mayor o igual\n");}
-{igual}           {fprintf(yyout, "Igual\n");}
-{distinto}        {fprintf(yyout, "Distinto\n");}
-{disyuncion}      {fprintf(yyout, "Disyunción\n");}
-{conjuncion}      {fprintf(yyout, "Conjunción\n");}
-{negacion}        {fprintf(yyout, "Negación\n");}
-{fin_sentencia}         { fprintf(yyout, "Fin de sentencia\n"); }
-{parentesis_abierto}    { fprintf(yyout, "Parentesis abierto\n"); }
-{parentesis_cerrado}    { fprintf(yyout, "Parentesis cerrado\n"); }
-inicio          { fprintf(yyout, "Palabra reservada: inicio\n"); }
-fin             { fprintf(yyout, "Palabra reservada: fin\n"); }
-leer            { fprintf(yyout, "Palabra reservada: leer\n"); }
-escribir        { fprintf(yyout, "Palabra reservada: escribir\n"); }
-si              { fprintf(yyout, "Palabra reservada: si\n"); }
-entonces        { fprintf(yyout, "Palabra reservada: entonces\n"); }
-si_no           { fprintf(yyout, "Palabra reservada: si_no\n"); }
-fin_si          { fprintf(yyout, "Palabra reservada: fin_si\n"); }
-mientras        { fprintf(yyout, "Palabra reservada: mientras\n"); }
-hacer           { fprintf(yyout, "Palabra reservada: hacer\n"); }
-fin_mientras    { fprintf(yyout, "Palabra reservada: fin_mientras\n"); }
-repetir         { fprintf(yyout, "Palabra reservada: repetir\n"); }
-hasta_que       { fprintf(yyout, "Palabra reservada: hasta_que\n"); }
-para            { fprintf(yyout, "Palabra reservada: para\n"); }
-desde           { fprintf(yyout, "Palabra reservada: desde\n"); }
-hasta           { fprintf(yyout, "Palabra reservada: hasta\n"); }
-paso            { fprintf(yyout, "Palabra reservada: paso\n"); }
-fin_para        { fprintf(yyout, "Palabra reservada: fin_para\n"); }
-{numero}            { fprintf(yyout, "Numero: <%s>\n", yytext);}
-{numero_erroneo}    {fprintf(yyout, "Numero erroneo\n");}
-{letra}({ln}|(_)({ln}))*    { fprintf(yyout, "Identificador: %s\n", yytext);}
-[_]                         { yymore(); BEGIN(LB);}
-<LB>({ln}|_)*               { fprintf(yyout, "Error de identificador: %s\n", yytext);BEGIN(0);}
-.                           { fprintf(yyout, "Caracter no reconocido: %s\n", yytext); }
+\t                          { ;}
+{espacios}                  { /* No hacer nada */ ;}
+{comentario_corto}          { fprintf(yyout, "\nComentario: %s              \n\t --> token: %d\n", yytext, COMENT); }
+"<<"                        { yymore(); BEGIN(C1);}
+<C1>[^>]                    { yymore();}
+<C1>">"                     { yymore(); BEGIN(C2);}
+<C2>[^>]                    { yymore();BEGIN(C1);}
+<C2>">"                     { fprintf(yyout, "\nComentario : %s             \n\t --> token: %d\n", yytext, COMENT); BEGIN(0);}
+{cadena}                    { fprintf(yyout, "\nCadena: %s                  \n\t --> token: %d\n",imprimir_cadena_sin_comillas(yytext, yyleng), CADENA); }
+{asignacion}                { fprintf(yyout, "\nOperador de asignacion: %s  \n\t --> token: %d\n", yytext, ASIGNACION); }
+{asignacionsuma}            { fprintf(yyout, "\nOperador de asignacion: %s  \n\t --> token: %d\n", yytext, ASIGNACION_SUMA); }
+{asignacionresta}           { fprintf(yyout, "\nOperador de asignacion: %s  \n\t --> token: %d\n", yytext, ASIGNACION_RESTA); }
+{asignacionproducto}        { fprintf(yyout, "\nOperador de asignacion: %s  \n\t --> token: %d\n", yytext, ASIGNACION_PRODUCTO); }
+{asignaciondivision}        { fprintf(yyout, "\nOperador de asignacion: %s  \n\t --> token: %d\n", yytext, ASIGNACION_DIVISION); }
+{suma}                      { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, SUMA);} 
+{resta}                     { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, RESTA);}
+{producto}                  { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, PRODUCTO);}
+{division}                  { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, DIVISION);}
+{divisionentera}            { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, DIVISION_ENTERA);}
+{modulo}                    { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, MODULO);}
+{potencia}                  { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, POTENCIA);}
+{incremento}                { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, INCREMENTO);}
+{decremento}                { fprintf(yyout, "\nOperador aritmetico: %s     \n\t --> token: %d\n", yytext, DECREMENTO);}
+{concatenacion}             { fprintf(yyout, "\nOperador alfanumerico: %s   \n\t --> token: %d\n", yytext, CONCAT);}
+{menor}                     { fprintf(yyout, "\nOperador relacional: %s     \n\t --> token: %d\n", yytext, MENOR);}
+{menorigual}                { fprintf(yyout, "\nOperador relacional: %s     \n\t --> token: %d\n", yytext, MENORIGUAL);}
+{mayor}                     { fprintf(yyout, "\nOperador relacional: %s     \n\t --> token: %d\n", yytext, MAYOR);}
+{mayorigual}                { fprintf(yyout, "\nOperador relacional: %s     \n\t --> token: %d\n", yytext, MAYORIGUAL);}
+{igual}                     { fprintf(yyout, "\nOperador relacional: %s     \n\t --> token: %d\n", yytext, IGUAL);}
+{distinto}                  { fprintf(yyout, "\nOperador relacional: %s     \n\t --> token: %d\n", yytext, DISTINTO);}
+{disyuncion}                { fprintf(yyout, "\nOperador logico: %s         \n\t --> token: %d\n", yytext, DISYUNCION);}
+{conjuncion}                { fprintf(yyout, "\nOperador logico: %s         \n\t --> token: %d\n", yytext, CONJUNCION);}
+{negacion}                  { fprintf(yyout, "\nOperador logico: %s         \n\t --> token: %d\n", yytext, NEGACION);}
+{fin_sentencia}             { fprintf(yyout, "\nFIN DE SENTENCIA        \n\t --> token: %d\n", FIN_SENTENCIA); }
+{parentesis_abierto}        { fprintf(yyout, "\nParentesis: %s              \n\t --> token: %d\n", yytext, PARENTESIS_ABIERTO); }
+{parentesis_cerrado}        { fprintf(yyout, "\nParentesis: %s              \n\t --> token: %d\n", yytext, PARENTESIS_CERRADO); }
+inicio                      { fprintf(yyout, "\n-------INICIO DEL PROGRAMA-------\n\t --> token: %d\n",INICIO); }
+fin                         { fprintf(yyout, "\n---------FIN DEL PROGRAMA--------\n\t --> token: %d\n", FIN); }
+leer                        { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, LEER); }
+escribir                    { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, ESCRIBIR); }
+si                          { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, SI); }
+entonces                    { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, ENTONCES); }
+si_no                       { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, SI_NO); }
+fin_si                      { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, FIN_SI); }
+mientras                    { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, MIENTRAS); }
+hacer                       { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, HACER); }
+fin_mientras                { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, FIN_MIENTRAS); }
+repetir                     { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, REPETIR); }
+hasta_que                   { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, HASTA_QUE); }
+para                        { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, PARA); }
+desde                       { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, DESDE); }
+hasta                       { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, HASTA); }
+paso                        { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, PASO); }
+fin_para                    { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, FIN_PARA); }
+{numero}                    { fprintf(yyout, "\nNumero: <%s>                \n\t --> token: %d\n", yytext, NUMERO);}
+{numero_erroneo}            { fprintf(yyout, "\nNumero erroneo\n");}
+{identificador}             { fprintf(yyout, "\nIdentificador: <%s>         \n\t --> token: %d\n", yytext, IDENTIFICADOR);}
+"_ "|"_\n"|_({ln}|_)*       { fprintf(yyout, "\nError de identificador: %s\n", yytext); }
+.                           { fprintf(yyout, "\nCaracter no reconocido: %s\n", yytext); }
 %%
 
 extern FILE *yyin, *yyout;

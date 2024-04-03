@@ -1,0 +1,62 @@
+!!Algoritmo del factorial
+
+<< Dado un numero
+    Se calcula su factorial"
+>>
+
+inicio
+
+    escribir ( 'Ingrese un número para calcular su factorial:');
+    leer (numero);
+    
+    si( numero < 0 )entonces
+        escribir( 'No se puede calcular el factorial de un número negativo.');
+    si_no
+        factorial := 1;
+        contador := 1;
+        
+        mientras( contador <= numero) hacer
+            factorial := factorial * contador;
+            contador := contador + 1;
+        fin_mientras
+        
+        escribir( 'El factorial de' || numero || 'es:' || factorial);
+    fin_si
+    
+fin
+
+!! Algoritmo de las NReinas (Las Vegas)
+
+<< Calcula una solucion para
+    el problema de las NReinas
+    usando un tablero NxN >>
+
+inicio  
+    solucion := vector (n);
+    para k desde 0 hasta n paso
+        !!recorremos n posiciones y contador fuera
+        contador := -1;   
+        ok := vector(n)
+        para j desde 0 hasta n paso
+            !!podemos que la solucion en la fila k sea la columna j
+            solucion(k) := j;
+            !!si es solucion
+            si lugar(k)entonces
+                !!nos vamos a la siguiente fila
+                contador++;
+                !!guardamos la columna j como posible solucion
+                ok(contador) := j;
+            fin_si
+        fin_para
+        si (contador == -1) entonces
+            !!no hay solucion
+            escribir('No se ha encontrado solucion');
+        fin_si
+        !!elegimos una columna aleatoria de las posibles
+        columna := ok(aleatorio % (contador + 1));
+        solucion(k) := columna;
+    fin_para
+    return true;
+fin 
+
+
