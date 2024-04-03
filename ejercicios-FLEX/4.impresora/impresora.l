@@ -16,19 +16,20 @@ nombre [a-zA-Z0-9]+\.[a-z]+
     int dia = fecha/1000000;
     int mes = (fecha/10000)%100;
     int anio = fecha%10000;
+    yymore();
     if((es_bisiesto(anio) == 1 && mes == 2 && dia > 29) || (es_bisiesto(anio) == 0 && mes == 2 && dia > 28)){
-        fprintf(yyout, "Error de fecha\n");
+        fprintf(yyout, "(X)\tError --> <%s", yytext);
         BEGIN(BASURA);
     }else{
         if(existe_dia(fecha) == -1){ 
             aux = (int*)malloc(sizeof(int));/*Creamos dia auxiliar*/
             *aux = fecha;
         }
-        yymore();
+
         BEGIN(Q1);
     }    
 }
-. {fprintf(yyout, "Error\n");
+. {fprintf(yyout, "(X)\tError --> <%s", yytext);
     codigo_error = 0;
     BEGIN(BASURA);}
 <Q1>" "{hora}":"{minuto} {
@@ -38,7 +39,7 @@ nombre [a-zA-Z0-9]+\.[a-z]+
 }
 <Q1>" "*[^{hora}]":"*[^{minuto}] {
     codigo_error = 1;
-    fprintf(yyout, "Error de hora\n");
+    fprintf(yyout, "(X)\tError --> <%s", yytext);
     BEGIN(BASURA);
 }
 <Q2>" "{nombre} {
@@ -55,13 +56,14 @@ nombre [a-zA-Z0-9]+\.[a-z]+
 <Q2>" "*[^{nombre}] {
     dias--;
     codigo_error = 1;
-    fprintf(yyout, "Error de nombre\n");
+    fprintf(yyout, "(X)\tError --> <%s", yytext);
     BEGIN(BASURA);
 }
 <BASURA>.* {
     if(codigo_error == 1){
         free(aux);
     }
+    fprintf(yyout, "%s> \n", yytext);
     BEGIN(INITIAL);
 }
 %%
