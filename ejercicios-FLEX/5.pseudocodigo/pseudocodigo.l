@@ -13,11 +13,13 @@ char* imprimir_cadena_sin_comillas(char *yytext, int yyleng){
 }
 %}
 letra               [a-zA-Z]
+la                  [a-zA-ZáéíóúÁÉÍÓÚ]
+lan                 [a-zA-ZáéíóúÁÉÍÓÚ0-9]
 ln                  [a-zA-Z0-9]
 numero              -?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?
-numero_erroneo      -?[0-9]+(([a-df-zA-DFZ]|((\.\.+)[0-9]|(\.[0-9])(\.[0-9])+))|\.|[eE])
+numero_erroneo      -?[0-9]+(([a-df-zA-DFZ]+|((\.\.+)[0-9]|(\.[0-9])(\.[0-9])+))|\.|[eE])
 identificador       {letra}({ln}|(_)({ln}))*
-error_identificador "_ "|"_\n"|_({ln}|_)*|({ln}*__+{ln}*)|({ln}+_)
+error_identificador "_ "|"_\n"|_({lan}|_)*|({lan}*__+{lan}*)|({lan}+_)|({la}({lan}|(_)({lan}))*)
 espacio             [ \n]
 espacios            {espacio}+
 cadena              '([^'\\]|\\.)*'
@@ -89,11 +91,11 @@ parentesis_cerrado  \)
 {disyuncion}                { fprintf(yyout, "\nOperador logico: %s         \n\t --> token: %d\n", yytext, DISYUNCION);}
 {conjuncion}                { fprintf(yyout, "\nOperador logico: %s         \n\t --> token: %d\n", yytext, CONJUNCION);}
 {negacion}                  { fprintf(yyout, "\nOperador logico: %s         \n\t --> token: %d\n", yytext, NEGACION);}
-{fin_sentencia}             { fprintf(yyout, "\nFIN DE SENTENCIA        \n\t --> token: %d\n", FIN_SENTENCIA); }
+{fin_sentencia}             { fprintf(yyout, "\nFIN DE SENTENCIA            \n\t --> token: %d\n", FIN_SENTENCIA); }
 {parentesis_abierto}        { fprintf(yyout, "\nParentesis: %s              \n\t --> token: %d\n", yytext, PARENTESIS_ABIERTO); }
 {parentesis_cerrado}        { fprintf(yyout, "\nParentesis: %s              \n\t --> token: %d\n", yytext, PARENTESIS_CERRADO); }
-inicio                      { fprintf(yyout, "\n-------INICIO DEL PROGRAMA-------\n\t --> token: %d\n",INICIO); }
-fin                         { fprintf(yyout, "\n---------FIN DEL PROGRAMA--------\n\t --> token: %d\n", FIN); }
+inicio                      { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n",yytext, INICIO); }
+fin                         { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n",yytext, FIN); }
 leer                        { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, LEER); }
 escribir                    { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, ESCRIBIR); }
 si                          { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, SI); }
@@ -111,7 +113,7 @@ hasta                       { fprintf(yyout, "\nPalabra reservada: %s       \n\t
 paso                        { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, PASO); }
 fin_para                    { fprintf(yyout, "\nPalabra reservada: %s       \n\t --> token: %d\n", yytext, FIN_PARA); }
 {numero}                    { fprintf(yyout, "\nNumero: <%s>                \n\t --> token: %d\n", yytext, NUMERO);}
-{numero_erroneo}            { fprintf(yyout, "\nNumero erroneo\n");}
+{numero_erroneo}            { fprintf(yyout, "\nError de numero: %s\n", yytext);}
 {identificador}             { fprintf(yyout, "\nIdentificador: <%s>         \n\t --> token: %d\n", yytext, IDENTIFICADOR);}
 {error_identificador}       { fprintf(yyout, "\nError de identificador: %s\n", yytext); }
 .                           { fprintf(yyout, "\nCaracter no reconocido: %s\n", yytext); }

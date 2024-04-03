@@ -30,10 +30,10 @@ int main(int argc, char *argv[])
    case 3:  yyin=fopen(argv[1],"r"); 
             yyout=fopen(argv[2],"w"); 
   }
-  system("clear");
   yylex();
-
-  fprintf(yyout, "Correos en total: %i\n\n\n", correos);
+  fprintf(yyout, "\n\n----------------------------------------------------------\n\n\n");
+  fprintf(yyout, "                  Correos en total: %i\n\n\n", correos);
+  fprintf(yyout, "----------------------------------------------------------\n\n\n");
 
   return 0;
 }

@@ -29,3 +29,13 @@ iniciO
     escribir "El máximo común divisor es: ", num1;
 
 fin
+__
+__id
+_id1
+1id
+1_
+id_1
+i_d__
+_
+_i__d
+1_id
