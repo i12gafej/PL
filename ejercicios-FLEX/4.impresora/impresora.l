@@ -1,12 +1,6 @@
 %{
     #include <stdio.h>
-<<<<<<< HEAD
-
     #include <stdlib.h>
-
-=======
-    #include <stdlib.h>
->>>>>>> bcbcee4 (pelfe)
 
     /*DECLARACION DE VARIABLES GLOBALES*/
     int *vector = NULL; /*Vector de Dias*/
