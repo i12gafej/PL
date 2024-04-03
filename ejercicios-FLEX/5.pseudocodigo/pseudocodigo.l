@@ -1,54 +1,6 @@
 %{
 #include <stdio.h>
-#define NUMERO 257
-#define IDENTIFICADOR 258
-#define CADENA 259
-#define ASIGNACION 260
-#define ASIGNACION_SUMA 261
-#define ASIGNACION_RESTA 262
-#define ASIGNACION_PRODUCTO 263
-#define ASIGNACION_DIVISION 264
-#define SUMA 265
-#define RESTA 266
-#define PRODUCTO 267
-#define DIVISION 268
-#define DIVISION_ENTERA 269
-#define MODULO 270
-#define POTENCIA 271
-#define INCREMENTO 272
-#define DECREMENTO 273
-#define CONCAT 274
-#define MENOR 275
-#define MENORIGUAL 276
-#define MAYOR 277
-#define MAYORIGUAL 278
-#define IGUAL 279
-#define DISTINTO 280
-#define DISYUNCION 281
-#define CONJUNCION 282
-#define NEGACION 283
-#define FIN_SENTENCIA 284
-#define PARENTESIS_ABIERTO 285
-#define PARENTESIS_CERRADO 286
-#define INICIO 287
-#define FIN 288
-#define LEER 289
-#define ESCRIBIR 290
-#define SI 291
-#define ENTONCES 292
-#define SI_NO 293
-#define FIN_SI 294
-#define MIENTRAS 295
-#define HACER 296
-#define FIN_MIENTRAS 297
-#define REPETIR 298
-#define HASTA_QUE 299
-#define PARA 300
-#define DESDE 301
-#define HASTA 302
-#define PASO 303
-#define FIN_PARA 304
-#define COMENT 305
+#include "token.h"
 
 char* imprimir_cadena_sin_comillas(char *yytext, int yyleng){
     int i;
@@ -60,41 +12,42 @@ char* imprimir_cadena_sin_comillas(char *yytext, int yyleng){
     return cadena;
 }
 %}
-letra          [a-zA-Z]
-ln             [a-zA-Z0-9]
-numero         -?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?
-numero_erroneo -?[0-9]+(([a-df-zA-DFZ]|((\.\.+)[0-9]|(\.[0-9])(\.[0-9])+))|\.|[eE])
-identificador  {letra}({ln}|(_)({ln}))*
-espacio        [ \n]
-espacios       {espacio}+
-cadena         '([^'\\]|\\.)*'
-asignacion         :=
-asignacionsuma     \+=
-asignacionresta    -=
-asignacionproducto \*=
-asignaciondivision \/=
-suma            \+
-resta           -
-producto        \*
-division        \/
-divisionentera  \/\/
-modulo          %
-potencia        \*\*
-incremento      \+\+
-decremento      --
-concatenacion   \|\|
-menor           <
-menorigual      <=
-mayor           >
-mayorigual      >=
-igual           ==
-distinto        <>
-disyuncion      #o
-conjuncion      #y
-negacion        #no
-comentario_corto      !!.*\n
-comentario_largo      ^<<(.*(\n)*)*>>\n
-fin_sentencia  ;
+letra               [a-zA-Z]
+ln                  [a-zA-Z0-9]
+numero              -?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?
+numero_erroneo      -?[0-9]+(([a-df-zA-DFZ]|((\.\.+)[0-9]|(\.[0-9])(\.[0-9])+))|\.|[eE])
+identificador       {letra}({ln}|(_)({ln}))*
+error_identificador "_ "|"_\n"|_({ln}|_)*|({ln}*__+{ln}*)|({ln}+_)
+espacio             [ \n]
+espacios            {espacio}+
+cadena              '([^'\\]|\\.)*'
+asignacion          :=
+asignacionsuma      \+=
+asignacionresta     -=
+asignacionproducto  \*=
+asignaciondivision  \/=
+suma                \+
+resta               -
+producto            \*
+division            \/
+divisionentera      \/\/
+modulo              %
+potencia            \*\*
+incremento          \+\+
+decremento          --
+concatenacion       \|\|
+menor               <
+menorigual          <=
+mayor               >
+mayorigual          >=
+igual               ==
+distinto            <>
+disyuncion          #o
+conjuncion          #y
+negacion            #no
+comentario_corto    !!.*\n
+comentario_largo    ^<<(.*(\n)*)*>>\n
+fin_sentencia       ;
 parentesis_abierto  \(
 parentesis_cerrado  \)
 %option case-insensitive
@@ -160,7 +113,7 @@ fin_para                    { fprintf(yyout, "\nPalabra reservada: %s       \n\t
 {numero}                    { fprintf(yyout, "\nNumero: <%s>                \n\t --> token: %d\n", yytext, NUMERO);}
 {numero_erroneo}            { fprintf(yyout, "\nNumero erroneo\n");}
 {identificador}             { fprintf(yyout, "\nIdentificador: <%s>         \n\t --> token: %d\n", yytext, IDENTIFICADOR);}
-"_ "|"_\n"|_({ln}|_)*       { fprintf(yyout, "\nError de identificador: %s\n", yytext); }
+{error_identificador}       { fprintf(yyout, "\nError de identificador: %s\n", yytext); }
 .                           { fprintf(yyout, "\nCaracter no reconocido: %s\n", yytext); }
 %%
 

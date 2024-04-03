@@ -1,6 +1,6 @@
 
 
-%x q1 q2 q3
+%x q1 q2
 %%
 
 encender    {
@@ -12,8 +12,8 @@ encender    {
                 BEGIN q1;
            }
 <q1>apagar  {
-                fprintf(yyout , "%s: q1 --> q3\n", yytext);
-                BEGIN q3;
+                fprintf(yyout , "%s: q1 --> q0\n", yytext);
+                BEGIN 0;
                 return 0;
             }
 <q1>embragar {

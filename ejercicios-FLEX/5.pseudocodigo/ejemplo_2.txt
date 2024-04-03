@@ -1,0 +1,31 @@
+!!Algoritmo del MCD
+
+iniciO
+
+    // Leer_los_dos_números_enteros
+    leer _num1;
+    leer _num2;
+    
+    !!Inicializar variables
+    resto__1
+    
+    !!Verificar 'si los números son positivos'
+    si num1 < 0 entonces
+        num1 = -num1;
+    fin_si
+    
+    si num2 < 0 entonces
+        num2 := -num2;
+    fin_si
+    
+    !!Algoritmo 'de Euclides para encontrar el MCD'
+    mientras num2 != 0 hacer
+        resto := num1 % num2;
+        num1 := num2;
+        num2 := resto;
+    fin_mientras
+    
+    // 'Escribir MCD'
+    escribir "El máximo común divisor es: ", num1;
+
+fin

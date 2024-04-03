@@ -1,0 +1,54 @@
+#ifndef TOKEN_H
+#define TOKEN_H
+
+#define NUMERO 257
+#define IDENTIFICADOR 258
+#define CADENA 259
+#define ASIGNACION 260
+#define ASIGNACION_SUMA 261
+#define ASIGNACION_RESTA 262
+#define ASIGNACION_PRODUCTO 263
+#define ASIGNACION_DIVISION 264
+#define SUMA 265
+#define RESTA 266
+#define PRODUCTO 267
+#define DIVISION 268
+#define DIVISION_ENTERA 269
+#define MODULO 270
+#define POTENCIA 271
+#define INCREMENTO 272
+#define DECREMENTO 273
+#define CONCAT 274
+#define MENOR 275
+#define MENORIGUAL 276
+#define MAYOR 277
+#define MAYORIGUAL 278
+#define IGUAL 279
+#define DISTINTO 280
+#define DISYUNCION 281
+#define CONJUNCION 282
+#define NEGACION 283
+#define FIN_SENTENCIA 284
+#define PARENTESIS_ABIERTO 285
+#define PARENTESIS_CERRADO 286
+#define INICIO 287
+#define FIN 288
+#define LEER 289
+#define ESCRIBIR 290
+#define SI 291
+#define ENTONCES 292
+#define SI_NO 293
+#define FIN_SI 294
+#define MIENTRAS 295
+#define HACER 296
+#define FIN_MIENTRAS 297
+#define REPETIR 298
+#define HASTA_QUE 299
+#define PARA 300
+#define DESDE 301
+#define HASTA 302
+#define PASO 303
+#define FIN_PARA 304
+#define COMENT 305
+
+#endif
