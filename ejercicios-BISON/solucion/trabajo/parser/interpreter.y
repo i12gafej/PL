@@ -161,7 +161,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read readstring if while block repeat for forstep cases value_list tail default 
+%type <st> stmt asgn print read readstring if while block repeat for forstep cases value_stmt value_list default 
 
 %type <prog> program
 
@@ -431,34 +431,34 @@ forstep: FOR VARIABLE FROM NUMBER UNTIL NUMBER STEP NUMBER DO stmtlist END_FOR
 			$$ = new lp::ForStmt($2, new lp::NumberNode($4), new lp::NumberNode($6), $10, new lp::NumberNode($8));
 		}
 ;
-cases: CASES LPAREN VARIABLE RPAREN value_list default END_CASES
+cases: CASES LPAREN exp RPAREN value_stmt default END_CASES
 		{
 			// Create a new cases statement node
-			$$ = new lp::CasesStmt($3, $5, $6);
+			$$ = new lp::CasesStmt($3, (std::list<lp::ValueStmt *> *) $5, (lp::DefaultStmt *) $6);
+			
 		}
 ;
 
-value_list: VALUE exp COLON stmtlist tail
-		{
-			// Create a new list of values node
-			// $$ = new std::list<lp::ValueStmt *>();
-			// $$->push_back(new lp::ValueStmt($2, $4));
-		}
+value_stmt: LPAREN exp RPAREN COLON stmtlist 
+{
+    $$ = new lp::ValueStmt($2, $5);
+}
 ;
-tail: VALUE exp COLON stmtlist tail
-		{
-			// Create a new list of values node
-			// $$->push_back(new lp::ValueStmt($2, $4));
-		}
-		| {
-			
-			
-		}
+value_list: value_list value_stmt
+{
+    $$ = $1;
+    $$->push_back($2);
+}
+| value_stmt
+{
+    $$ = new std::list<lp::ValueStmt *>;
+    $$->push_back($1);
+}
 ;
 default: DEFAULT COLON stmtlist
 		{
 			// Create a new default node
-			//$$ = new lp::DefaultStmt($3);
+			$$ = new lp::DefaultStmt($3);
 		}
 		|
 		{

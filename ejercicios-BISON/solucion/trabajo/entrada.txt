@@ -12,7 +12,7 @@ repetir
     escribir(dato);
 hasta (dato == 5)
 
-escribir('Terminó'); >>
+escribir('Terminó'); 
 
 dato := 0;
 para dato desde 0 hasta 5 hacer
@@ -20,4 +20,12 @@ para dato desde 0 hasta 5 hacer
 fin_para
 
 escribir('Terminó');
-escribir(dato);
+escribir(dato);>>
+
+dato := 5;
+casos (dato) 
+    valor 1: 
+        escribir('Hola');
+    valor 5:
+        escribir('Adios');
+fin_casos

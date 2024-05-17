@@ -1883,16 +1883,16 @@ class ForStmt : public Statement
 class ValueStmt : public Statement 
 {
 	private:
-		std::string _id; //!< Name of the variable of the assignment statement
+		ExpNode * _exp; //!< Name of the variable of the assignment statement
 		std::list<Statement *> * _stmts; 	 //!< Statements
 
   	public:
   
-  	ValueStmt(std::string id, std::list<Statement *> * stmts){
-		this->_id = id;
+  	ValueStmt(ExpNode * exp, std::list<Statement *> * stmts){
+		this->_exp = exp;
 		this->_stmts = stmts;
 	}
-	inline std::string getId() { return this->_id; }
+	inline ExpNode * getExp() { return this->_exp; }
 
 	void printAST();
 
@@ -1926,11 +1926,11 @@ class CasesStmt : public Statement
 	private:
 		ExpNode * _exp; //!< Name of the variable of the assignment statement
 		std::list<ValueStmt *> * _stmts; 	 //!< Value Statements
-		ValueStmt * _default; //!< Default Statement
+		DefaultStmt * _default; //!< Default Statement
 
   	public:
   
-  	CasesStmt(ExpNode * exp, std::list<ValueStmt *> * stmts, ValueStmt * def = NULL){
+  	CasesStmt(ExpNode * exp, std::list<ValueStmt *> * stmts, DefaultStmt * def = NULL){
 		this->_exp = exp;
 		this->_stmts = stmts;
 		this->_default = def;

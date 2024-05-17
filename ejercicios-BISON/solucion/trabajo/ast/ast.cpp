@@ -1823,7 +1823,57 @@ void lp::ValueStmt::printAST()
 {
   std::cout << "ValueStmt: "  << std::endl;
   std::cout << "\t";
-  std::cout << this->_id << std::endl;
+  switch(this->_exp->getType()){
+		case NUMBER:{
+			std::cout << this->_exp->evaluateNumber() << std::endl;
+			break;
+		}
+		case BOOL:{
+			if (this->_exp->evaluateBool())
+				std::cout << "true" << std::endl;
+			else
+				std::cout << "false" << std::endl;
+			break;
+		}
+		case STRING:{
+			std::cout <<" \t" << this->_exp->evaluateString() << std::endl;
+			break;
+		}
+		case CONSTANT:{
+			std::cout <<" \t" << this->_exp->evaluateNumber() << std::endl;
+			break;
+		}
+		case VARIABLE:{
+			VariableNode *v = (VariableNode *) this->_exp;
+			switch(v->getType()){
+				case NUMBER:{
+					std::cout <<" \t" << this->_exp->evaluateNumber() << std::endl;
+					break;
+				}
+				case BOOL:{
+					if (this->_exp->evaluateBool())
+						std::cout <<" = \t" << "true" << std::endl;
+					else
+						std::cout <<" = \t" << "false" << std::endl;
+					break;
+				}
+				case STRING:{
+					std::cout <<" = \t" << this->_exp->evaluateString() << std::endl;
+					break;
+				}
+				default:{
+					warning("Runtime error: incompatible type for ", "ValueStmt");
+					break;
+				}
+			}
+			break;
+		}
+		default:{
+			warning("Runtime error: incompatible type for ", "ValueStmt");
+			break;
+		}
+	}
+
   std::cout << "\t";
   std::cout << "BlockStmt: "  << std::endl;
   for (std::list<Statement *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
@@ -1868,54 +1918,361 @@ void lp::CasesStmt::printAST()
 {
   std::cout << "CasesStmt: "  << std::endl;
   std::cout << "\t";
+  std::cout << "Expression: " ;
   this->_exp->printAST();
   std::cout << "\t";
-  std::cout << "BlockStmt: "  << std::endl;
   for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
   {
 		(*stmtIter)->printAST();
   }
   std::cout << std::endl;
+  std::cout << "DefaultStmt: "  << std::endl;
+  this->_default->printAST();
+
 }
 void lp::CasesStmt::evaluate(){
 	//vemos el tipo de la expresion
-	int type = this->_exp->getType();
 	//si es un numero
-	if(type == NUMBER){
-		double value = this->_exp->evaluateNumber();
-		for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
-		{
-			NumericVariable *n = (NumericVariable *) table.getSymbol((*stmtIter)->getId());
-			if(value == n->getValue()){
-				(*stmtIter)->evaluate();
-				break;
+	bool done = false;
+	switch(this->_exp->getType()){
+		case NUMBER:{ 
+			double value = this->_exp->evaluateNumber();
+			//Recorremos las expresiones de los casos
+			for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+			{
+				// vemos de que tipo es en cada caso, por si no son tipos compatibles
+
+				// NUMBER y NUMBER
+				if((*stmtIter)->getExp()->getType() == NUMBER){
+					double n = (*stmtIter)->getExp()->evaluateNumber();
+					if(value == n){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
+					}
+				// NUMBER y VARIABLE
+				} else if((*stmtIter)->getExp()->getType() == VARIABLE){
+					VariableNode *n = (VariableNode *) this->_exp;
+					if(n != NULL){
+						if(n->getType() == NUMBER){
+							NumberNode* number = (NumberNode*) this->_exp;
+							if(value == number->evaluateNumber()){
+								(*stmtIter)->evaluate();
+								done = true;
+								break;
+							}
+						}
+						else {
+							warning("Runtime error: incompatible type for ", "CasesStmt");
+						}
+					}
+					else {
+						warning("Runtime error: variable not found ", "");
+					}
+				// NUMBER y CONSTANT
+				} else if((*stmtIter)->getExp()->getType() == CONSTANT){
+					ConstantNode *n = (ConstantNode *) this->_exp;
+					if(n != NULL){
+						if(n->getType() == NUMBER){
+							NumberNode* number = (NumberNode*) this->_exp;
+							if(value == number->evaluateNumber()){
+								(*stmtIter)->evaluate();
+								done = true;
+								break;
+							}
+						}
+						else {
+							warning("Runtime error: incompatible type for ", "CasesStmt");
+						}
+					}
+					else {
+						warning("Runtime error: variable not found ", "");
+					}
+				} 
+				else {
+					warning("Runtime error: incompatible type for ", "CasesStmt");
+				}
 			}
-		}
-	}
-	//si es un booleano
-	else if(type == BOOL){
-		bool value = this->_exp->evaluateBool();
-		for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
-		{
-			LogicalVariable *n = (LogicalVariable *) table.getSymbol((*stmtIter)->getId());
-			if(value == n->getValue()){
-				(*stmtIter)->evaluate();
-				break;
+			if(!done){
+				this->_default->evaluate();
+				done = true;
 			}
+			break;
 		}
-	}
-	//si es un string
-	else if(type == STRING){
-		std::string value = this->_exp->evaluateString();
-		for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
-		{
-			StringVariable *n = (StringVariable *) table.getSymbol((*stmtIter)->getId());
-			if(value == n->getValue()){
-				(*stmtIter)->evaluate();
-				break;
+		case STRING:{ 
+			std::string value = this->_exp->evaluateString();
+			for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+			{
+				//STRING y STRING
+				if((*stmtIter)->getExp()->getType() == STRING){
+					std::string n = (*stmtIter)->getExp()->evaluateString();
+					if(value == n){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
+					}
+				//STRING y VARIABLE
+				} else if((*stmtIter)->getExp()->getType() == VARIABLE){
+					VariableNode *n = (VariableNode *) this->_exp;
+					if(n != NULL){
+						if(n->getType() == STRING){
+							StringNode *string = (StringNode *) this->_exp;
+							if(value == string->evaluateString()){
+								(*stmtIter)->evaluate();
+								done = true;
+								break;
+							}
+						}
+						else {
+							warning("Runtime error: incompatible type for ", "CasesStmt");
+						}
+					}
+					else {
+						warning("Runtime error: variable not found ", "");
+					}
+				//STRING y CONSTANT (HAY QUE IMPELMENTAR LAS CONSTANTES DE STRING)
+				} 
+				// else if((*stmtIter)->getExp()->getType() == CONSTANT){
+				// 	Constant *n = (Constant *) table.getSymbol((*stmtIter)->getId());
+				// 	if(n != NULL){
+				// 		if(n->getType() == STRING){
+				// 			StringConstant *string = (StringConstant *) table.getSymbol((*stmtIter)->getId());
+				// 			if(value == string->getValue()){
+				// 				(*stmtIter)->evaluate();
+				// 				break;
+				// 			}
+				// 		}
+				// 		else {
+				// 			warning("Runtime error: incompatible type for ", "CasesStmt");
+				// 		}
+				// 	}
+				// 	else {
+				// 		warning("Runtime error: variable not found ", (*stmtIter)->getId());
+				// 	}
+				// } 
+				else {
+					warning("Runtime error: incompatible type for ", "CasesStmt");
+				}
 			}
+			if(!done){
+				this->_default->evaluate();
+				done = true;
+			}
+			break;
 		}
+		
+		case BOOL:{
+			bool value = this->_exp->evaluateBool();
+			for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+			{
+				//BOOL y BOOL
+				if((*stmtIter)->getExp()->getType() == BOOL){
+					bool n = (*stmtIter)->getExp()->evaluateBool();
+					if(value == n){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
+					}
+				//BOOL y VARIABLE
+				} else if((*stmtIter)->getExp()->getType() == VARIABLE){
+					VariableNode *n = (VariableNode *) this->_exp;
+					if(n != NULL){
+						if(n->getType() == BOOL){
+							if(value == n->evaluateBool()){
+								(*stmtIter)->evaluate();
+								done = true;
+								break;
+							}
+						}
+						else {
+							warning("Runtime error: incompatible type for ", "CasesStmt");
+						}
+					}
+					else {
+						warning("Runtime error: variable not found ", "");
+					}
+				//BOOL y CONSTANT
+				} else if((*stmtIter)->getExp()->getType() == CONSTANT){
+					ConstantNode *n = (ConstantNode *) this->_exp;
+					if(n != NULL){
+						if(n->getType() == BOOL){
+							
+							if(value == n->evaluateBool()){
+								(*stmtIter)->evaluate();
+								done = true;
+								break;
+							}
+						}
+						else {
+							warning("Runtime error: incompatible type for ", "CasesStmt");
+						}
+					}
+					else {
+						warning("Runtime error: variable not found ", "");
+					}
+				} 
+				else {
+					warning("Runtime error: incompatible type for ", "CasesStmt");
+				}
+			}
+			if(!done){
+				this->_default->evaluate();
+				done = true;
+			}
+			break;
+		}
+		case VARIABLE:{
+			VariableNode *v = (VariableNode *) this->_exp;
+			for(std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++){
+				//NUMERIC VARIABLE y VARIABLE or CONSTANT
+				if(v->getType() == NUMBER){
+					//NUMERIC VARIABLE y NUMERIC VARIABLE
+					if((*stmtIter)->getExp()->getType() == VARIABLE){
+						VariableNode *n = (VariableNode *) this->_exp;
+						if(n != NULL){
+							if(n->getType() == NUMBER){
+								if(v->evaluateNumber() == n->evaluateNumber()){
+									(*stmtIter)->evaluate();
+									done = true;
+									break;
+								}
+							}
+							else {
+								warning("Runtime error: incompatible type for ", "CasesStmt");
+							}
+						}
+						else {
+							warning("Runtime error: variable not found ", "");
+						}
+					//NUMERIC VARIABLE y NUMERIC CONSTANT
+					} else if ((*stmtIter)->getExp()->getType() == CONSTANT){
+						ConstantNode *n = (ConstantNode *) this->_exp;
+						if(n != NULL){
+							if(n->getType() == NUMBER){
+								if(v->evaluateNumber() == n->evaluateNumber()){
+									(*stmtIter)->evaluate();
+									done = true;
+									break;
+								}
+							}
+							else {
+								warning("Runtime error: incompatible type for ", "CasesStmt");
+							}
+						}
+						else {
+							warning("Runtime error: variable not found ", "");
+						}
+					} 
+					else {
+						warning("Runtime error: incompatible type for ", "CasesStmt");
+					}
+				}
+				//LOGICAL VARIABLE y VARIABLE or CONSTANT
+				else if(v->getType() == BOOL){
+					//LOGICAL VARIABLE y LOGICAL VARIABLE
+					if((*stmtIter)->getExp()->getType() == VARIABLE){
+						VariableNode *n = (VariableNode *) this->_exp;
+						if(n != NULL){
+							if(n->getType() == BOOL){
+								if(v->evaluateBool() == n->evaluateBool()){
+									(*stmtIter)->evaluate();
+									done = true;
+									break;
+								}
+							}
+							else {
+								warning("Runtime error: incompatible type for ", "CasesStmt");
+							}
+						}
+						else {
+							warning("Runtime error: variable not found ", "");
+						}
+					//LOGICAL VARIABLE y LOGICAL CONSTANT
+					} else if ((*stmtIter)->getExp()->getType() == CONSTANT){
+						ConstantNode *n = (ConstantNode *) this->_exp;
+						if(n != NULL){
+							if(n->getType() == BOOL){
+								if(v->evaluateBool() == n->evaluateBool()){
+									(*stmtIter)->evaluate();
+									done = true;
+									break;
+								}
+							}
+							else {
+								warning("Runtime error: incompatible type for ", "CasesStmt");
+							}
+						}
+						else {
+							warning("Runtime error: variable not found ", "");
+						}
+					} 
+					else {
+						warning("Runtime error: incompatible type for ", "CasesStmt");
+					}
+				}
+				//STRING VARIABLE y VARIABLE or CONSANTE (hace falta implementarlo)
+				else if(v->getType() == STRING){
+					//STRING VARIABLE y STRING VARIABLE
+					if((*stmtIter)->getExp()->getType() == STRING){
+						VariableNode *n = (VariableNode *) this->_exp;
+						if(n != NULL){
+							if(n->getType() == STRING){
+								if(v->evaluateString() == n->evaluateString()){
+									(*stmtIter)->evaluate();
+									done = true;
+									break;
+								}
+							}
+							else {
+								warning("Runtime error: incompatible type for ", "CasesStmt");
+							}
+						}
+						else {
+							warning("Runtime error: variable not found ", "");
+						}
+					//STRING VARIABLE y STRING CONSTANT
+					} 
+					// else if ((*stmtIter)->getExp()->getType() == CONSTANT){
+					// 	Constant *n = (Constant *) table.getSymbol((*stmtIter)->getId());
+					// 	if(n != NULL){
+					// 		if(n->getType() == STRING){
+					// 			StringConstant *string = (StringConstant *) table.getSymbol((*stmtIter)->getId());
+					// 			if(v->evaluateString() == string->getValue()){
+					// 				(*stmtIter)->evaluate();
+					// 				done = true;
+					// 				break;
+					// 			}
+					// 		}
+					// 		else {
+					// 			warning("Runtime error: incompatible type for ", "CasesStmt");
+					// 		}
+					// 	}
+					// 	else {
+					// 		warning("Runtime error: variable not found ", (*stmtIter)->getId());
+					// 	}
+					// } 
+					else {
+						warning("Runtime error: incompatible type for ", "CasesStmt");
+					}
+				}
+				else {
+					warning("Runtime error: incompatible type for ", "CasesStmt");
+				}
+			}
+			
+			if(!done){
+				this->_default->evaluate();
+				done = true;
+			}
+			break;
+		}
+		case CONSTANT:{
+			warning("Runtime error: incompatible type for ", "CasesStmt");
+			break;
+		}
+		
 	}
+	
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
