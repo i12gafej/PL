@@ -1,0 +1,23 @@
+<< dato := 0;
+mientras (dato <> 6) hacer
+    dato := dato + 1;
+    escribir(dato);
+fin_mientras
+
+escribir('Terminó'); 
+
+dato := 0;
+repetir
+    dato := dato + 1;
+    escribir(dato);
+hasta (dato == 5)
+
+escribir('Terminó'); >>
+
+dato := 0;
+para dato desde 0 hasta 5 hacer
+    escribir(dato);
+fin_para
+
+escribir('Terminó');
+escribir(dato);
