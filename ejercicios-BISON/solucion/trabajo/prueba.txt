@@ -1,0 +1,6 @@
+dato := 'Hola';
+para dato desde 0 hasta 5 hacer
+    escribir(dato);
+fin_para
+
+escribir('Terminó');

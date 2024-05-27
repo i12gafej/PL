@@ -20,12 +20,27 @@ para dato desde 0 hasta 5 hacer
 fin_para
 
 escribir('Terminó');
-escribir(dato);>>
+escribir(dato);
 
-dato := 5;
-casos (dato) 
+dato := 'Hola Mundo';
+casos ('Hola Mundo') 
     valor 1: 
         escribir('Hola');
-    valor 5:
+    valor 'Hola Mundo':
         escribir('Adios');
-fin_casos
+    defecto:
+        escribir('Nada');
+fin_casos>>
+
+si ((('hola' > 'adios') == verdadero) #o (('hola' == 'adios') == verdadero)) entonces
+    escribir('MAYOR o IGUAL');
+fin_si
+si (('hola' < 'adios') == verdadero) entonces
+    escribir('MENOR');
+fin_si
+si (('hola' == 'adios') == verdadero) entonces
+    escribir('IGUAL');
+fin_si
+si (('hola' <> 'adios') == verdadero) entonces
+    escribir('DISTINTO');
+fin_si

@@ -40,11 +40,11 @@ static struct {
           std::string name ;
 	      double value;
 	      } numericConstant[] = {
-	                    {"PI",    3.14159265358979323846},
-	                    {"E",     2.71828182845904523536},
-	                    {"GAMMA", 0.57721566490153286060},
-	                    {"DEG",  57.29577951308232087680},
-	                    {"PHI",   1.61803398874989484820},
+	                    {"pi",    3.14159265358979323846}, /* MODIFICADO en el trabajo final */
+	                    {"e",     2.71828182845904523536}, /* MODIFICADO en el trabajo final */
+	                    {"gamma", 0.57721566490153286060}, /* MODIFICADO en el trabajo final */
+	                    {"deg",  57.29577951308232087680}, /* MODIFICADO en el trabajo final */
+	                    {"phi",   1.61803398874989484820}, /* MODIFICADO en el trabajo final */
 	                    {"",      0}
 	                   };
 
@@ -61,6 +61,18 @@ static struct {
 	                    {"",      0}
 	                   };
 
+/*!
+  \ brief Predefined string constants
+*/
+ /* AÑADIDO en el trabajo final */
+static struct{
+			std::string name;
+			std::string value;
+			} StringConstant[] = {
+					{"holamundo", "Hola Mundo"},
+					{"adiosmundo", "Adios Mundo"},
+					{"", 	""}
+					};
 
 // NEW in example 12 
 /*!
@@ -90,6 +102,8 @@ static struct {
 						{"valor",VALUE},				/* NUEVO en el trabajo final */
 						{"defecto",DEFAULT},			/* NUEVO en el trabajo final */
 						{"fin_casos", END_CASES},		/* NUEVO en el trabajo final */
+						{"borrar_pantalla", CLEAR},		/* NUEVO en el trabajo final */
+						{"lugar", PLACE},				/* NUEVO en el trabajo final */
 	                    {"",      0}
 	                   };
 

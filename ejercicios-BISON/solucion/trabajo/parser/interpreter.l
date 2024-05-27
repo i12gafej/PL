@@ -91,9 +91,8 @@ DIGIT  [0-9]
 
 LETTER [a-zA-Z]
 
-NUMBER1 {DIGIT}+\.?
 
-NUMBER2 -?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?
+NUMBER -?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?
 
 /*MODIFICADO en el trabajo final*/
 IDENTIFIER  {LETTER}((_({LETTER}|{DIGIT}))|({LETTER}|{DIGIT}))* 
@@ -105,7 +104,7 @@ STRING '([^'\\]|\\.)*'
 
 /* NEW in example 3 */
 /* STATE  */
-%x ERROR C1 C2
+%x ERROR
 
 /*! \name REGULAR EXPRESSIONS  */
 %%
@@ -133,7 +132,7 @@ STRING '([^'\\]|\\.)*'
 			return COMMA;
 		}
 
-{NUMBER1}|{NUMBER2}  {
+{NUMBER}  {
 					  /* MODIFIED in example 4 */
 					  /* Conversion of type and sending of the numerical value to the parser */
 					   yylval.number = atof(yytext); 
@@ -223,7 +222,7 @@ STRING '([^'\\]|\\.)*'
 
 "#no"		{ return NOT; }				/* MODIFICADO en el trabajo final */
 
-"#0"	{ return OR; }				/* MODIFICADO en el trabajo final */
+"#o"	{ return OR; }				/* MODIFICADO en el trabajo final */
 
 "#y"	{ return AND; }				/* MODIFICADO en el trabajo final */
 

@@ -18,6 +18,9 @@
 
 #include "logicalConstant.hpp"
 
+// AÑADIDO en el trabajo final
+#include "StringConstant.hpp"
+
 //  NEW in example 12
 #include "keyword.hpp"
 
@@ -73,6 +76,16 @@ void init(lp::Table &t)
 		// A pointer to the new LogicalConstant is inserted into the table of symbols
 		t.installSymbol(l);
 	}
+lp::StringConstant *s;
+for(i=0; StringConstant[i].name.compare("")!=0; i++)
+{
+	s = new lp::StringConstant(StringConstant[i].name,
+								CONSTANT,
+								STRING,
+								StringConstant[i].value);
+
+	t.installSymbol(s);
+}
 
   //////////////////////////////////////////////
 

@@ -12,6 +12,7 @@
 // Incluido en el ultimo trabajo
 #include <sstream>
 #include <list>
+#include <cstring>
 
 // Para usar la funciones pow y std::abs
 #include <cmath>
@@ -30,6 +31,7 @@
 #include "../table/numericVariable.hpp"
 #include "../table/logicalVariable.hpp"
 #include "../table/StringVariable.hpp"
+#include "../table/StringConstant.hpp"
 
 #include "../table/numericConstant.hpp"
 #include "../table/logicalConstant.hpp"
@@ -203,6 +205,27 @@ bool lp::ConstantNode::evaluateBool()
 	// Return the value of the LogicalVariable
 	return result;
 }
+std::string lp::ConstantNode::evaluateString() 
+{ 
+	std::string result = "";
+
+	if (this->getType() == STRING)
+	{
+		// Get the identifier in the table of symbols as StringConstant
+		lp::StringConstant *constant = (lp::StringConstant *) table.getSymbol(this->_id);
+
+		// Copy the value of the StringConstant
+		result = constant->getValue();
+	}
+	else
+	{
+		warning("Runtime error in evaluateString(): the constant is not string",
+				   this->_id);
+	}
+
+	// Return the value of the StringVariable
+	return result;
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -309,6 +332,8 @@ int lp::RelationalOperatorNode::getType()
 	if ( (this->_left->getType() == NUMBER) and (this->_right->getType() == NUMBER))
 		result = BOOL;
 	else if ( (this->_left->getType() == BOOL) and (this->_right->getType() == BOOL))
+		result = BOOL;
+	else if ( (this->_left->getType() == STRING) and (this->_right->getType() == STRING))
 		result = BOOL;
 	else
 		warning("Runtime error: incompatible types for", "Relational Operator");
@@ -573,7 +598,48 @@ double lp::DivisionNode::evaluateNumber()
 
   return result;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Nuevo de la ÚLTIMA practica
 
+void lp::IntDivisionNode::printAST()
+{
+  std::cout << "IntDivisionNode: //" << std::endl;
+  std::cout << "\t"; 
+	this->_left->printAST();
+	std::cout << "\t"; 
+	this->_right->printAST();
+}
+
+double lp::IntDivisionNode::evaluateNumber() 
+{
+	double result = 0.0;
+
+	// Ckeck the types of the expressions
+	if (this->getType() == NUMBER)
+	{
+		double leftNumber, rightNumber;
+
+		leftNumber = this->_left->evaluateNumber();
+		rightNumber = this->_right->evaluateNumber();
+	
+		// The divisor is not zero
+		if(std::abs(rightNumber) > ERROR_BOUND)
+		{
+				result = (int) leftNumber / (int) rightNumber;
+		}
+		else
+		{
+			warning("Runtime error", "Division by zero");
+		}
+	}
+	else
+	{
+		warning("Runtime error: the expressions are not numeric for", "IntDivision");
+	}
+
+  return result;
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -785,12 +851,23 @@ bool lp::GreaterThanNode::evaluateBool()
 
 	if (this->getType() == BOOL)
 	{
-		double leftNumber, rightNumber;
-		leftNumber = this->_left->evaluateNumber();
-		rightNumber = this->_right->evaluateNumber();
+		if(this->_left->getType() == STRING && this->_right->getType() == STRING)
+		{
+			std::string leftString, rightString;
+			leftString = this->_left->evaluateString();
+			rightString = this->_right->evaluateString();
 
-		result = (leftNumber > rightNumber);
-	}
+			result = (leftString > rightString);
+		}
+		else if(this->_left->getType() == NUMBER && this->_right->getType() == NUMBER)
+		{
+			double leftNumber, rightNumber;
+			leftNumber = this->_left->evaluateNumber();
+			rightNumber = this->_right->evaluateNumber();
+
+			result = (leftNumber > rightNumber);
+		}
+	} 
 	else
 	{
 		warning("Runtime error: incompatible types of parameters for ", "operator Greater than");
@@ -818,12 +895,24 @@ bool lp::GreaterOrEqualNode::evaluateBool()
 
 	if (this->getType() == BOOL)
 	{
-		double leftNumber, rightNumber;
-		leftNumber = this->_left->evaluateNumber();
-		rightNumber = this->_right->evaluateNumber();
+		if(this->_left->getType() == STRING && this->_right->getType() == STRING)
+		{
+			std::string leftString, rightString;
+			leftString = this->_left->evaluateString();
+			rightString = this->_right->evaluateString();
 
-		result = (leftNumber >= rightNumber);
+			result = (leftString >= rightString);
+		}
+		else if(this->_left->getType() == NUMBER && this->_right->getType() == NUMBER)
+		{
+			double leftNumber, rightNumber;
+			leftNumber = this->_left->evaluateNumber();
+			rightNumber = this->_right->evaluateNumber();
+
+			result = (leftNumber >= rightNumber);
+		}
 	}
+	
 	else
 	{
 		warning("Runtime error: incompatible types of parameters for ", "operator Greater or equal than");
@@ -851,13 +940,23 @@ bool lp::LessThanNode::evaluateBool()
 	bool result = false;
 
 	if (this->getType() == BOOL)
-	{
-		double leftNumber, rightNumber;
-		leftNumber = this->_left->evaluateNumber();
-		rightNumber = this->_right->evaluateNumber();
+	{	if(this->_left->getType() == STRING && this->_right->getType() == STRING)
+		{
+			std::string leftString, rightString;
+			leftString = this->_left->evaluateString();
+			rightString = this->_right->evaluateString();
 
-		result = (leftNumber < rightNumber);
-	}
+			result = (leftString < rightString);
+		}
+		else if(this->_left->getType() == NUMBER && this->_right->getType() == NUMBER)
+		{
+			double leftNumber, rightNumber;
+			leftNumber = this->_left->evaluateNumber();
+			rightNumber = this->_right->evaluateNumber();
+
+			result = (leftNumber < rightNumber);
+		}
+	} 
 	else
 	{
 		warning("Runtime error: incompatible types of parameters for ", "operator Less than");
@@ -885,12 +984,23 @@ bool lp::LessOrEqualNode::evaluateBool()
 
 	if (this->getType() == BOOL)
 	{
-		double leftNumber, rightNumber;
-		leftNumber = this->_left->evaluateNumber();
-		rightNumber = this->_right->evaluateNumber();
+		if (this->_left->getType() == STRING && this->_right->getType() == STRING)
+		{
+			std::string leftString, rightString;
+			leftString = this->_left->evaluateString();
+			rightString = this->_right->evaluateString();
 
-		result = (leftNumber <= rightNumber);
-	}
+			result = (leftString <= rightString);
+		}
+		else if (this->_left->getType() == NUMBER && this->_right->getType() == NUMBER)
+		{
+			double leftNumber, rightNumber;
+			leftNumber = this->_left->evaluateNumber();
+			rightNumber = this->_right->evaluateNumber();
+
+			result = (leftNumber <= rightNumber);
+		}
+	} 
 	else
 	{
 		warning("Runtime error: incompatible types of parameters for ", "operator Less or equal than");
@@ -936,6 +1046,14 @@ bool lp::EqualNode::evaluateBool()
 				// 
 				result = (leftBoolean == rightBoolean);
 				break;
+			case STRING:{
+				std::string leftString, rightString;
+				leftString = this->_left->evaluateString();
+				rightString = this->_right->evaluateString();
+
+				//
+				result = (leftString == rightString);
+				break;}
 		  default:
 				warning("Runtime error: incompatible types of parameters for ", 
 								"Equal operator");				
@@ -986,6 +1104,14 @@ bool lp::NotEqualNode::evaluateBool()
 				// 
 				result = (leftBoolean != rightBoolean);
 				break;
+			case STRING:{
+				std::string leftString, rightString;
+				leftString = this->_left->evaluateString();
+				rightString = this->_right->evaluateString();
+
+				//
+				result = (leftString != rightString);
+				break;}
 		  default:
 				warning("Runtime error: incompatible types of parameters for ", 
 								"Not Equal operator");				
@@ -1348,9 +1474,9 @@ void lp::PrintStmt::printAST()
 
 void lp::PrintStmt::evaluate() 
 {
-	std::cout << BIYELLOW; 
-	std::cout << "print: ";
-	std::cout << RESET; 
+	// std::cout << BIYELLOW; 
+	// std::cout << "print: ";
+	// std::cout << RESET; 
 
 	switch(this->_exp->getType())
 	{
@@ -1359,9 +1485,9 @@ void lp::PrintStmt::evaluate()
 				break;
 		case BOOL:
 			if (this->_exp->evaluateBool())
-				std::cout << "true" << std::endl;
+				std::cout << "verdadero" << std::endl;
 			else
-				std::cout << "false" << std::endl;
+				std::cout << "falso" << std::endl;
 		
 			break;
 		case STRING:
@@ -1408,6 +1534,40 @@ void lp::PrintStmt::evaluate()
 		default:
 			warning("Runtime error: incompatible type for ", "print");
 	}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Nuevo de la ÚLTIMA practica
+
+void lp::ClearScreenStmt::printAST() 
+{
+  std::cout << "ClearScreenStmt"  << std::endl;
+}
+void lp::ClearScreenStmt::evaluate() 
+{
+	// Clear the screen
+	std::cout << CLEAR_SCREEN;
+}
+
+void lp::PlaceStmt::printAST() 
+{
+  std::cout << "PlaceStmt: place"  << std::endl;
+  std::cout << "\t";
+  this->_x->printAST();
+  std::cout << "\t";
+  this->_y->printAST();
+  std::cout << std::endl;
+}
+
+void lp::PlaceStmt::evaluate() 
+{
+	// Get the position of the cursor
+	int x = this->_x->evaluateNumber();
+	int y = this->_y->evaluateNumber();
+
+	// Place the cursor in the position (x,y)
+	std::cout << PLACE(x,y);
 }
 
 
@@ -1474,7 +1634,7 @@ void lp::ReadStringStmt::printAST()
 void lp::ReadStringStmt::evaluate()
 {
 	std::string value;
-	std::cin >> value;
+	std::getline(std::cin, value);
 
 	/* Get the identifier in the table of symbols as Variable */
 	lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
@@ -1821,40 +1981,39 @@ void lp::ForStmt::evaluate()
 
 void lp::ValueStmt::printAST() 
 {
-  std::cout << "ValueStmt: "  << std::endl;
-  std::cout << "\t";
-  switch(this->_exp->getType()){
+  std::cout << "ValueStmt: ";
+  switch(this->getExp()->getType()){
 		case NUMBER:{
 			std::cout << this->_exp->evaluateNumber() << std::endl;
 			break;
 		}
 		case BOOL:{
 			if (this->_exp->evaluateBool())
-				std::cout << "true" << std::endl;
+				std::cout << "verdadero" << std::endl;
 			else
-				std::cout << "false" << std::endl;
+				std::cout << "falso" << std::endl;
 			break;
 		}
 		case STRING:{
-			std::cout <<" \t" << this->_exp->evaluateString() << std::endl;
+			std::cout <<this->_exp->evaluateString() << std::endl;
 			break;
 		}
 		case CONSTANT:{
-			std::cout <<" \t" << this->_exp->evaluateNumber() << std::endl;
+			std::cout <<this->_exp->evaluateNumber() << std::endl;
 			break;
 		}
 		case VARIABLE:{
 			VariableNode *v = (VariableNode *) this->_exp;
 			switch(v->getType()){
 				case NUMBER:{
-					std::cout <<" \t" << this->_exp->evaluateNumber() << std::endl;
+					std::cout <<this->_exp->evaluateNumber() << std::endl;
 					break;
 				}
 				case BOOL:{
 					if (this->_exp->evaluateBool())
-						std::cout <<" = \t" << "true" << std::endl;
+						std::cout <<" = \t" << "verdadero" << std::endl;
 					else
-						std::cout <<" = \t" << "false" << std::endl;
+						std::cout <<" = \t" << "falso" << std::endl;
 					break;
 				}
 				case STRING:{
@@ -1874,10 +2033,11 @@ void lp::ValueStmt::printAST()
 		}
 	}
 
-  std::cout << "\t";
+  std::cout << "\t\t";
   std::cout << "BlockStmt: "  << std::endl;
   for (std::list<Statement *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
   {
+		  std::cout << "\t\t";
     	(*stmtIter)->printAST();
   }
   std::cout << std::endl;
@@ -1895,12 +2055,19 @@ void lp::ValueStmt::evaluate(){
 void lp::DefaultStmt::printAST() 
 {
   std::cout << "DefaultStmt: "  << std::endl;
-  std::cout << "\t";
+	std::cout << "\t\t";
   std::cout << "BlockStmt: "  << std::endl;
-  for (std::list<Statement *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
-  {
-		(*stmtIter)->printAST();
+  if(this->isEmpty()){
+	std::cout << "Empty "  << std::endl;
+  } else{
+	for (std::list<Statement *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+	{
+			std::cout << "\t\t";
+			(*stmtIter)->printAST();
+	}
   }
+  
+  std::cout << std::endl;
   std::cout << std::endl;
 }
 void lp::DefaultStmt::evaluate(){
@@ -1924,16 +2091,24 @@ void lp::CasesStmt::printAST()
   for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
   {
 		(*stmtIter)->printAST();
+		  std::cout << "\t";
   }
   std::cout << std::endl;
-  std::cout << "DefaultStmt: "  << std::endl;
-  this->_default->printAST();
+  if(this->_default != NULL){
+	  std::cout << "\t";
+	  this->_default->printAST();
+  }  	
+  else{
+	std::cout << "\t";
+	std::cout << "No default case" << std::endl;
+  }
+  	
 
 }
 void lp::CasesStmt::evaluate(){
 	//vemos el tipo de la expresion
 	//si es un numero
-	bool done = false;
+	bool done = false, error = false;
 	switch(this->_exp->getType()){
 		case NUMBER:{ 
 			double value = this->_exp->evaluateNumber();
@@ -1941,59 +2116,17 @@ void lp::CasesStmt::evaluate(){
 			for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
 			{
 				// vemos de que tipo es en cada caso, por si no son tipos compatibles
-
-				// NUMBER y NUMBER
-				if((*stmtIter)->getExp()->getType() == NUMBER){
-					double n = (*stmtIter)->getExp()->evaluateNumber();
-					if(value == n){
-						(*stmtIter)->evaluate();
-						done = true;
-						break;
-					}
-				// NUMBER y VARIABLE
-				} else if((*stmtIter)->getExp()->getType() == VARIABLE){
-					VariableNode *n = (VariableNode *) this->_exp;
-					if(n != NULL){
-						if(n->getType() == NUMBER){
-							NumberNode* number = (NumberNode*) this->_exp;
-							if(value == number->evaluateNumber()){
-								(*stmtIter)->evaluate();
-								done = true;
-								break;
-							}
-						}
-						else {
-							warning("Runtime error: incompatible type for ", "CasesStmt");
-						}
-					}
-					else {
-						warning("Runtime error: variable not found ", "");
-					}
-				// NUMBER y CONSTANT
-				} else if((*stmtIter)->getExp()->getType() == CONSTANT){
-					ConstantNode *n = (ConstantNode *) this->_exp;
-					if(n != NULL){
-						if(n->getType() == NUMBER){
-							NumberNode* number = (NumberNode*) this->_exp;
-							if(value == number->evaluateNumber()){
-								(*stmtIter)->evaluate();
-								done = true;
-								break;
-							}
-						}
-						else {
-							warning("Runtime error: incompatible type for ", "CasesStmt");
-						}
-					}
-					else {
-						warning("Runtime error: variable not found ", "");
-					}
-				} 
-				else {
+				if(value == (*stmtIter)->getExp()->evaluateNumber()){
+					(*stmtIter)->evaluate();
+					done = true;
+					break;
+				} else {
 					warning("Runtime error: incompatible type for ", "CasesStmt");
+					error = true;
+					break;
 				}
 			}
-			if(!done){
+			if(!done && !error){
 				this->_default->evaluate();
 				done = true;
 			}
@@ -2003,58 +2136,17 @@ void lp::CasesStmt::evaluate(){
 			std::string value = this->_exp->evaluateString();
 			for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
 			{
-				//STRING y STRING
-				if((*stmtIter)->getExp()->getType() == STRING){
-					std::string n = (*stmtIter)->getExp()->evaluateString();
-					if(value == n){
-						(*stmtIter)->evaluate();
-						done = true;
-						break;
-					}
-				//STRING y VARIABLE
-				} else if((*stmtIter)->getExp()->getType() == VARIABLE){
-					VariableNode *n = (VariableNode *) this->_exp;
-					if(n != NULL){
-						if(n->getType() == STRING){
-							StringNode *string = (StringNode *) this->_exp;
-							if(value == string->evaluateString()){
-								(*stmtIter)->evaluate();
-								done = true;
-								break;
-							}
-						}
-						else {
-							warning("Runtime error: incompatible type for ", "CasesStmt");
-						}
-					}
-					else {
-						warning("Runtime error: variable not found ", "");
-					}
-				//STRING y CONSTANT (HAY QUE IMPELMENTAR LAS CONSTANTES DE STRING)
-				} 
-				// else if((*stmtIter)->getExp()->getType() == CONSTANT){
-				// 	Constant *n = (Constant *) table.getSymbol((*stmtIter)->getId());
-				// 	if(n != NULL){
-				// 		if(n->getType() == STRING){
-				// 			StringConstant *string = (StringConstant *) table.getSymbol((*stmtIter)->getId());
-				// 			if(value == string->getValue()){
-				// 				(*stmtIter)->evaluate();
-				// 				break;
-				// 			}
-				// 		}
-				// 		else {
-				// 			warning("Runtime error: incompatible type for ", "CasesStmt");
-				// 		}
-				// 	}
-				// 	else {
-				// 		warning("Runtime error: variable not found ", (*stmtIter)->getId());
-				// 	}
-				// } 
-				else {
+				if(value == (*stmtIter)->getExp()->evaluateString()){
+					(*stmtIter)->evaluate();
+					done = true;
+					break;
+				} else {
 					warning("Runtime error: incompatible type for ", "CasesStmt");
+					error = true;
+					break;
 				}
 			}
-			if(!done){
+			if(!done && !error){
 				this->_default->evaluate();
 				done = true;
 			}
@@ -2065,57 +2157,17 @@ void lp::CasesStmt::evaluate(){
 			bool value = this->_exp->evaluateBool();
 			for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
 			{
-				//BOOL y BOOL
-				if((*stmtIter)->getExp()->getType() == BOOL){
-					bool n = (*stmtIter)->getExp()->evaluateBool();
-					if(value == n){
-						(*stmtIter)->evaluate();
-						done = true;
-						break;
-					}
-				//BOOL y VARIABLE
-				} else if((*stmtIter)->getExp()->getType() == VARIABLE){
-					VariableNode *n = (VariableNode *) this->_exp;
-					if(n != NULL){
-						if(n->getType() == BOOL){
-							if(value == n->evaluateBool()){
-								(*stmtIter)->evaluate();
-								done = true;
-								break;
-							}
-						}
-						else {
-							warning("Runtime error: incompatible type for ", "CasesStmt");
-						}
-					}
-					else {
-						warning("Runtime error: variable not found ", "");
-					}
-				//BOOL y CONSTANT
-				} else if((*stmtIter)->getExp()->getType() == CONSTANT){
-					ConstantNode *n = (ConstantNode *) this->_exp;
-					if(n != NULL){
-						if(n->getType() == BOOL){
-							
-							if(value == n->evaluateBool()){
-								(*stmtIter)->evaluate();
-								done = true;
-								break;
-							}
-						}
-						else {
-							warning("Runtime error: incompatible type for ", "CasesStmt");
-						}
-					}
-					else {
-						warning("Runtime error: variable not found ", "");
-					}
-				} 
-				else {
+				if(value == (*stmtIter)->getExp()->evaluateBool()){
+					(*stmtIter)->evaluate();
+					done = true;
+					break;
+				} else {
 					warning("Runtime error: incompatible type for ", "CasesStmt");
+					error = true;
+					break;
 				}
 			}
-			if(!done){
+			if(!done && !error){
 				this->_default->evaluate();
 				done = true;
 			}
@@ -2126,153 +2178,82 @@ void lp::CasesStmt::evaluate(){
 			for(std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++){
 				//NUMERIC VARIABLE y VARIABLE or CONSTANT
 				if(v->getType() == NUMBER){
-					//NUMERIC VARIABLE y NUMERIC VARIABLE
-					if((*stmtIter)->getExp()->getType() == VARIABLE){
-						VariableNode *n = (VariableNode *) this->_exp;
-						if(n != NULL){
-							if(n->getType() == NUMBER){
-								if(v->evaluateNumber() == n->evaluateNumber()){
-									(*stmtIter)->evaluate();
-									done = true;
-									break;
-								}
-							}
-							else {
-								warning("Runtime error: incompatible type for ", "CasesStmt");
-							}
-						}
-						else {
-							warning("Runtime error: variable not found ", "");
-						}
-					//NUMERIC VARIABLE y NUMERIC CONSTANT
-					} else if ((*stmtIter)->getExp()->getType() == CONSTANT){
-						ConstantNode *n = (ConstantNode *) this->_exp;
-						if(n != NULL){
-							if(n->getType() == NUMBER){
-								if(v->evaluateNumber() == n->evaluateNumber()){
-									(*stmtIter)->evaluate();
-									done = true;
-									break;
-								}
-							}
-							else {
-								warning("Runtime error: incompatible type for ", "CasesStmt");
-							}
-						}
-						else {
-							warning("Runtime error: variable not found ", "");
-						}
-					} 
-					else {
-						warning("Runtime error: incompatible type for ", "CasesStmt");
+					if((*stmtIter)->getExp()->evaluateNumber() == v->evaluateNumber()){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
 					}
 				}
 				//LOGICAL VARIABLE y VARIABLE or CONSTANT
 				else if(v->getType() == BOOL){
-					//LOGICAL VARIABLE y LOGICAL VARIABLE
-					if((*stmtIter)->getExp()->getType() == VARIABLE){
-						VariableNode *n = (VariableNode *) this->_exp;
-						if(n != NULL){
-							if(n->getType() == BOOL){
-								if(v->evaluateBool() == n->evaluateBool()){
-									(*stmtIter)->evaluate();
-									done = true;
-									break;
-								}
-							}
-							else {
-								warning("Runtime error: incompatible type for ", "CasesStmt");
-							}
-						}
-						else {
-							warning("Runtime error: variable not found ", "");
-						}
-					//LOGICAL VARIABLE y LOGICAL CONSTANT
-					} else if ((*stmtIter)->getExp()->getType() == CONSTANT){
-						ConstantNode *n = (ConstantNode *) this->_exp;
-						if(n != NULL){
-							if(n->getType() == BOOL){
-								if(v->evaluateBool() == n->evaluateBool()){
-									(*stmtIter)->evaluate();
-									done = true;
-									break;
-								}
-							}
-							else {
-								warning("Runtime error: incompatible type for ", "CasesStmt");
-							}
-						}
-						else {
-							warning("Runtime error: variable not found ", "");
-						}
-					} 
-					else {
-						warning("Runtime error: incompatible type for ", "CasesStmt");
+					if((*stmtIter)->getExp()->evaluateBool() == v->evaluateBool()){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
 					}
 				}
-				//STRING VARIABLE y VARIABLE or CONSANTE (hace falta implementarlo)
+				//STRING VARIABLE y VARIABLE or CONSANTE 
 				else if(v->getType() == STRING){
-					//STRING VARIABLE y STRING VARIABLE
-					if((*stmtIter)->getExp()->getType() == STRING){
-						VariableNode *n = (VariableNode *) this->_exp;
-						if(n != NULL){
-							if(n->getType() == STRING){
-								if(v->evaluateString() == n->evaluateString()){
-									(*stmtIter)->evaluate();
-									done = true;
-									break;
-								}
-							}
-							else {
-								warning("Runtime error: incompatible type for ", "CasesStmt");
-							}
-						}
-						else {
-							warning("Runtime error: variable not found ", "");
-						}
-					//STRING VARIABLE y STRING CONSTANT
-					} 
-					// else if ((*stmtIter)->getExp()->getType() == CONSTANT){
-					// 	Constant *n = (Constant *) table.getSymbol((*stmtIter)->getId());
-					// 	if(n != NULL){
-					// 		if(n->getType() == STRING){
-					// 			StringConstant *string = (StringConstant *) table.getSymbol((*stmtIter)->getId());
-					// 			if(v->evaluateString() == string->getValue()){
-					// 				(*stmtIter)->evaluate();
-					// 				done = true;
-					// 				break;
-					// 			}
-					// 		}
-					// 		else {
-					// 			warning("Runtime error: incompatible type for ", "CasesStmt");
-					// 		}
-					// 	}
-					// 	else {
-					// 		warning("Runtime error: variable not found ", (*stmtIter)->getId());
-					// 	}
-					// } 
-					else {
-						warning("Runtime error: incompatible type for ", "CasesStmt");
+					if((*stmtIter)->getExp()->evaluateString() == v->evaluateString()){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
 					}
 				}
 				else {
 					warning("Runtime error: incompatible type for ", "CasesStmt");
+					error = true;
+					break;
 				}
 			}
 			
-			if(!done){
+			if(!done && !error){
 				this->_default->evaluate();
 				done = true;
 			}
 			break;
 		}
 		case CONSTANT:{
+			ConstantNode *v = (ConstantNode *) this->_exp;
+			for(std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++){
+				if(v->getType() == NUMBER)
+				{
+					if(v->evaluateNumber() == (*stmtIter)->getExp()->evaluateNumber()){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
+
+					}
+				} else if(v->getType() == BOOL){
+					if(v->evaluateBool() == (*stmtIter)->getExp()->evaluateBool()){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
+					}
+				} else if(v->getType() == STRING){
+					if(v->evaluateString() == (*stmtIter)->getExp()->evaluateString()){
+						(*stmtIter)->evaluate();
+						done = true;
+						break;
+					}
+				} else {
+					warning("Runtime error: incompatible type for ", "CasesStmt");
+					error = true;
+					break;
+				}
+			}
+			if(!done && !error){
+				this->_default->evaluate();
+				done = true;
+			}
+			break;
+		}
+		default:{
 			warning("Runtime error: incompatible type for ", "CasesStmt");
 			break;
 		}
-		
-	}
 	
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////

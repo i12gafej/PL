@@ -26,7 +26,7 @@ OBJECTS= table.o symbol.o variable.o numericVariable.o \
 		builtin.o builtinParameter1.o mathFunction.o \
 		builtinParameter0.o builtinParameter2.o \
 		logicalVariable.o logicalConstant.o \
-		StringVariable.o # Añadido para la ultima practica
+		StringVariable.o StringConstant.o # Añadido para la ultima practica
 
 # Predefined macros 
 #
@@ -66,6 +66,10 @@ logicalVariable.o: logicalVariable.cpp logicalVariable.hpp variable.hpp symbol.h
 # Nuevo de la ultima practica
 
 StringVariable.o: StringVariable.cpp StringVariable.hpp variable.hpp symbol.hpp symbolInterface.hpp 
+	@echo "Compiling " $<
+	@$(CPP) $(CFLAGS) $<
+
+StringConstant.o: StringConstant.cpp StringConstant.hpp constant.hpp symbol.hpp symbolInterface.hpp
 	@echo "Compiling " $<
 	@$(CPP) $(CFLAGS) $<
 

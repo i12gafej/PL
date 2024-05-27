@@ -61,6 +61,12 @@
 /*******************************************/
 
 /*******************************************/
+/* NUEVO DE LA ULTIMA PRACTICA */
+#include "../table/StringVariable.hpp"
+#include "../table/StringConstant.hpp"
+/*******************************************/
+
+/*******************************************/
 /* NEW in example 13 */
 #include "../table/builtinParameter1.hpp"
 /*******************************************/
@@ -149,19 +155,23 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
   std::list<lp::Statement *> *stmts; /* NEW in example 16 */
   lp::Statement *st;				 /* NEW in example 16 */
   lp::AST *prog;					 /* NEW in example 16 */
+  std::list<lp::ValueStmt *> *valuestmts; /* NUEVO DEL ULTIMO TRABAJO */
+  
 }
 
 /* Type of the non-terminal symbols */
 // New in example 17: cond
 %type <expNode> exp cond 
 
+
 /* New in example 14 */
 %type <parameters> listOfExp  restOfListOfExp
 
+%type <valuestmts> value_list
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read readstring if while block repeat for forstep cases value_stmt value_list default 
+%type <st> stmt asgn print read readstring if while block repeat for forstep cases default clear place
 
 %type <prog> program
 
@@ -177,7 +187,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /*Nuevo del trabajo final*/
 %token <comentario> COMMENT
 /* Nuevo en el trabajo final: THEN END_IF */
-%token PRINT READ READ_STRING IF ELSE WHILE THEN END_IF END_WHILE REPEAT FOR FROM UNTIL END_FOR STEP CASES VALUE DEFAULT END_CASES DO
+%token PRINT READ READ_STRING IF ELSE WHILE THEN END_IF END_WHILE REPEAT FOR FROM UNTIL END_FOR STEP CASES VALUE DEFAULT END_CASES DO CLEAR PLACE
 
 /* NEW in example 17 */
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
@@ -275,7 +285,7 @@ stmtlist:  /* empty: epsilon rule */
 						it != $$->end(); 
 						it++)
 				{
-					(*it)->printAST();
+					//(*it)->printAST();
 					(*it)->evaluate();
 					
 				}
@@ -365,6 +375,17 @@ stmt: COMMENT
 		// Default action
 		// $$ = $1;
 	 }
+	| clear 
+	{
+		// Default action
+		// $$ = $1;
+	
+	}
+	| place
+	{
+		// Default action
+		// $$ = $1;
+	}
 ;
 block: LETFCURLYBRACKET stmtlist RIGHTCURLYBRACKET  
 		{
@@ -431,7 +452,7 @@ forstep: FOR VARIABLE FROM NUMBER UNTIL NUMBER STEP NUMBER DO stmtlist END_FOR
 			$$ = new lp::ForStmt($2, new lp::NumberNode($4), new lp::NumberNode($6), $10, new lp::NumberNode($8));
 		}
 ;
-cases: CASES LPAREN exp RPAREN value_stmt default END_CASES
+cases: CASES LPAREN exp RPAREN value_list default END_CASES
 		{
 			// Create a new cases statement node
 			$$ = new lp::CasesStmt($3, (std::list<lp::ValueStmt *> *) $5, (lp::DefaultStmt *) $6);
@@ -439,21 +460,18 @@ cases: CASES LPAREN exp RPAREN value_stmt default END_CASES
 		}
 ;
 
-value_stmt: LPAREN exp RPAREN COLON stmtlist 
-{
-    $$ = new lp::ValueStmt($2, $5);
-}
-;
-value_list: value_list value_stmt
-{
-    $$ = $1;
-    $$->push_back($2);
-}
-| value_stmt
-{
-    $$ = new std::list<lp::ValueStmt *>;
-    $$->push_back($1);
-}
+value_list: VALUE exp COLON stmtlist
+		{
+			std::list<lp::ValueStmt *> * stmts = new std::list<lp::ValueStmt *>();
+			stmts->push_back(new lp::ValueStmt($2, $4));
+			$$ = stmts;
+		}
+		|
+		value_list VALUE exp COLON stmtlist
+		{
+			$$ = $1;
+			$$->push_back(new lp::ValueStmt($3, $5));
+		}
 ;
 default: DEFAULT COLON stmtlist
 		{
@@ -462,7 +480,20 @@ default: DEFAULT COLON stmtlist
 		}
 		|
 		{
-			$$ = NULL;
+			$$ = new lp::DefaultStmt(new std::list<lp::Statement *>());
+		}
+;
+clear: CLEAR SEMICOLON
+		{
+			// Create a new clear node
+			$$ = new lp::ClearScreenStmt();
+		}
+;
+
+place : PLACE LPAREN exp COMMA exp RPAREN SEMICOLON
+		{
+			// Create a new place node
+			$$ = new lp::PlaceStmt($3, $5);
 		}
 ;
 
@@ -571,6 +602,11 @@ exp:	NUMBER
 		{
 		  // Create a new division node	
 		  $$ = new lp::DivisionNode($1, $3);
+	   }
+	| 	exp INT_DIVISION exp
+		{
+		  // Create a new integer division node	
+		  $$ = new lp::IntDivisionNode($1, $3);
 	   }
 
 	| 	LPAREN exp RPAREN

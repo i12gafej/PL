@@ -193,6 +193,14 @@ class ConstantNode : public ExpNode
 		\sa		   getType, printAST, evaluateNumber, evaluateBool
 	*/
 	  bool evaluateBool();
+
+	/*!
+		\brief   Evaluate the Constant as STRING
+		\return  std::string
+		\sa		   getType, printAST, evaluateNumber
+	*/
+	  std::string evaluateString();
+	  
 };
 
 
@@ -798,6 +806,45 @@ class DivisionNode : public NumericOperatorNode
 
 /*!	
 	\brief   Evaluate the DivisionNode
+	\return  double
+	\sa		   printAST
+*/
+  double evaluateNumber();
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Nuevo de la ultima practica
+
+/*!	
+  \class   IntDivisionNode
+  \brief   Definition of atributes and methods of IntDivisionNode class
+  \note    IntDivisionNode Class publicly inherits from NumericOperatorNode class 
+		   and adds its own printAST and evaluate functions
+*/
+
+class IntDivisionNode : public NumericOperatorNode 
+{
+  public:
+/*!
+	\brief Constructor of IntDivisionNode uses NumericOperatorNode's constructor as members initializer
+	\param L: pointer to ExpNode
+	\param R: pointer to ExpNode
+	\post  A new IntDivisionNode is created with the parameter
+*/
+  IntDivisionNode(ExpNode *L, ExpNode *R): NumericOperatorNode(L,R) 
+  {
+		// Empty
+  }
+/*!
+	\brief   printAST the IntDivisionNode
+	\return  void
+	\sa		   evaluateNumber
+*/
+  void printAST();
+
+/*!
+	\brief   Evaluate the IntDivisionNode
 	\return  double
 	\sa		   printAST
 */
@@ -1571,7 +1618,40 @@ class PrintStmt: public Statement
 */
   void evaluate();
 };
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Nuevo de la ultima practica
 
+class ClearScreenStmt : public Statement 
+{
+  public:
+	ClearScreenStmt()
+	{
+		// Empty
+	}
+
+	void printAST();
+
+	void evaluate();
+};
+
+class PlaceStmt : public Statement
+{
+	private:
+		ExpNode * _x;
+		ExpNode * _y;
+	public: 
+	PlaceStmt(ExpNode * x, ExpNode * y)
+	{
+		this->_x = x;
+		this->_y = y;
+		
+	}
+	void printAST();
+
+	void evaluate();
+	
+};
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1725,7 +1805,6 @@ class IfStmt : public Statement
 		this->_cond = condition;
 		this->_stmts1 = statement1;
 		this->_stmts2 = NULL;
-		std::cout << "IfStmt LA DE UNOO" << std::endl;
 	}
 
 
@@ -1910,6 +1989,7 @@ class DefaultStmt : public Statement
   	DefaultStmt(std::list<Statement *> * stmts){
 		this->_stmts = stmts;
 	}
+	bool isEmpty() { return this->_stmts->empty(); }
 
 	void printAST();
 
@@ -1930,7 +2010,12 @@ class CasesStmt : public Statement
 
   	public:
   
-  	CasesStmt(ExpNode * exp, std::list<ValueStmt *> * stmts, DefaultStmt * def = NULL){
+  	CasesStmt(ExpNode * exp, std::list<ValueStmt *> * stmts){
+		this->_exp = exp;
+		this->_stmts = stmts;
+		this->_default = NULL;
+	}
+	CasesStmt(ExpNode * exp, std::list<ValueStmt *> * stmts, DefaultStmt * def){
 		this->_exp = exp;
 		this->_stmts = stmts;
 		this->_default = def;
