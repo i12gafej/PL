@@ -1493,6 +1493,9 @@ void lp::PrintStmt::evaluate()
 		case STRING:
 		{
 			std::string input = this->_exp->evaluateString();
+			// En el caso en el que las comillas en "LEER CADENA" sean simples
+			if(input[0] == '\'' && input[input.length()-1] == '\'')
+				input = input.substr(1, input.length()-2);
 			for (std::size_t i = 0; i < input.length(); ++i) {
 				char c = input[i];
 				if(c == '\\'){
@@ -1511,12 +1514,6 @@ void lp::PrintStmt::evaluate()
 							break;
 						case '\'':
 							std::cout << '\'';
-							break;
-						case '\"':
-							std::cout << '\"';
-							break;
-						case '\?':
-							std::cout << '\?';
 							break;
 						default:
 							std::cout << c;
@@ -1796,6 +1793,41 @@ void lp::WhileStmt::evaluate()
 
 }
 
+void lp::DoWhileStmt::printAST() 
+{
+  std::cout << "DoWhileStmt: "  << std::endl;
+  // Body of the do-while loop
+  std::list<Statement *>::iterator stmtIter;
+
+  std::cout << "BlockStmt: "  << std::endl;
+
+	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+	{
+		(*stmtIter)->printAST();
+	}
+
+  // Condition
+  std::cout << "\t";
+  this->_cond->printAST();
+  std::cout << std::endl;
+}
+
+void lp::DoWhileStmt::evaluate() 
+{
+  // The body is run at least once
+  do
+  {
+	std::list<Statement *>::iterator stmtIter;
+	
+	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+	{
+		
+		(*stmtIter)->evaluate();
+	}
+  }
+  while (this->_cond->evaluateBool() == true);
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1826,6 +1858,7 @@ void lp::RepeatStmt::evaluate()
   do
   {
 	std::list<Statement *>::iterator stmtIter;
+	
 
 	for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
 	{
@@ -1872,105 +1905,94 @@ void lp::ForStmt::printAST()
 
 void lp::ForStmt::evaluate() 
 {
-	// Get the initial value
-	double value1 = this->_exp1->evaluateNumber();
-	// Get the final value
-	double value2 = this->_exp2->evaluateNumber();
-	// Get the step
-	double value3 = this->_exp3->evaluateNumber();
-
-	// Get the identifier in the table of symbols as NumericVariable
-	lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
-
-	if(v != NULL) // En el caso en el que la variable ya exista, se actualiza su valor y se usa
+	if(this->_exp1->getType() == NUMBER && this->_exp2->getType() == NUMBER && this->_exp3->getType() == NUMBER)
 	{
-		// The step is not zero
-		if (value3 != 0)
+		if(table.lookupSymbol(this->_id) == true)
 		{
-			// The step is positive
-			if (value1 < value2)
-			{
-				// The body is run
-				for (double i = value1; i <= value2; i += value3)
+			
+				if(table.getSymbol(this->_id)->getToken() == VARIABLE)
 				{
-					v->setValue(i);
+					table.eraseSymbol(this->_id);
+					lp::NumericVariable *v = new lp::NumericVariable(this->_id, VARIABLE, NUMBER, this->_exp1->evaluateNumber());
+					table.installSymbol(v);
+				}
+		}
+		if(this->_exp3 == NULL)
+		{
+			this->_exp3 = new NumberNode(1);
+			
+			if(this->_exp1->evaluateNumber() > this->_exp2->evaluateNumber())
+			{
+				this->_exp3 = new NumberNode(-1);
+			}
 
-					std::list<Statement *>::iterator stmtIter;
+		} else {
 
-					for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+			if((this->_exp3->evaluateNumber() > 0 && this->_exp1->evaluateNumber() > this->_exp2->evaluateNumber()) || 
+			(this->_exp3->evaluateNumber() < 0 && this->_exp1->evaluateNumber() < this->_exp2->evaluateNumber()) )
+			{
+				warning("For loop is infinite", this->_id);
+			}
+		}
+					// Get the initial value
+		double value1 = this->_exp1->evaluateNumber();
+		// Get the final value
+		double value2 = this->_exp2->evaluateNumber();
+		// Get the step
+		double value3 = this->_exp3->evaluateNumber();
+
+		// Get the identifier in the table of symbols as NumericVariable
+		lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+		if(v != NULL) // En el caso en el que la variable ya exista, se actualiza su valor y se usa
+		{
+			// The step is not zero
+			if (value3 != 0)
+			{
+				// The step is positive
+				if (value1 < value2)
+				{
+					// The body is run
+					for (double i = value1; i <= value2; i += value3)
 					{
-						(*stmtIter)->evaluate();
+						v->setValue(i);
+
+						std::list<Statement *>::iterator stmtIter;
+
+						for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+						{
+							(*stmtIter)->evaluate();
+						}
+					}
+				}
+				// The step is negative
+				else
+				{
+					// The body is run
+					for (double i = value1; i >= value2; i += value3)
+					{
+						v->setValue(i);
+
+						std::list<Statement *>::iterator stmtIter;
+
+						for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+						{
+							(*stmtIter)->evaluate();
+						}
 					}
 				}
 			}
-			// The step is negative
 			else
 			{
-				// The body is run
-				for (double i = value1; i >= value2; i += value3)
-				{
-					v->setValue(i);
-
-					std::list<Statement *>::iterator stmtIter;
-
-					for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
-					{
-						(*stmtIter)->evaluate();
-					}
-				}
+				warning("Runtime error: the step is zero in the for loop", "");
 			}
 		}
-		else
-		{
-			warning("Runtime error: the step is zero in the for loop", "");
-		}
+		
+	} else {
+		warning("Runtime error: incompatible type of expression for", "For loop");
 	}
-	else{ 
-		// En el caso en el que la variable no exista, se crea y se usa SIN LLEGAR A INSTALARLA EN LA TABLA DE SÍMBOLOS, 
-		// porque funciona solo dentro del ámbito
 
-		lp::NumericVariable *v = new lp::NumericVariable(this->_id, VARIABLE, NUMBER, value1);
-		// The step is not zero
-		if (value3 != 0)
-		{
-			// The step is positive
-			if (value1 < value2)
-			{
-				// The body is run
-				for (double i = value1; i <= value2; i += value3)
-				{
-					v->setValue(i);
 
-					std::list<Statement *>::iterator stmtIter;
-
-					for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
-					{
-						(*stmtIter)->evaluate();
-					}
-				}
-			}
-			// The step is negative
-			else
-			{
-				// The body is run
-				for (double i = value1; i >= value2; i += value3)
-				{
-					v->setValue(i);
-
-					std::list<Statement *>::iterator stmtIter;
-
-					for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
-					{
-						(*stmtIter)->evaluate();
-					}
-				}
-			}
-		}
-		else
-		{
-			warning("Runtime error: the step is zero in the for loop", "");
-		}
-	}
 
 	
   

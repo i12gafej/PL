@@ -1887,6 +1887,41 @@ class WhileStmt : public Statement
   void evaluate();
 };
 
+class DoWhileStmt : public Statement 
+{
+ private:
+  ExpNode *_cond; //!< Condicion of the while statement
+  std::list<Statement *> *_stmts; //!< Statement of the body of the while loop
+
+  public:
+/*!
+	\brief Constructor of  DoWhileStmt
+	\param condition: ExpNode of the condition
+	\param statement: Statement of the body of the loop 
+	\post  A new DoWhileStmt is created with the parameters
+*/
+  DoWhileStmt(ExpNode *condition, std::list<Statement *> *stmts)
+	{
+		this->_cond = condition;
+		this->_stmts = stmts;
+	}
+	
+
+/*!
+	\brief   Print the AST for DoWhileStmt
+	\return  void
+	\sa		   evaluate
+*/
+  void printAST();
+
+/*!
+
+	\brief   Evaluate the DoWhileStmt
+	\return  void
+	\sa	   	 printAST
+*/
+  void evaluate();
+};
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // AÑADIDO EN LA ÚLTIMA PRÁCTICA
@@ -1918,38 +1953,30 @@ class ForStmt : public Statement
 {
 	private:
 		std::string _id; //!< Name of the variable of the assignment statement
-		NumberNode *_exp1; 	 //!< Expresssion the assignment statement
-		NumberNode *_exp2; 	 //!< Expresssion the assignment statement
-		NumberNode *_exp3; 	 //!< Expresssion the assignment statement
+		ExpNode *_exp1; 	 //!< Expresssion the assignment statement
+		ExpNode *_exp2; 	 //!< Expresssion the assignment statement
+		ExpNode *_exp3; 	 //!< Expresssion the assignment statement
 		std::list<Statement *> *_stmts; //!< Statement of the body of the while loop
 
   	public:
-  
-  	ForStmt(std::string id, NumberNode *exp1, NumberNode *exp2, std::list<Statement *> *stmts, NumberNode *exp3 = NULL){
-		this->_id = id;
-		this->_exp1 = exp1;
-		this->_exp2 = exp2;
-		this->_exp3 = exp3;
-		this->_stmts = stmts;
-		if(this->_exp3 == NULL)
-		{
-			this->_exp3 = new NumberNode(1);
+		ForStmt(std::string id, ExpNode *exp1, ExpNode *exp2, std::list<Statement *> *stmts){
+			this->_id = id;
+			this->_exp1 = exp1;
+			this->_exp2 = exp2;
+			this->_exp3 = NULL;
+			this->_stmts = stmts;
 			
-			if(this->_exp1->evaluateNumber() > this->_exp2->evaluateNumber())
-			{
-				this->_exp3 = new NumberNode(-1);
-			}
-
-		} else {
-
-			if((this->_exp3->evaluateNumber() > 0 && this->_exp1->evaluateNumber() > this->_exp2->evaluateNumber()) || 
-			(this->_exp3->evaluateNumber() < 0 && this->_exp1->evaluateNumber() < this->_exp2->evaluateNumber()) )
-			{
-				warning("For loop is infinite", this->_id);
-			}
 		}
-		
-	}
+	
+		ForStmt(std::string id, ExpNode *exp1, ExpNode *exp2, std::list<Statement *> *stmts, ExpNode *exp3){
+			this->_id = id;
+			this->_exp1 = exp1;
+			this->_exp2 = exp2;
+			this->_exp3 = exp3;
+			this->_stmts = stmts;
+			
+			
+		}
 
 	void printAST();
 

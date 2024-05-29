@@ -190,7 +190,9 @@ STRING '([^'\\]|\\.)*'
 				return STRING; }
 
 "-"		{ return MINUS;  } 			
-"+"		{ return PLUS;   } 			
+"+"		{ return PLUS;   } 
+"++" 	{ return INCREMENT; }		/* NUEVO en el trabajo final */
+"--" 	{ return DECREMENT; }		/* NUEVO en el trabajo final */	
 
 "*"	    { return MULTIPLICATION; } 	
 "/"     { return DIVISION; } 		
@@ -208,7 +210,7 @@ STRING '([^'\\]|\\.)*'
 ":=" 	{ return ASSIGNMENT; }		
 
 
-"=="	{ return EQUAL; }			
+"="	{ return EQUAL; }			
 
 "<>"	{ return NOT_EQUAL; }		/* MODIFICADO en el trabajo final */
 
@@ -231,6 +233,7 @@ STRING '([^'\\]|\\.)*'
 "}"		{ return RIGHTCURLYBRACKET; }
 
 ":"		{ return COLON; }			/* NUEVO en el trabajo final */
+
 
 {SHORTCOMMENT}|{LONGCOMMENT} {int n = yyleng;
 								char * cadena = NULL;

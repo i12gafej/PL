@@ -103,7 +103,7 @@ static struct {
 						{"defecto",DEFAULT},			/* NUEVO en el trabajo final */
 						{"fin_casos", END_CASES},		/* NUEVO en el trabajo final */
 						{"borrar_pantalla", CLEAR},		/* NUEVO en el trabajo final */
-						{"lugar", PLACE},				/* NUEVO en el trabajo final */
+						{"lugar", PLACE},				/* NUEVO en el trabajo final */		
 	                    {"",      0}
 	                   };
 

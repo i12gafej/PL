@@ -143,9 +143,10 @@ else
 
  if (interactiveMode == false)
  {
-  /* NEW in example 15 */
+  if(root != NULL){/* NEW in example 15 */
        //root->printAST();  
        root->evaluate(); 
+  }
  }
 
  /* End of program */

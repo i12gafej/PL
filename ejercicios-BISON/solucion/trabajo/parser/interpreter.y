@@ -7,6 +7,7 @@
 %{
 #include <iostream>
 #include <string>
+#include <sstream>
 
 /*******************************************/
 /* NEW in example 5 */
@@ -171,7 +172,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read readstring if while block repeat for forstep cases default clear place
+%type <st> stmt asgn print read readstring if while block repeat for cases default clear place dowhile
 
 %type <prog> program
 
@@ -235,6 +236,9 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 
 /* MODIFIED in example 3 */
 %left PLUS MINUS 
+
+%token INCREMENT DECREMENT
+
 
 /* MODIFIED in example 5 */
 %left MULTIPLICATION DIVISION MODULO INT_DIVISION 
@@ -343,23 +347,25 @@ stmt: COMMENT
 		// Default action
 		// $$ = $1;
 	 }
+
+	| dowhile SEMICOLON
+	{
+		// Default action
+		// $$ = $1;
+	 }
 	/*  NEW in example 17 */
 	| while 
 	 {
 		// Default action
 		// $$ = $1;
 	 }
+
 	| repeat 
 	 {
 		// Default action
 		// $$ = $1;
 	 }
 	| for 
-	 {
-		// Default action
-		// $$ = $1;
-	 }
-	| forstep 
 	 {
 		// Default action
 		// $$ = $1;
@@ -422,6 +428,15 @@ if:	/* Simple conditional statement */
 		control--;
 	 }
 ;
+dowhile: DO controlSymbol stmtlist WHILE controlSymbol cond 
+		{
+			// Create a new do-while statement node
+			$$ = new lp::DoWhileStmt($6, $3);
+
+			control--;
+			control--;
+		}
+;
 
 	/*  MODIFICADO en la última práctica */
 while:  WHILE controlSymbol cond DO stmtlist END_WHILE
@@ -434,24 +449,32 @@ while:  WHILE controlSymbol cond DO stmtlist END_WHILE
     }
 ;
 	/*  AÑADIDO en la última práctica */
-repeat: REPEAT stmtlist UNTIL controlSymbol cond
+repeat: REPEAT controlSymbol stmtlist UNTIL cond 
 		{
 			// Create a new repeat statement node
-			$$ = new lp::RepeatStmt($5, $2);
+			$$ = new lp::RepeatStmt($5, $3);
+
+			control--;
 		}
 ;
-for: FOR VARIABLE FROM NUMBER UNTIL NUMBER DO stmtlist END_FOR
+for: FOR controlSymbol VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 		{
-			// Create a new for statement node
-			$$ = new lp::ForStmt($2, new lp::NumberNode($4), new lp::NumberNode($6), $8);
+			// Comprobamos en el caso de que la variable ya exista en la tabla de símbolos y la inicializamos al valor INICIAL
+
+			$$ = new lp::ForStmt($3, $5, $7, $9);
+
+		control --;
 		}
-;
-forstep: FOR VARIABLE FROM NUMBER UNTIL NUMBER STEP NUMBER DO stmtlist END_FOR
+	| 
+	FOR controlSymbol VARIABLE FROM exp UNTIL exp STEP exp DO stmtlist END_FOR
 		{
-			// Create a new for statement node
-			$$ = new lp::ForStmt($2, new lp::NumberNode($4), new lp::NumberNode($6), $10, new lp::NumberNode($8));
+			// Comprobamos en el caso de que la variable ya exista en la tabla de símbolos y la inicializamos al valor INICIAL
+			$$ = new lp::ForStmt($3, $5, $7, $11, $9);
+
+		control --;
 		}
 ;
+
 cases: CASES LPAREN exp RPAREN value_list default END_CASES
 		{
 			// Create a new cases statement node
