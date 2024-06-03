@@ -306,7 +306,101 @@ class StringNode : public ExpNode
 	std::string evaluateString();
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// AÑADIDO EN LA ULTIMA PRACTICA
 
+class PreIncrementNode : public ExpNode 
+{
+ private: 	
+   std::string _id; //!< \brief number of the PreIncrementNode
+ 
+ public:
+	
+
+	PreIncrementNode(std::string id)
+	{
+	    this->_id = id;
+	}
+
+	int getType();
+
+	
+	void printAST();
+
+
+	double evaluateNumber();
+
+};
+
+class PostIncrementNode : public ExpNode 
+{
+ private: 	
+   std::string _id; //!< \brief number of the PostIncrementNode
+ 
+ public:
+	
+
+	PostIncrementNode(std::string id)
+	{
+	    this->_id = id;
+	}
+
+	int getType();
+
+	
+	void printAST();
+
+
+	double evaluateNumber();
+
+};
+
+class PreDecrementNode : public ExpNode 
+{
+ private: 	
+   std::string _id; //!< \brief number of the PreDecrementNode
+ 
+ public:
+	
+
+	PreDecrementNode(std::string id)
+	{
+	    this->_id = id;
+	}
+
+	int getType();
+
+	
+	void printAST();
+
+
+	double evaluateNumber();
+
+};
+
+class PostDecrementNode : public ExpNode 
+{
+ private: 	
+   std::string _id; //!< \brief number of the PostDecrementNode
+ 
+ public:
+	
+
+	PostDecrementNode(std::string id)
+	{
+	    this->_id = id;
+	}
+
+	int getType();
+
+	
+	void printAST();
+
+
+	double evaluateNumber();
+
+};
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -412,6 +506,45 @@ class LogicalUnaryOperatorNode : public UnaryOperatorNode
 	*/
 	int getType();
 
+};
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// MODIFICADO EN LA ÚLTIMA PRÁCTICA
+
+class AlternativeNode : public ExpNode 
+{
+ private:
+  ExpNode *_cond; //!< Condicion of the while statement
+  ExpNode * _exp1; //!< Name of the variable of the assignment statement
+  ExpNode * _exp2; //!< Name of the variable of the assignment statement
+
+  public:
+/*!
+	\brief Constructor of  AlternativeNode
+	\param condition: ExpNode of the condition
+	\param exp1: ExpNode of the consequent
+	\param exp2: ExpNode of the alternative
+	\post  A new AlternativeNode is created with the parameters
+*/
+  AlternativeNode(ExpNode *condition, ExpNode *exp1, ExpNode *exp2)
+	{
+		this->_cond = condition;
+		this->_exp1 = exp1;
+		this->_exp2 = exp2;
+	}
+
+	inline ExpNode * getExp1() { return this->_exp1; }
+	inline ExpNode * getExp2() { return this->_exp2; }
+
+	void printAST();
+
+	bool evaluateBool();
+
+	double evaluateNumber();
+
+	std::string evaluateString();
+
+	int getType();
 };
 
 
@@ -1516,6 +1649,145 @@ class Statement {
   virtual void evaluate() = 0;
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// AÑADIDO EN LA ULTIMA PRACTICA
+
+class PreIncrementStmt : public Statement 
+{
+  private:
+	std::string _id; //!< Name of the variable of the PreIncrementStmt
+
+  public:
+
+/*!
+	\brief Constructor of PreIncrementStmt
+	\param id: string, name of the variable of the PreIncrementStmt
+	\post  A new PreIncrementStmt is created with the parameter
+*/
+  PreIncrementStmt(std::string id)
+	{
+		this->_id = id;
+	}
+
+/*!
+	\brief   Print the AST for PreIncrementStmt
+	\return  void
+	\sa		   evaluate
+*/
+  void printAST();
+
+/*!
+
+	\brief   Evaluate the PreIncrementStmt
+	\return  void
+	\sa		   printAST
+*/
+  void evaluate();
+};
+
+
+class PostIncrementStmt : public Statement 
+{
+  private:
+	std::string _id; //!< Name of the variable of the PostIncrementStmt
+
+  public:
+
+/*!
+	\brief Constructor of PostIncrementStmt
+	\param id: string, name of the variable of the PostIncrementStmt
+	\post  A new PostIncrementStmt is created with the parameter
+*/
+  PostIncrementStmt(std::string id)
+	{
+		this->_id = id;
+	}
+
+/*!
+	\brief   Print the AST for PostIncrementStmt
+	\return  void
+	\sa		   evaluate
+*/
+  void printAST();
+
+/*!
+
+	\brief   Evaluate the PostIncrementStmt
+	\return  void
+	\sa		   printAST
+*/
+  void evaluate();
+};
+
+
+class PreDecrementStmt : public Statement 
+{
+  private:
+	std::string _id; //!< Name of the variable of the PreDecrementStmt
+
+  public:
+
+/*!
+	\brief Constructor of PreDecrementStmt
+	\param id: string, name of the variable of the PreDecrementStmt
+	\post  A new PreDecrementStmt is created with the parameter
+*/
+  PreDecrementStmt(std::string id)
+	{
+		this->_id = id;
+	}
+
+/*!
+	\brief   Print the AST for PreDecrementStmt
+	\return  void
+	\sa		   evaluate
+*/
+  void printAST();
+
+/*!
+
+	\brief   Evaluate the PreDecrementStmt
+	\return  void
+	\sa		   printAST
+*/
+  void evaluate();
+};
+
+
+class PostDecrementStmt : public Statement 
+{
+  private:
+	std::string _id; //!< Name of the variable of the PostDecrementStmt
+
+  public:
+
+/*!
+	\brief Constructor of PostDecrementStmt
+	\param id: string, name of the variable of the PostDecrementStmt
+	\post  A new PostDecrementStmt is created with the parameter
+*/
+  PostDecrementStmt(std::string id)
+	{
+		this->_id = id;
+	}
+
+/*!
+	\brief   Print the AST for PostDecrementStmt
+	\return  void
+	\sa		   evaluate
+*/
+  void printAST();
+
+/*!
+
+	\brief   Evaluate the PostDecrementStmt
+	\return  void
+	\sa		   printAST
+*/
+  void evaluate();
+};
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1837,7 +2109,6 @@ class IfStmt : public Statement
 */
   void evaluate();
 };
-
 
 
 

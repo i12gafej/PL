@@ -267,7 +267,169 @@ std::string lp::StringNode::evaluateString()
 	return this->_string;
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Nuevo de la ÚLTIMA practica
+int lp::PreIncrementNode::getType(){
+	return NUMBER;
+}
 
+void lp::PreIncrementNode::printAST() 
+{
+  std::cout << "PreIncrementNode: ++"  << std::endl;
+  std::cout << "\t"; 
+  std::cout << this->_id << std::endl;
+}
+
+double lp::PreIncrementNode::evaluateNumber() 
+{
+	double result = 0.0;
+	// Check the type of the expression
+	if (table.lookupSymbol(this->_id) == true)
+	{
+		// Get the identifier in the table of symbols as Variable
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+		if(var->getType() == NUMBER)
+		{
+			// Increment the value of the Variable
+			lp::NumericVariable *v = (lp::NumericVariable *) var;
+			result= v->getValue();
+			v->setValue(result+ 1);
+			return v->getValue();
+		}
+		else
+		{
+			warning("Runtime error: the variable is not numeric for ", "PreIncrement");
+		}
+
+	}
+	else
+	{
+		warning("Runtime error: the variable does not exist ", "PreIncrement");
+	}
+	return result;
+}
+
+void lp::PostIncrementNode::printAST() 
+{
+  std::cout << "PostIncrementNode: ++"  << std::endl;
+  std::cout << "\t";
+  std::cout << this->_id << std::endl;
+}
+int lp::PostIncrementNode::getType(){
+	return NUMBER;
+}
+
+double lp::PostIncrementNode::evaluateNumber(){
+	double result = 0.0;
+
+	// Check the type of the expression
+	if (table.lookupSymbol(this->_id) == true)
+	{
+		// Get the identifier in the table of symbols as Variable
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+		if(var->getType() == NUMBER)
+		{
+			// Increment the value of the Variable
+			lp::NumericVariable *v = (lp::NumericVariable *) var;
+			result= v->getValue();
+			v->setValue(result+ 1);
+			return result;
+		}
+		else
+		{
+			warning("Runtime error: the variable is not numeric for ", "PostIncrement");
+		}
+
+	}
+	else
+	{
+		warning("Runtime error: the variable does not exist ", "PostIncrement");
+	}
+	return result;
+}
+int lp::PreDecrementNode::getType(){
+	return NUMBER;
+}
+
+void lp::PreDecrementNode::printAST() 
+{
+  std::cout << "PreDecrementNode: ++"  << std::endl;
+  std::cout << "\t"; 
+  std::cout << this->_id << std::endl;
+}
+
+double lp::PreDecrementNode::evaluateNumber() 
+{
+	double result = 0.0;
+	// Check the type of the expression
+	if (table.lookupSymbol(this->_id) == true)
+	{
+		// Get the identifier in the table of symbols as Variable
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+		if(var->getType() == NUMBER)
+		{
+			// Decrement the value of the Variable
+			lp::NumericVariable *v = (lp::NumericVariable *) var;
+			result = v->getValue();
+			v->setValue(result - 1);
+			return v->getValue();
+		}
+		else
+		{
+			warning("Runtime error: the variable is not numeric for ", "PreDecrement");
+		}
+
+	}
+	else
+	{
+		warning("Runtime error: the variable does not exist ", "PreDecrement");
+	}
+	return result;
+}
+
+void lp::PostDecrementNode::printAST() 
+{
+  std::cout << "PostDecrementNode: ++"  << std::endl;
+  std::cout << "\t";
+  std::cout << this->_id << std::endl;
+}
+int lp::PostDecrementNode::getType(){
+	return NUMBER;
+}
+
+double lp::PostDecrementNode::evaluateNumber(){
+	double result = 0.0;
+
+	// Check the type of the expression
+	if (table.lookupSymbol(this->_id) == true)
+	{
+		// Get the identifier in the table of symbols as Variable
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+		if(var->getType() == NUMBER)
+		{
+			// Decrement the value of the Variable
+			lp::NumericVariable *v = (lp::NumericVariable *) var;
+			result= v->getValue();
+			v->setValue(result - 1);
+			return result;
+		}
+		else
+		{
+			warning("Runtime error: the variable is not numeric for ", "PostDecrement");
+		}
+
+	}
+	else
+	{
+		warning("Runtime error: the variable does not exist ", "PostDecrement");
+	}
+	return result;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 int lp::NumericUnaryOperatorNode::getType()
@@ -302,6 +464,100 @@ int lp::LogicalUnaryOperatorNode::getType()
 		warning("Runtime error: incompatible types for", "Logical Unary Operator");
 	}
 	
+	return result;
+}
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Nuevo de la ÚLTIMA practica
+
+void lp::AlternativeNode::printAST() 
+{
+  std::cout << "AlternativeNode: if"  << std::endl;
+  std::cout << "\t"; 
+  this->_cond->printAST();
+  std::cout << "\t"; 
+  this->_exp1->printAST();
+  std::cout << "\t"; 
+  this->_exp2->printAST();
+}
+int lp::AlternativeNode::getType()
+{
+	int result = 0;
+		
+	if (this->_cond->getType() == BOOL && this->_exp1->getType() == this->_exp2->getType())
+		result = this->_exp1->getType();
+	else
+		warning("Runtime error: incompatible types for", "Alternative");
+
+	return	result;
+}
+
+bool lp::AlternativeNode::evaluateBool() 
+{
+	bool result = false;
+
+	if (this->getType() == BOOL)
+	{
+		if(this->_cond->evaluateBool())
+		{
+			result = this->_exp1->evaluateBool();
+		}
+		else
+		{
+			result = this->_exp2->evaluateBool();
+		}
+	}
+	else
+	{
+		warning("Runtime error: incompatible types of parameters for ", "Alternative");
+	}
+
+	return result;
+}
+
+double lp::AlternativeNode::evaluateNumber() 
+{
+	double result = 0.0;
+
+	if (this->getType() == NUMBER)
+	{
+		if(this->_cond->evaluateBool())
+		{
+			result = this->_exp1->evaluateNumber();
+		}
+		else
+		{
+			result = this->_exp2->evaluateNumber();
+		}
+	}
+	else
+	{
+		warning("Runtime error: incompatible types of parameters for ", "Alternative");
+	}
+
+	return result;
+}
+
+std::string lp::AlternativeNode::evaluateString() 
+{
+	std::string result = "";
+
+	if (this->getType() == STRING)
+	{
+		if(this->_cond->evaluateBool())
+		{
+			result = this->_exp1->evaluateString();
+		}
+		else
+		{
+			result = this->_exp2->evaluateString();
+		}
+	}
+	else
+	{
+		warning("Runtime error: incompatible types of parameters for ", "Alternative");
+	}
+
 	return result;
 }
 
@@ -1222,8 +1478,142 @@ bool lp::NotNode::evaluateBool()
 
 	return result;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// Nuevo de la ÚLTIMA practica
 
+void lp::PreIncrementStmt::printAST() 
+{
+  std::cout << "PreIncrementStmt: ++"  << std::endl;
+  std::cout << "\t"; 
+  std::cout << this->_id << std::endl;
+  
+}
 
+void lp::PreIncrementStmt::evaluate() 
+{
+	// Check the type of the expression
+	if (table.lookupSymbol(this->_id) == true)
+	{
+		// Get the identifier in the table of symbols as Variable
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+		if(var->getType() == NUMBER)
+		{
+			// Increment the value of the Variable
+			lp::NumericVariable *v = (lp::NumericVariable *) var;
+			v->setValue(v->getValue() + 1);
+		}
+		else
+		{
+			warning("Runtime error: the variable is not numeric for ", "PreIncrement");
+		}
+
+	}
+	else
+	{
+		warning("Runtime error: the variable does not exist ", "PreIncrement");
+	}
+}
+
+void lp::PostIncrementStmt::printAST() 
+{
+  std::cout << "PostIncrementStmt: ++"  << std::endl;
+  std::cout << "\t"; 
+  std::cout << this->_id << std::endl;
+}
+
+void lp::PostIncrementStmt::evaluate() 
+{
+	// Check the type of the expression
+	if (table.lookupSymbol(this->_id) == true)
+	{
+		// Get the identifier in the table of symbols as Variable
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+		if(var->getType() == NUMBER)
+		{
+			// Increment the value of the Variable
+			lp::NumericVariable *v = (lp::NumericVariable *) var;
+			v->setValue(v->getValue() + 1);
+		}
+		else
+		{
+			warning("Runtime error: the variable is not numeric for ", "PostIncrement");
+		}
+
+	}
+	else
+	{
+		warning("Runtime error: the variable does not exist ", "PostIncrement");
+	}
+}
+
+void lp::PreDecrementStmt::printAST() 
+{
+  std::cout << "PreDecrementStmt: ++"  << std::endl;
+  std::cout << "\t"; 
+  std::cout << this->_id << std::endl;
+  
+}
+
+void lp::PreDecrementStmt::evaluate() 
+{
+	// Check the type of the expression
+	if (table.lookupSymbol(this->_id) == true)
+	{
+		// Get the identifier in the table of symbols as Variable
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+		if(var->getType() == NUMBER)
+		{
+			// Decrement the value of the Variable
+			lp::NumericVariable *v = (lp::NumericVariable *) var;
+			v->setValue(v->getValue() - 1);
+		}
+		else
+		{
+			warning("Runtime error: the variable is not numeric for ", "PreDecrement");
+		}
+	}
+	else
+	{
+		warning("Runtime error: the variable does not exist ", "PreDecrement");
+	}
+}
+
+void lp::PostDecrementStmt::printAST() 
+{
+  std::cout << "PostDecrementStmt: ++"  << std::endl;
+  std::cout << "\t"; 
+  std::cout << this->_id << std::endl;
+}
+
+void lp::PostDecrementStmt::evaluate() 
+{
+	// Check the type of the expression
+	if (table.lookupSymbol(this->_id) == true)
+	{
+		// Get the identifier in the table of symbols as Variable
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+
+		if(var->getType() == NUMBER)
+		{
+			// Decrement the value of the Variable
+			lp::NumericVariable *v = (lp::NumericVariable *) var;
+			v->setValue(v->getValue() - 1);
+		}
+		else
+		{
+			warning("Runtime error: the variable is not numeric for ", "PostDecrement");
+		}
+
+	}
+	else
+	{
+		warning("Runtime error: the variable does not exist ", "PostDecrement");
+	}
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 

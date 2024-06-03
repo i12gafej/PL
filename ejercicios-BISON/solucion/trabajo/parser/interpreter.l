@@ -192,7 +192,14 @@ STRING '([^'\\]|\\.)*'
 "-"		{ return MINUS;  } 			
 "+"		{ return PLUS;   } 
 "++" 	{ return INCREMENT; }		/* NUEVO en el trabajo final */
-"--" 	{ return DECREMENT; }		/* NUEVO en el trabajo final */	
+"--"    { return DECREMENT; }		/* NUEVO en el trabajo final */
+"+:="	{ return PLUS_ASSIGNMENT; }	/* NUEVO en el trabajo final */
+"-:="	{ return MINUS_ASSIGNMENT; }	/* NUEVO en el trabajo final */
+"*:="	{ return MULTIPLICATION_ASSIGNMENT; }	/* NUEVO en el trabajo final */
+"/:="	{ return DIVISION_ASSIGNMENT; }	/* NUEVO en el trabajo final */
+"//:="	{ return INT_DIVISION_ASSIGNMENT; }	/* NUEVO en el trabajo final */
+"%:="	{ return MODULO_ASSIGNMENT; }	/* NUEVO en el trabajo final */
+"**:="	{ return POWER_ASSIGNMENT; }	/* NUEVO en el trabajo final */
 
 "*"	    { return MULTIPLICATION; } 	
 "/"     { return DIVISION; } 		
@@ -231,6 +238,8 @@ STRING '([^'\\]|\\.)*'
 "{"		{ return LETFCURLYBRACKET; } 	
 
 "}"		{ return RIGHTCURLYBRACKET; }
+
+"?" 	{ return ALT; }			/* NUEVO en el trabajo final */
 
 ":"		{ return COLON; }			/* NUEVO en el trabajo final */
 

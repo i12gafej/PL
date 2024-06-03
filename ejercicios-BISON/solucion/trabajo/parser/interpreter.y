@@ -162,7 +162,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 
 /* Type of the non-terminal symbols */
 // New in example 17: cond
-%type <expNode> exp cond 
+%type <expNode> exp cond preinc postinc predec postdec
 
 
 /* New in example 14 */
@@ -172,7 +172,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read readstring if while block repeat for cases default clear place dowhile
+%type <st> stmt asgn print read readstring if while block repeat for cases default clear place dowhile preincstmt postincstmt predecstmt postdecstmt
 
 %type <prog> program
 
@@ -182,7 +182,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 
 /*******************************************/
 /* NEW in example 5 */
-%token SEMICOLON COLON
+%token SEMICOLON COLON ALT
 /*******************************************/
 
 /*Nuevo del trabajo final*/
@@ -194,8 +194,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %token LETFCURLYBRACKET RIGHTCURLYBRACKET
 
 /* NEW in example 7 */
-%right ASSIGNMENT
-
+%right ASSIGNMENT PLUS_ASSIGNMENT MINUS_ASSIGNMENT MULTIPLICATION_ASSIGNMENT DIVISION_ASSIGNMENT INT_DIVISION_ASSIGNMENT MODULO_ASSIGNMENT POWER_ASSIGNMENT
 /* NEW in example 14 */
 %token COMMA
 
@@ -237,7 +236,6 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 /* MODIFIED in example 3 */
 %left PLUS MINUS 
 
-%token INCREMENT DECREMENT
 
 
 /* MODIFIED in example 5 */
@@ -245,7 +243,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 
 %left LPAREN RPAREN
 
-%nonassoc  UNARY
+%nonassoc  UNARY INCREMENT DECREMENT
 
 // Maximum precedence 
 /* MODIFIED in example 5 */
@@ -326,6 +324,26 @@ stmt: COMMENT
 		// Default action
 		// $$ = $1;
 	  }
+	| preincstmt SEMICOLON
+	  {
+		// Default action
+		// $$ = $1;
+	  }
+	| postincstmt SEMICOLON
+	  {
+		// Default action
+		// $$ = $1;
+	  }
+	| predecstmt SEMICOLON
+	  {
+		// Default action
+		// $$ = $1;
+	  }
+	| postdecstmt SEMICOLON
+	  {
+		// Default action
+		// $$ = $1;
+	  }
 	| print SEMICOLON
 	  {
 		// Default action
@@ -392,6 +410,26 @@ stmt: COMMENT
 		// Default action
 		// $$ = $1;
 	}
+;
+preincstmt: INCREMENT VARIABLE
+		{
+			$$ = new lp::PreIncrementStmt($2);
+		}
+;
+postincstmt: VARIABLE INCREMENT
+		{
+			$$ = new lp::PostIncrementStmt($1);
+		}
+;
+predecstmt: DECREMENT VARIABLE
+		{
+			$$ = new lp::PreDecrementStmt($2);
+		}
+;
+postdecstmt: VARIABLE DECREMENT
+		{
+			$$ = new lp::PostDecrementStmt($1);
+		}
 ;
 block: LETFCURLYBRACKET stmtlist RIGHTCURLYBRACKET  
 		{
@@ -534,13 +572,81 @@ asgn:   VARIABLE ASSIGNMENT exp
 			// Create a new assignment node
 			$$ = new lp::AssignmentStmt($1, $3);
 		}
-
+	|  VARIABLE PLUS_ASSIGNMENT exp 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, new lp::PlusNode(new lp::VariableNode($1), $3));
+		}
+	| VARIABLE PLUS_ASSIGNMENT asgn 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+		}
+	|  VARIABLE MINUS_ASSIGNMENT exp 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, new lp::MinusNode(new lp::VariableNode($1), $3));
+		}
+	| VARIABLE MINUS_ASSIGNMENT asgn 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+		}
+	|  VARIABLE MULTIPLICATION_ASSIGNMENT exp 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, new lp::MultiplicationNode(new lp::VariableNode($1), $3));
+		}
+	| VARIABLE MULTIPLICATION_ASSIGNMENT asgn 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+		}
+	|  VARIABLE DIVISION_ASSIGNMENT exp 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, new lp::DivisionNode(new lp::VariableNode($1), $3));
+		}
+	| VARIABLE DIVISION_ASSIGNMENT asgn 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+		}
+	|  VARIABLE INT_DIVISION_ASSIGNMENT exp 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, new lp::IntDivisionNode(new lp::VariableNode($1), $3));
+		}
+	| VARIABLE INT_DIVISION_ASSIGNMENT asgn 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+		}
+	|  VARIABLE MODULO_ASSIGNMENT exp 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, new lp::ModuloNode(new lp::VariableNode($1), $3));
+		}
+	| VARIABLE MODULO_ASSIGNMENT asgn 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+		}
+	|  VARIABLE POWER_ASSIGNMENT exp 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, new lp::PowerNode(new lp::VariableNode($1), $3));
+		}
+	| VARIABLE POWER_ASSIGNMENT asgn 
+		{ 
+			// Create a new assignment node
+			$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
+		}
 	|  VARIABLE ASSIGNMENT asgn 
 		{ 
 			// Create a new assignment node
 			$$ = new lp::AssignmentStmt($1, (lp::AssignmentStmt *) $3);
 		}
-
 	   /* NEW in example 11 */ 
 	| CONSTANT ASSIGNMENT exp 
 		{   
@@ -637,7 +743,6 @@ exp:	NUMBER
 		    // just copy up the expression node 
 			$$ = $2;
 		 }
-
   	| 	PLUS exp %prec UNARY
 		{ 
 		  // Create a new unary plus node	
@@ -649,7 +754,22 @@ exp:	NUMBER
 		  // Create a new unary minus node	
   		  $$ = new lp::UnaryMinusNode($2);
 		}
-
+	| preinc
+		{
+			$$ = $1;
+		}
+	| postinc
+		{
+			$$ = $1;
+		}
+	| predec
+		{
+			$$ = $1;
+		}
+	| postdec
+		{
+			$$ = $1;
+		}
 	|	exp MODULO exp 
 		{
 		  // Create a new modulo node	
@@ -675,6 +795,10 @@ exp:	NUMBER
 		  $$ = new lp::ConstantNode($1);
 
 		}
+	 | cond ALT exp COLON exp{
+		    // Create a new alternative node
+			$$ = new lp::AlternativeNode($1, $3, $5);
+	 }
 
 	| BUILTIN LPAREN listOfExp RPAREN
 		{
@@ -777,7 +901,26 @@ exp:	NUMBER
  			$$ = new lp::NotNode($2);
 		}
 ;
-
+preinc: INCREMENT VARIABLE 
+		{
+			$$ = new lp::PreIncrementNode($2);
+		}
+;
+postinc: VARIABLE INCREMENT
+		{
+			$$ = new lp::PostIncrementNode($1);
+		}
+;
+predec: DECREMENT VARIABLE 
+		{
+			$$ = new lp::PreDecrementNode($2);
+		}
+;
+postdec: VARIABLE DECREMENT
+		{
+			$$ = new lp::PostDecrementNode($1);
+		}
+;
 
 listOfExp: 
 			/* Empty list of numeric expressions */
