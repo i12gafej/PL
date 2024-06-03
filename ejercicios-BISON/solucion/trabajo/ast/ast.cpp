@@ -2315,7 +2315,7 @@ void lp::ForStmt::printAST()
 
 void lp::ForStmt::evaluate() 
 {
-	if(this->_exp1->getType() == NUMBER && this->_exp2->getType() == NUMBER && this->_exp3->getType() == NUMBER)
+	if(this->_exp1->getType() == NUMBER && this->_exp2->getType() == NUMBER)
 	{
 		if(table.lookupSymbol(this->_id) == true)
 		{

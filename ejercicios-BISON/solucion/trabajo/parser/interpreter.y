@@ -513,7 +513,7 @@ for: FOR controlSymbol VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 
 			$$ = new lp::ForStmt($3, $5, $7, $9);
 
-		control --;
+		control--;
 		}
 	| 
 	FOR controlSymbol VARIABLE FROM exp UNTIL exp STEP exp DO stmtlist END_FOR
@@ -521,7 +521,7 @@ for: FOR controlSymbol VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 			// Comprobamos en el caso de que la variable ya exista en la tabla de símbolos y la inicializamos al valor INICIAL
 			$$ = new lp::ForStmt($3, $5, $7, $11, $9);
 
-		control --;
+		control--;
 		}
 ;
 

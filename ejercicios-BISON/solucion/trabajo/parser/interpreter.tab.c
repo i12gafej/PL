@@ -2214,7 +2214,7 @@ yyreduce:
 
 			(yyval.st) = new lp::ForStmt((yyvsp[-7].string), (yyvsp[-5].expNode), (yyvsp[-3].expNode), (yyvsp[-1].stmts));
 
-		control --;
+		control--;
 		}
 #line 2220 "interpreter.tab.c"
     break;
@@ -2225,7 +2225,7 @@ yyreduce:
 			// Comprobamos en el caso de que la variable ya exista en la tabla de símbolos y la inicializamos al valor INICIAL
 			(yyval.st) = new lp::ForStmt((yyvsp[-9].string), (yyvsp[-7].expNode), (yyvsp[-5].expNode), (yyvsp[-1].stmts), (yyvsp[-3].expNode));
 
-		control --;
+		control--;
 		}
 #line 2231 "interpreter.tab.c"
     break;
