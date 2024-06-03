@@ -90,12 +90,16 @@ void toLowerCase(char *str) {
 DIGIT  [0-9] 
 
 LETTER [a-zA-Z]
-
+lan [a-zA-ZáéíóúÁÉÍÓÚ0-9]
+la [a-zA-ZáéíóúÁÉÍÓÚ]
 
 NUMBER -?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?
+ERROR_NUMBER -?[0-9]+(([a-df-zA-DFZ]+|((\.\.+)[0-9]|(\.[0-9])(\.[0-9])+))|\.|[eE])
 
 /*MODIFICADO en el trabajo final*/
 IDENTIFIER  {LETTER}((_({LETTER}|{DIGIT}))|({LETTER}|{DIGIT}))* 
+ERROR_IDENTIFIER "_ "|"_\n"|_({lan}|_)*|({lan}*__+{lan}*)|({lan}+_)|({la}({lan}|(_)({lan}))*)|(({lan}{la}+)+)
+ERROR_OPERATOR [-+*/%&|^=!<>]+
 
 /* NUEVO en el trabajo final */
 SHORTCOMMENT !!.*\n
@@ -186,6 +190,16 @@ STRING '([^'\\]|\\.)*'
 								return s->getToken();
 							}
                      }
+{ERROR_NUMBER} {
+						/* MODIFIED in example 4 */
+						/* Display the error message */
+						warning("Lexical error: wrong number", yytext);
+					}
+{ERROR_IDENTIFIER} {
+						/* MODIFIED in example 4 */
+						/* Display the error message */
+						warning("Lexical error: wrong identifier", yytext);
+					}
 {STRING}	{ yylval.cadena = imprimir_cadena_sin_comillas(yytext, yyleng); 
 				return STRING; }
 
@@ -297,6 +311,13 @@ STRING '([^'\\]|\\.)*'
 									*/
 									yymore();  
 								}
+{ERROR_OPERATOR} {
+						/* MODIFIED in example 4 */
+						/* Display the error message */
+						warning("Lexical error: wrong operator", yytext);
+
+
+					}
 
 <ERROR>[^0-9+\-*/()\^% \t\n\;a-zA-Z=<>!&_]	{ /* MODIFICADO en el trabajo final */
 								  /* NEW in example 3 */

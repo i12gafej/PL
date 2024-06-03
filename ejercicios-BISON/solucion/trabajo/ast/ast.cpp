@@ -5,7 +5,7 @@
 	\date    2018-12-13
 	\version 1.0
 */
-
+#include <limits>
 #include <iostream>
 #include <stdlib.h>
 #include <string>
@@ -1950,11 +1950,19 @@ void lp::PlaceStmt::printAST()
 void lp::PlaceStmt::evaluate() 
 {
 	// Get the position of the cursor
-	int x = this->_x->evaluateNumber();
-	int y = this->_y->evaluateNumber();
+	if(this->_x->getType() != NUMBER || this->_y->getType() != NUMBER)
+	{
+		warning("Runtime error: incompatible type for ", "Place");
+		return;
+	}
+	else{
+		int x = this->_x->evaluateNumber();
+		int y = this->_y->evaluateNumber();
 
-	// Place the cursor in the position (x,y)
-	std::cout << PLACE(x,y);
+		// Place the cursor in the position (x,y)
+		PLACE(x,y);
+	}
+
 }
 
 
@@ -1977,32 +1985,41 @@ void lp::ReadStmt::evaluate()
 	// std::cout << "Insert a numeric value --> " ;
 	// std::cout << RESET; 
 	std::cin >> value;
+	if (std::cin.fail()) {
+	
+		std::cin.clear();
+	
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		warning("Runtime error: incompatible type for ", "Read");
+	} else {
+		/* Get the identifier in the table of symbols as Variable */
+		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
 
-	/* Get the identifier in the table of symbols as Variable */
-	lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
+		// Check if the type of the variable is NUMBER
+		if (var->getType() == NUMBER)
+		{
+			/* Get the identifier in the table of symbols as NumericVariable */
+			lp::NumericVariable *n = (lp::NumericVariable *) table.getSymbol(this->_id);
+							
+			/* Assignment the read value to the identifier */
+			n->setValue(value);
+		}
+		// The type of variable is not NUMBER
+		else
+		{
+			// Delete $1 from the table of symbols as Variable
+			table.eraseSymbol(this->_id);
 
-	// Check if the type of the variable is NUMBER
-	if (var->getType() == NUMBER)
-	{
-		/* Get the identifier in the table of symbols as NumericVariable */
-		lp::NumericVariable *n = (lp::NumericVariable *) table.getSymbol(this->_id);
-						
-		/* Assignment the read value to the identifier */
-		n->setValue(value);
+				// Insert $1 in the table of symbols as NumericVariable 
+			// with the type NUMBER and the read value 
+			lp::NumericVariable *n = new lp::NumericVariable(this->_id, 
+										VARIABLE,NUMBER,value);
+
+			table.installSymbol(n);
+		}
 	}
-	// The type of variable is not NUMBER
-	else
-	{
-		// Delete $1 from the table of symbols as Variable
-		table.eraseSymbol(this->_id);
 
-			// Insert $1 in the table of symbols as NumericVariable 
-		// with the type NUMBER and the read value 
-		lp::NumericVariable *n = new lp::NumericVariable(this->_id, 
-									  VARIABLE,NUMBER,value);
-
-		table.installSymbol(n);
-	}
+	
 }
 
 
@@ -2131,12 +2148,15 @@ void lp::IfStmt::evaluate()
 
     // Otherwise, the alternative is run if exists
 	else if (this->_stmts2 != NULL){
-		std::list<Statement *>::iterator stmtIter;
+		if(this->_cond->evaluateBool() == false ){
+			std::list<Statement *>::iterator stmtIter;
 
-		for (stmtIter = this->_stmts2->begin(); stmtIter != this->_stmts2->end(); stmtIter++) 
-		{
-			(*stmtIter)->evaluate();
+			for (stmtIter = this->_stmts2->begin(); stmtIter != this->_stmts2->end(); stmtIter++) 
+			{
+				(*stmtIter)->evaluate();
+			}
 		}
+		
 	}
 }
 

@@ -162,7 +162,7 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 
 /* Type of the non-terminal symbols */
 // New in example 17: cond
-%type <expNode> exp cond preinc postinc predec postdec
+%type <expNode> exp cond preinc postinc predec postdec alternative
 
 
 /* New in example 14 */
@@ -172,7 +172,8 @@ extern lp::AST *root; //!< External root of the abstract syntax tree AST
 %type <stmts> stmtlist
 
 // New in example 17: if, while, block
-%type <st> stmt asgn print read readstring if while block repeat for cases default clear place dowhile preincstmt postincstmt predecstmt postdecstmt
+%type <st> stmt asgn print read readstring if while block repeat for cases default clear place dowhile preincstmt postincstmt predecstmt postdecstmt 
+// errorifelse errorwhile errorrepeat errorfor errorcases erroralone
 
 %type <prog> program
 
@@ -410,6 +411,7 @@ stmt: COMMENT
 		// Default action
 		// $$ = $1;
 	}
+
 ;
 preincstmt: INCREMENT VARIABLE
 		{
@@ -444,6 +446,16 @@ controlSymbol:  /* Epsilon rule*/
 			control++;
 		}
 	;
+
+
+		
+
+
+		
+
+
+
+		
 
 	/*  MODIFICADO en la última práctica */
 if:	/* Simple conditional statement */
@@ -657,6 +669,10 @@ asgn:   VARIABLE ASSIGNMENT exp
 		{   
  			execerror("Semantic error in multiple assignment: it is not allowed to modify a constant ",$1);
 		}
+	| VARIABLE ASSIGNMENT alternative
+		{
+			$$ = new lp::AssignmentStmt($1, $3);
+		}
 ;
 
 print:  PRINT exp 
@@ -691,7 +707,10 @@ readstring: READ_STRING LPAREN VARIABLE RPAREN
 		{   
  			execerror("Semantic error in \"read string statement\": it is not allowed to modify a constant ",$3);
 		}
-
+alternative: cond ALT exp COLON exp{
+		    // Create a new alternative node
+			$$ = new lp::AlternativeNode($1, $3, $5);
+	 }
 
 exp:	NUMBER 
 		{ 
@@ -795,10 +814,6 @@ exp:	NUMBER
 		  $$ = new lp::ConstantNode($1);
 
 		}
-	 | cond ALT exp COLON exp{
-		    // Create a new alternative node
-			$$ = new lp::AlternativeNode($1, $3, $5);
-	 }
 
 	| BUILTIN LPAREN listOfExp RPAREN
 		{
