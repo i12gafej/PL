@@ -46,7 +46,7 @@ INCLUDES = ./parser/interpreter.tab.h ./error/error.hpp \
 $(NAME).exe :  parser-dir error-dir table-dir ast-dir $(OBJECTS)
 	@echo "Generating " $(NAME).exe
 	@$(CPP) $(OBJECTS) $(OBJECTS-PARSER) $(OBJECTS-ERROR)  $(OBJECTS-TABLE)  $(OBJECTS-AST) \
-	$(LFLAGS) -o $(NAME).exe 
+	$(LFLAGS) -o ipe.exe 
 
 
 # Main program
