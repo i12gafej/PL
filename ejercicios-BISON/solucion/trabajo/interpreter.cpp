@@ -103,11 +103,15 @@ int main(int argc, char *argv[])
 	yydebug = 0; 
  
  /* 
-   If the input file exists 
-      then 
-           it is set as input device for yylex();
-      otherwise
-            the input device is the keyboard (stdin)
+  Si no existe el archivo
+    modo interactivo
+  si existe
+    comprueba la extensión
+      si es .e
+        se establece como dispositivo de entrada para yylex();
+        modo no interactivo
+      si no
+        el dispositivo de entrada es el teclado (stdin)
  */
  if (argc == 2) 
  {
@@ -116,7 +120,8 @@ int main(int argc, char *argv[])
      {
         std::cout << "Archivo " << argv[1] << " no existe. \nIniciando en modo interactivo." << std::endl;
         interactiveMode = true;
-     } else{
+     } 
+     else{
         std::string arg = argv[1];
         if(arg.find(".e") != std::string::npos){
           interactiveMode = false;

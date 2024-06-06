@@ -257,7 +257,7 @@ class NumberNode : public ExpNode
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// CREADO EN LA ULTIMA PRACTICA
+// AÑADIDO EN LA ULTIMA PRACTICA
 
 /*!	
   \class StringNode
@@ -310,52 +310,107 @@ class StringNode : public ExpNode
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // AÑADIDO EN LA ULTIMA PRACTICA
 
+/*!
+  \class   PreIncrementNode
+  \brief   Definition of atributes and methods of PreIncrementNode class
+  \note    PreIncrementNode Class publicly inherits from ExpNode class
+
+*/
 class PreIncrementNode : public ExpNode 
 {
  private: 	
    std::string _id; //!< \brief number of the PreIncrementNode
  
  public:
-	
+	/*!
+		\brief Constructor of PreIncrementNode
+		\param id: std::string
+		\post  A new PreIncrementNode is created with the value of the parameter
+		\note  Inline function
+	*/
 
 	PreIncrementNode(std::string id)
 	{
 	    this->_id = id;
 	}
 
+	/*!
+		\brief   Get the type of the expression: NUMBER
+		\return  int
+		\sa		   printAST, evaluateNumber
+	*/
 	int getType();
 
-	
+	/*!
+		\brief   Print the AST for expression
+	*/
 	void printAST();
 
-
+	/*!
+		\brief   Evaluate the expression
+		\return  double
+		\sa		   getType, printAST
+	
+	*/
 	double evaluateNumber();
 
 };
 
+/*!
+	\class   PostIncrementNode
+	\brief   Definition of atributes and methods of PostIncrementNode class
+	\note    PostIncrementNode Class publicly inherits from ExpNode class
+*/
 class PostIncrementNode : public ExpNode 
 {
  private: 	
    std::string _id; //!< \brief number of the PostIncrementNode
  
  public:
-	
+	/*!
+		\brief Constructor of PostIncrementNode
+		\param id: std::string
+		\post  A new PostIncrementNode is created with the value of the parameter
+		\note  Inline function
+	*/
 
 	PostIncrementNode(std::string id)
 	{
 	    this->_id = id;
 	}
-
+	/*!
+		\brief   Get the type of the expression: NUMBER
+		\return  int
+		\sa		   printAST, evaluateNumber
+	*/
 	int getType();
 
-	
+	/*!
+		\brief   Print the AST for expression
+	*/
 	void printAST();
 
-
+	/*!
+		\brief   Evaluate the expression
+		\return  double
+		\sa		   getType, printAST
+	
+	*/
 	double evaluateNumber();
 
 };
 
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// AÑADIDO EN LA ULTIMA PRACTICA
+
+/*!
+  \class   PreDecrementNode
+  \brief   Definition of atributes and methods of PreDecrementNode class
+  \note    PreDecrementNode Class publicly inherits from ExpNode class
+
+*/
 class PreDecrementNode : public ExpNode 
 {
  private: 	
@@ -363,22 +418,44 @@ class PreDecrementNode : public ExpNode
  
  public:
 	
-
+	/*!
+		\brief Constructor of PreDecrementNode
+		\param id: std::string
+		\post  A new PreDecrementNode is created with the value of the parameter
+		\note  Inline function
+	*/
 	PreDecrementNode(std::string id)
 	{
 	    this->_id = id;
 	}
 
+	/*!
+		\brief   Get the type of the expression: NUMBER
+		\return  int
+		\sa		   printAST, evaluateNumber
+	*/
 	int getType();
 
-	
+	/*!
+		\brief   Print the AST for expression
+	*/
 	void printAST();
 
-
+	/*!
+		\brief   Evaluate the expression
+		\return  double
+		\sa		   getType, printAST
+	
+	*/
 	double evaluateNumber();
 
 };
 
+/*!
+	\class   PostDecrementNode
+	\brief   Definition of atributes and methods of PostDecrementNode class
+	\note    PostDecrementNode Class publicly inherits from ExpNode class
+*/
 class PostDecrementNode : public ExpNode 
 {
  private: 	
@@ -386,18 +463,34 @@ class PostDecrementNode : public ExpNode
  
  public:
 	
-
+	/*!
+		\brief Constructor of PostDecrementNode
+		\param id: std::string
+		\post  A new PostDecrementNode is created with the value of the parameter
+		\note  Inline function
+	*/
 	PostDecrementNode(std::string id)
 	{
 	    this->_id = id;
 	}
-
+	/*!
+		\brief   Get the type of the expression: NUMBER
+		\return  int
+		\sa		   printAST, evaluateNumber
+	*/
 	int getType();
 
-	
+	/*!
+		\brief   Print the AST for expression
+	*/
 	void printAST();
 
-
+	/*!
+		\brief   Evaluate the expression
+		\return  double
+		\sa		   getType, printAST
+	
+	*/
 	double evaluateNumber();
 
 };
@@ -509,7 +602,7 @@ class LogicalUnaryOperatorNode : public UnaryOperatorNode
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// MODIFICADO EN LA ÚLTIMA PRÁCTICA
+// AÑADIDO EN LA ÚLTIMA PRÁCTICA
 
 class AlternativeNode : public ExpNode 
 {
@@ -1653,6 +1746,13 @@ class Statement {
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // AÑADIDO EN LA ULTIMA PRACTICA
 
+/*!	
+  \class   PreIncrementStmt
+  \brief   Definition of atributes and methods of PreIncrementStmt class
+  \note    PreIncrementStmt Class publicly inherits from Statement class 
+		   and adds its own printAST and evaluate functions
+*/
+
 class PreIncrementStmt : public Statement 
 {
   private:
@@ -1686,6 +1786,12 @@ class PreIncrementStmt : public Statement
   void evaluate();
 };
 
+/*!
+	\class  PostIncrementStmt
+	\brief   Definition of atributes and methods of PostIncrementStmt class
+	\note    PostIncrementStmt Class publicly inherits from Statement class 
+		   and adds its own printAST and evaluate functions
+*/
 
 class PostIncrementStmt : public Statement 
 {
@@ -1721,6 +1827,16 @@ class PostIncrementStmt : public Statement
 };
 
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// AÑADIDO EN LA ULTIMA PRACTICA
+
+/*!
+	\class PreDecrementStmt
+	\brief   Definition of atributes and methods of PreDecrementStmt class
+	\note    PreDecrementStmt Class publicly inherits from Statement class 
+		   and adds its own printAST and evaluate functions
+*/
 class PreDecrementStmt : public Statement 
 {
   private:
@@ -1754,7 +1870,12 @@ class PreDecrementStmt : public Statement
   void evaluate();
 };
 
-
+/*!
+	\class PostDecrementStmt
+	\brief   Definition of atributes and methods of PostDecrementStmt class
+	\note    PostDecrementStmt Class publicly inherits from Statement class 
+		   and adds its own printAST and evaluate functions
+*/
 class PostDecrementStmt : public Statement 
 {
   private:
@@ -1892,35 +2013,73 @@ class PrintStmt: public Statement
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// Nuevo de la ultima practica
+// AÑADIDO EN LA ULTIMA PRACTICA
+
+/*!	
+  \class   CleanScreenStmt
+  \brief   Definition of atributes and methods of CleanScreenStmt class
+  \note    CleanScreenStmt Class publicly inherits from Statement class 
+		   and adds its own printAST and evaluate functions
+*/
 
 class ClearScreenStmt : public Statement 
 {
   public:
+	/*!
+		\brief Constructor of CleanScreenStmt
+		\post  A new CleanScreenStmt is created
+
+	*/
 	ClearScreenStmt()
 	{
 		// Empty
 	}
-
+	/*!
+		\brief   Print the AST for CleanScreenStmt
+	*/
 	void printAST();
 
+	/*!
+		\brief   Evaluate the CleanScreenStmt
+	*/
 	void evaluate();
 };
 
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// AÑADIDO EN LA ULTIMA PRACTICA
+
+/*!	
+  \class   PlaceStmt
+  \brief   Definition of atributes and methods of PlaceStmt class
+  \note    PlaceStmt Class publicly inherits from Statement class 
+		   and adds its own printAST and evaluate functions
+*/
 class PlaceStmt : public Statement
 {
 	private:
-		ExpNode * _x;
-		ExpNode * _y;
+		ExpNode * _x; // Variable of the PlaceStmt: position X
+		ExpNode * _y; // Variable of the PlaceStmt
 	public: 
+	/*!
+		\brief Constructor of PlaceStmt
+		\param x: pointer to ExpNode
+		\param y: pointer to ExpNode
+		\post  A new PlaceStmt is created with the parameters
+	*/
 	PlaceStmt(ExpNode * x, ExpNode * y)
 	{
 		this->_x = x;
 		this->_y = y;
 		
 	}
+	/*!
+		\brief   Print the AST for PlaceStmt
+	*/
 	void printAST();
-
+	/*!
+		\brief   Evaluate the PlaceStmt
+	*/
 	void evaluate();
 	
 };
@@ -1969,21 +2128,38 @@ class ReadStmt : public Statement
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// Nuevo de la ultima practica
+// AÑADIDO EN LA ULTIMA PRACTICA
+
+/*!	
+  \class   ReadStringStmt
+  \brief   Definition of atributes and methods of ReadStringStmt class
+  \note    ReadStringStmt Class publicly inherits from Statement class 
+		   and adds its own printAST and evaluate functions
+*/
 
 class ReadStringStmt : public Statement 
 {
   private:
 	std::string _id; //!< Name of the ReadStmt
   public:
+	/*!
+		\brief Constructor of ReadStringStmt
+		\param id: string, name of the variable of the ReadStmt
+		\post  A new ReadStringStmt is created with the parameter
+	*/
 	ReadStringStmt(std::string id)
 		
 		{
 			this->_id = id;
 		}
-
+	/*!
+		\brief   Print the AST for ReadStringStmt
+	
+	*/
 	void printAST();
-
+	/*!
+		\brief   Evaluate the ReadStringStmt
+	*/
 	void evaluate();
 };
 
@@ -2029,21 +2205,37 @@ class EmptyStmt : public Statement
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
-// CREADO EN LA ULTIMA PRACTICA
+// AÑADIDO EN LA ULTIMA PRACTICA
 
+/*!	
+  \class   CommentStmt
+  \brief   Definition of atributes and methods of CommentStmt class
+  \note    CommentStmt Class publicly inherits from Statement class 
+		   and adds its own printAST and evaluate functions
+*/
 class CommentStmt : public Statement 
 {
   private:
 	std::string _comment; //!< Name of the ReadStmt
   public:
+	/*!
+		\brief Constructor of CommentStmt
+		\param comment: string, name of the variable of the ReadStmt
+		\post  A new CommentStmt is created with the parameter
+	*/
 	CommentStmt(std::string comment)
 		
 		{
 			this->_comment = comment;
 		}
-
+	/*!
+		\brief   Print the AST for CommentStmt
+	
+	*/
 	void printAST();
-
+	/*!
+		\brief   Evaluate the CommentStmt
+	*/
 	void evaluate();
 };
 
@@ -2157,7 +2349,16 @@ class WhileStmt : public Statement
 */
   void evaluate();
 };
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// AÑADIDO EN LA ÚLTIMA PRÁCTICA
 
+/*!	
+  \class   DoWhileStmt
+  \brief   Definition of atributes and methods of DoWhileStmt class
+  \note    DoWhileStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+*/
 class DoWhileStmt : public Statement 
 {
  private:
@@ -2196,7 +2397,13 @@ class DoWhileStmt : public Statement
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // AÑADIDO EN LA ÚLTIMA PRÁCTICA
+/*!	
+  \class   SwitchStmt
+  \brief   Definition of atributes and methods of SwitchStmt class
+  \note    SwitchStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
 
+*/
 class RepeatStmt : public Statement 
 {
 	private:
@@ -2204,21 +2411,41 @@ class RepeatStmt : public Statement
 		std::list<Statement *> *_stmts; //!< Statement of the body of the while loop
 
   	public:
-  
+	/*!
+
+		\brief Constructor of  RepeatStmt
+		\param condition: ExpNode of the condition
+		\param statement: Statement of the body of the loop
+		\post  A new RepeatStmt is created with the parameters
+	*/
   	RepeatStmt(ExpNode *condition, std::list<Statement *> *stmts)
 	{
 		this->_cond = condition;
 		this->_stmts = stmts;
 	}
-
+	/*!
+		\brief   Print the AST for RepeatStmt
+		\return  void
+	*/
 	void printAST();
-
+	/*!
+		\brief   Evaluate the RepeatStmt
+		\return  void
+	*/
 	void evaluate();
 };
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // AÑADIDO EN LA ÚLTIMA PRÁCTICA
+
+/*!	
+  \class   SwitchStmt
+  \brief   Definition of atributes and methods of SwitchStmt class
+  \note    SwitchStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+
+*/
 
 class ForStmt : public Statement 
 {
@@ -2230,6 +2457,14 @@ class ForStmt : public Statement
 		std::list<Statement *> *_stmts; //!< Statement of the body of the while loop
 
   	public:
+		/*!
+			\brief Constructor of  ForStmt
+			\param id: string, name of the variable of the assignment statement
+			\param exp1: pointer to ExpNode
+			\param exp2: pointer to ExpNode
+			\param stmts: pointer to list of Statement
+			\post  A new ForStmt is created with the parameters
+		*/
 		ForStmt(std::string id, ExpNode *exp1, ExpNode *exp2, std::list<Statement *> *stmts){
 			this->_id = id;
 			this->_exp1 = exp1;
@@ -2238,6 +2473,15 @@ class ForStmt : public Statement
 			this->_stmts = stmts;
 			
 		}
+		/*!
+			\brief Constructor of  ForStmt
+			\param id: string, name of the variable of the assignment statement
+			\param exp1: pointer to ExpNode
+			\param exp2: pointer to ExpNode
+			\param stmts: pointer to list of Statement
+			\param exp3: pointer to ExpNode
+			\post  A new ForStmt is created with the parameters
+		*/
 	
 		ForStmt(std::string id, ExpNode *exp1, ExpNode *exp2, std::list<Statement *> *stmts, ExpNode *exp3){
 			this->_id = id;
@@ -2248,14 +2492,29 @@ class ForStmt : public Statement
 			
 			
 		}
-
+		/*!
+			\brief   Print the AST for ForStmt
+			\return  void
+		*/
 	void printAST();
+	/*!
+		\brief   Evaluate the ForStmt
+		\return  void
+	*/
 
 	void evaluate();
 };
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // AÑADIDO EN LA ÚLTIMA PRÁCTICA
+
+/*!	
+  \class   ValueStmt
+  \brief   Definition of atributes and methods of ValueStmt class
+  \note    ValueStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+
+*/
 
 class ValueStmt : public Statement 
 {
@@ -2264,32 +2523,30 @@ class ValueStmt : public Statement
 		std::list<Statement *> * _stmts; 	 //!< Statements
 
   	public:
-  
+	/*!
+		\brief Constructor of  ValueStmt
+		\param exp: pointer to ExpNode
+		\param stmts: pointer to list of Statement
+		\post  A new ValueStmt is created with the parameters
+	*/
   	ValueStmt(ExpNode * exp, std::list<Statement *> * stmts){
 		this->_exp = exp;
 		this->_stmts = stmts;
 	}
+	/*!
+		\brief   gets the expression of the ValueStmt
+		\return  ExpNode *
+	*/
 	inline ExpNode * getExp() { return this->_exp; }
-
+	/*!
+		\brief   Print the AST for ValueStmt
+		\return  void
+	*/
 	void printAST();
-
-	void evaluate();
-
-};
-
-class DefaultStmt : public Statement 
-{
-	private:
-		std::list<Statement *> * _stmts; 	 //!< Statements
-
-  	public:
-  
-  	DefaultStmt(std::list<Statement *> * stmts){
-		this->_stmts = stmts;
-	}
-	bool isEmpty() { return this->_stmts->empty(); }
-
-	void printAST();
+	/*!
+		\brief   Evaluate the ValueStmt
+		\return  void
+	*/
 
 	void evaluate();
 
@@ -2299,6 +2556,58 @@ class DefaultStmt : public Statement
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // AÑADIDO EN LA ÚLTIMA PRÁCTICA
 
+/*!	
+  \class   DefaultStmt
+  \brief   Definition of atributes and methods of DefaultStmt class
+  \note    DefaultStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+
+*/
+
+class DefaultStmt : public Statement 
+{
+	private:
+		std::list<Statement *> * _stmts; 	 //!< Statements
+
+  	public:
+	/*!
+		\brief Constructor of  DefaultStmt
+		\param stmts: pointer to list of Statement
+		\post  A new DefaultStmt is created with the parameters
+	*/
+  	DefaultStmt(std::list<Statement *> * stmts){
+		this->_stmts = stmts;
+	}
+	/*!
+		\brief   Check if the DefaultStmt is empty
+		\return  bool
+	*/
+	bool isEmpty() { return this->_stmts->empty(); }
+	/*!
+		\brief   Print the AST for DefaultStmt
+		\return  void
+	*/
+
+	void printAST();
+	/*!
+		\brief   Evaluate the DefaultStmt
+		\return  void
+	*/
+	void evaluate();
+
+};
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////
+// AÑADIDO EN LA ÚLTIMA PRÁCTICA
+
+/*!	
+  \class   CasesStmt
+  \brief   Definition of atributes and methods of CasesStmt class
+  \note    CasesStmt Class publicly inherits from Statement class 
+		       and adds its own printAST and evaluate functions
+
+*/
 class CasesStmt : public Statement 
 {
 	private:
@@ -2307,20 +2616,40 @@ class CasesStmt : public Statement
 		DefaultStmt * _default; //!< Default Statement
 
   	public:
-  
+	
+	/*!
+
+		\brief Constructor of  CasesStmt
+		\param exp: pointer to ExpNode
+		\param stmts: pointer to list of ValueStmt
+		\post  A new CasesStmt is created with the parameters
+	*/
   	CasesStmt(ExpNode * exp, std::list<ValueStmt *> * stmts){
 		this->_exp = exp;
 		this->_stmts = stmts;
 		this->_default = NULL;
 	}
+	/*!
+		\brief Constructor of  CasesStmt
+		\param exp: pointer to ExpNode
+		\param stmts: pointer to list of ValueStmt
+		\param def: pointer to DefaultStmt
+		\post  A new CasesStmt is created with the parameters
+	*/
 	CasesStmt(ExpNode * exp, std::list<ValueStmt *> * stmts, DefaultStmt * def){
 		this->_exp = exp;
 		this->_stmts = stmts;
 		this->_default = def;
 	}
-
+	/*!
+		\brief   Print the AST for CasesStmt
+		\return  void
+	*/
 	void printAST();
-
+	/*!
+		\brief   Evaluate the CasesStmt
+		\return  void
+	*/
 	void evaluate();
 };
 
@@ -2415,7 +2744,3 @@ class AST {
 
 // End of _AST_HPP_
 #endif
-
-
-
-

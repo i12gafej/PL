@@ -46,6 +46,7 @@ extern int lineNumber; //!< External line counter
 
 /* uso de strdup */
 #include <string.h>
+/*NUEVO en el trabajo final*/
 char* imprimir_cadena_sin_comillas(char *yytext, int yyleng){
     int i;
     char* cadena = (char*)malloc(yyleng-1);
@@ -55,6 +56,7 @@ char* imprimir_cadena_sin_comillas(char *yytext, int yyleng){
     cadena[yyleng-2] = '\0';
     return cadena;
 }
+/*NUEVO en el trabajo final*/
 char * imprimir_comentario_sin_exclamaciones(char *yytext, int yyleng){
 	int i;
 	char* cadena = (char*)malloc(yyleng-2);
@@ -64,6 +66,7 @@ char * imprimir_comentario_sin_exclamaciones(char *yytext, int yyleng){
 	cadena[yyleng-3] = '\0';
 	return cadena;
 }
+/*NUEVO en el trabajo final*/
 char * imprimir_comentario_sin_signos(char *yytext, int yyleng){
 	int i;
 	char* cadena = (char*)malloc(yyleng-4);
@@ -73,6 +76,7 @@ char * imprimir_comentario_sin_signos(char *yytext, int yyleng){
 	cadena[yyleng-4] = '\0';
 	return cadena;
 }
+/*NUEVO en el trabajo final*/
 void toLowerCase(char *str) {
     if (str == NULL) return;
 
@@ -90,20 +94,24 @@ void toLowerCase(char *str) {
 DIGIT  [0-9] 
 
 LETTER [a-zA-Z]
+/*NUEVO en el trabajo final*/
 lan [a-zA-ZáéíóúÁÉÍÓÚ0-9]
 la [a-zA-ZáéíóúÁÉÍÓÚ]
 
+/*MODIFICADO en el trabajo final*/
 NUMBER -?[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?
+/*NUEVO en el trabajo final*/
 ERROR_NUMBER -?[0-9]+(([a-df-zA-DFZ]+|((\.\.+)[0-9]|(\.[0-9])(\.[0-9])+))|\.|[eE])
 
 /*MODIFICADO en el trabajo final*/
 IDENTIFIER  {LETTER}((_({LETTER}|{DIGIT}))|({LETTER}|{DIGIT}))* 
+/*NUEVO en el trabajo final*/
 ERROR_IDENTIFIER "_ "|"_\n"|_({lan}|_)*|({lan}*__+{lan}*)|({lan}+_)|({la}({lan}|(_)({lan}))*)|(({lan}{la}+)+)
 ERROR_OPERATOR [-+*/%&|^=!<>]+
 
 /* NUEVO en el trabajo final */
 SHORTCOMMENT !!.*\n
-LONGCOMMENT  <<([^>]|>[^>])*>> 
+LONGCOMMENT  <<([^>]|>[^>])*>>
 STRING '([^'\\]|\\.)*'
 
 /* NEW in example 3 */
