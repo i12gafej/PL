@@ -157,7 +157,7 @@ repetir
 
                         !! Determinar si un número es primo
                         si_no
-                            <<si (opcion = 5)
+                            si (opcion = 5)
                                 entonces
                                     lugar(10,10);
                                     escribir(' Determinar si un número es primo ');
@@ -171,8 +171,8 @@ repetir
                                         entonces
                                             es_primo := 0;
                                     fin_si;
-
-                                    para i desde 2 hasta N-1 paso 1 hacer
+                                    N_fin := N - 1;
+                                    para i desde 2 hasta N_fin paso 1 hacer
                                         si (N % i = 0)
                                             entonces
                                                 es_primo := 0;
@@ -194,7 +194,7 @@ repetir
                             si_no  
                                 lugar(15,10);
                                 escribir(' Opcion incorrecta ');
-                            fin_si; >>
+                            fin_si;
                         fin_si;
                     fin_si;
                 fin_si;

@@ -1,0 +1,8 @@
+<map id="table/logicalVariable.hpp" name="table/logicalVariable.hpp">
+<area shape="rect" id="node1" title="Declaration of LogicalVariable class." alt="" coords="5,5,188,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="182,304,241,331"/>
+<area shape="rect" id="node3" title=" " alt="" coords="69,155,149,181"/>
+<area shape="rect" id="node4" href="$variable_8hpp.html" title="Declaration of Variable class." alt="" coords="135,80,237,107"/>
+<area shape="rect" id="node5" href="$symbol_8hpp.html" title="Declaration of Symbol class." alt="" coords="223,155,322,181"/>
+<area shape="rect" id="node6" href="$symbolInterface_8hpp.html" title="Declaration of abstract SymbolInterface class." alt="" coords="275,229,431,256"/>
+</map>

@@ -1,0 +1,353 @@
+\hypertarget{classlp_1_1StringConstant}{}\doxysection{lp\+::String\+Constant Class Reference}
+\label{classlp_1_1StringConstant}\index{lp::StringConstant@{lp::StringConstant}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} class.  
+
+
+
+
+{\ttfamily \#include $<$String\+Constant.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::String\+Constant\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classlp_1_1StringConstant__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::String\+Constant\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classlp_1_1StringConstant__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{Indent}\textbf{ Constructors}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1StringConstant_ad7cf4576ff659ddcb7240549606b51bf}{String\+Constant}} (std\+::string \mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}=\char`\"{}\char`\"{}, int \mbox{\hyperlink{init_8hpp_a8abb7e972adc09624edab301e021dc5f}{token}}=0, int type=0, std\+::string \mbox{\hyperlink{init_8hpp_a5c33da5929c9f2f9ef8d006d2350e6ec}{value}}=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Constructor with arguments with default values. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1StringConstant_a9abfd2b1acf68a1cdf1738c254280d4c}{String\+Constant}} (const \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \&n)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Observer}\par
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classlp_1_1StringConstant_a391ece5dc7d128015f1597e7c542b5bf}{get\+Value}} () const
+\begin{DoxyCompactList}\small\item\em Public method that returns the value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Modifier}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classlp_1_1StringConstant_af30757ca85d10ad437176439b704534d}{set\+Value}} (const std\+::string \&\mbox{\hyperlink{init_8hpp_a5c33da5929c9f2f9ef8d006d2350e6ec}{value}})
+\begin{DoxyCompactList}\small\item\em This functions modifies the value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ I/O Functions}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classlp_1_1StringConstant_ac814efed90ca8b4bcacc5c53876185c6}{read}} ()
+\begin{DoxyCompactList}\small\item\em Read a \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1StringConstant_af47749eaeb69bf9f5972cb5b9b1dedd9}{write}} () const
+\begin{DoxyCompactList}\small\item\em Write a \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Operators}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \& \mbox{\hyperlink{classlp_1_1StringConstant_af32e6b8ae680b28dc94536cc1f49741f}{operator=}} (const \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \&n)
+\begin{DoxyCompactList}\small\item\em Assignment Operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Private Attributes}
+\begin{Indent}\textbf{ Private atributes of String\+Constant class}\par
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classlp_1_1StringConstant_aab93a7c4c4403671ff22a07b8dba5f21}{\+\_\+value}}
+\begin{DoxyCompactList}\small\item\em Logical value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Friends}
+\begin{Indent}\textbf{ Friend functions}\par
+\begin{DoxyCompactItemize}
+\item 
+std\+::istream \& \mbox{\hyperlink{classlp_1_1StringConstant_a05264b3401914f9dc6d3942b8566b845}{operator$>$$>$}} (std\+::istream \&i, \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \&n)
+\begin{DoxyCompactList}\small\item\em Insertion operator. \end{DoxyCompactList}\item 
+std\+::ostream \& \mbox{\hyperlink{classlp_1_1StringConstant_ac94e7b200a1851c29a6399f8429b1592}{operator$<$$<$}} (std\+::ostream \&o, \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} const \&n)
+\begin{DoxyCompactList}\small\item\em Extraction operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1Constant}{Constant}} class 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1StringConstant_ad7cf4576ff659ddcb7240549606b51bf}\label{classlp_1_1StringConstant_ad7cf4576ff659ddcb7240549606b51bf}} 
+\index{lp::StringConstant@{lp::StringConstant}!StringConstant@{StringConstant}}
+\index{StringConstant@{StringConstant}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{StringConstant()}{StringConstant()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily lp\+::\+String\+Constant\+::\+String\+Constant (\begin{DoxyParamCaption}\item[{std\+::string}]{name = {\ttfamily \char`\"{}\char`\"{}},  }\item[{int}]{token = {\ttfamily 0},  }\item[{int}]{type = {\ttfamily 0},  }\item[{std\+::string}]{value = {\ttfamily \char`\"{}\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with arguments with default values. 
+
+\begin{DoxyNote}{Note}
+Inline function that uses \mbox{\hyperlink{classlp_1_1Constant}{Constant}}\textquotesingle{}s constructor as members initializer 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \\
+\hline
+{\em token} & token of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \\
+\hline
+{\em type} & type of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \\
+\hline
+{\em value} & logical value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} is created with the values of the parameters 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1Symbol_afa2573736a4fff8aafbc038e9741bed6}{set\+Name}}, \mbox{\hyperlink{classlp_1_1StringConstant_af30757ca85d10ad437176439b704534d}{set\+Value}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classlp_1_1StringConstant_a9abfd2b1acf68a1cdf1738c254280d4c}\label{classlp_1_1StringConstant_a9abfd2b1acf68a1cdf1738c254280d4c}} 
+\index{lp::StringConstant@{lp::StringConstant}!StringConstant@{StringConstant}}
+\index{StringConstant@{StringConstant}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{StringConstant()}{StringConstant()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily lp\+::\+String\+Constant\+::\+String\+Constant (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Copy constructor. 
+
+\begin{DoxyNote}{Note}
+Inline function 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em n} & object of \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} is created with the values of an existent \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1Symbol_afa2573736a4fff8aafbc038e9741bed6}{set\+Name}}, \mbox{\hyperlink{classlp_1_1StringConstant_af30757ca85d10ad437176439b704534d}{set\+Value}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1StringConstant_a391ece5dc7d128015f1597e7c542b5bf}\label{classlp_1_1StringConstant_a391ece5dc7d128015f1597e7c542b5bf}} 
+\index{lp::StringConstant@{lp::StringConstant}!getValue@{getValue}}
+\index{getValue@{getValue}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily std\+::string lp\+::\+String\+Constant\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Public method that returns the value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. 
+
+\begin{DoxyNote}{Note}
+Función inline 
+\end{DoxyNote}
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+None 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1StringConstant_a391ece5dc7d128015f1597e7c542b5bf}{get\+Value}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classlp_1_1StringConstant_af32e6b8ae680b28dc94536cc1f49741f}\label{classlp_1_1StringConstant_af32e6b8ae680b28dc94536cc1f49741f}} 
+\index{lp::StringConstant@{lp::StringConstant}!operator=@{operator=}}
+\index{operator=@{operator=}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1StringConstant}{lp\+::\+String\+Constant}} \& lp\+::\+String\+Constant\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \&}]{n }\end{DoxyParamCaption})}
+
+
+
+Assignment Operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & objectoof \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+The atributes of this object are equal to the atributes of the parameter 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+Reference to this object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlp_1_1StringConstant_ac814efed90ca8b4bcacc5c53876185c6}\label{classlp_1_1StringConstant_ac814efed90ca8b4bcacc5c53876185c6}} 
+\index{lp::StringConstant@{lp::StringConstant}!read@{read}}
+\index{read@{read}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{read()}{read()}}
+{\footnotesize\ttfamily void lp\+::\+String\+Constant\+::read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Read a \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. 
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The atributes of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} are modified with the read values 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1StringConstant_af47749eaeb69bf9f5972cb5b9b1dedd9}{write}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1Constant_af9df1bea0d8765adc168e6c997d7c771}{lp\+::\+Constant}}.
+
+\mbox{\Hypertarget{classlp_1_1StringConstant_af30757ca85d10ad437176439b704534d}\label{classlp_1_1StringConstant_af30757ca85d10ad437176439b704534d}} 
+\index{lp::StringConstant@{lp::StringConstant}!setValue@{setValue}}
+\index{setValue@{setValue}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{setValue()}{setValue()}}
+{\footnotesize\ttfamily void lp\+::\+String\+Constant\+::set\+Value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+This functions modifies the value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. 
+
+\begin{DoxyNote}{Note}
+Inline function 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & new value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} is equal to the parameter 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1StringConstant_af30757ca85d10ad437176439b704534d}{set\+Value}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classlp_1_1StringConstant_af47749eaeb69bf9f5972cb5b9b1dedd9}\label{classlp_1_1StringConstant_af47749eaeb69bf9f5972cb5b9b1dedd9}} 
+\index{lp::StringConstant@{lp::StringConstant}!write@{write}}
+\index{write@{write}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{write()}{write()}}
+{\footnotesize\ttfamily void lp\+::\+String\+Constant\+::write (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Write a \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. 
+
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+None 
+\end{DoxyPostcond}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1StringConstant_ac814efed90ca8b4bcacc5c53876185c6}{read}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1Constant_a4cbd157795050db17fb872d6b8bf1870}{lp\+::\+Constant}}.
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classlp_1_1StringConstant_ac94e7b200a1851c29a6399f8429b1592}\label{classlp_1_1StringConstant_ac94e7b200a1851c29a6399f8429b1592}} 
+\index{lp::StringConstant@{lp::StringConstant}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{o,  }\item[{\mbox{\hyperlink{classlp_1_1StringConstant}{lp\+::\+String\+Constant}} const \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Extraction operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em o} & output stream \\
+\hline
+{\em n} & object of \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+nome 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The atributes of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} are written in the output stream 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+The output stream 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlp_1_1StringConstant_a05264b3401914f9dc6d3942b8566b845}\label{classlp_1_1StringConstant_a05264b3401914f9dc6d3942b8566b845}} 
+\index{lp::StringConstant@{lp::StringConstant}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily std\+::istream\& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{i,  }\item[{\mbox{\hyperlink{classlp_1_1StringConstant}{lp\+::\+String\+Constant}} \&}]{n }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Insertion operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & input stream \\
+\hline
+{\em n} & object of \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} class \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+nome 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The atributes of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}} are modified with the inserted values from the input stream 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+The input stream 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlp_1_1StringConstant_aab93a7c4c4403671ff22a07b8dba5f21}\label{classlp_1_1StringConstant_aab93a7c4c4403671ff22a07b8dba5f21}} 
+\index{lp::StringConstant@{lp::StringConstant}!\_value@{\_value}}
+\index{\_value@{\_value}!lp::StringConstant@{lp::StringConstant}}
+\doxysubsubsection{\texorpdfstring{\_value}{\_value}}
+{\footnotesize\ttfamily std\+::string lp\+::\+String\+Constant\+::\+\_\+value\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Logical value of the \mbox{\hyperlink{classlp_1_1StringConstant}{String\+Constant}}. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+table/\mbox{\hyperlink{StringConstant_8hpp}{String\+Constant.\+hpp}}\item 
+table/\mbox{\hyperlink{StringConstant_8cpp}{String\+Constant.\+cpp}}\end{DoxyCompactItemize}

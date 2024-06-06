@@ -1,0 +1,315 @@
+\hypertarget{classlp_1_1Table}{}\doxysection{lp\+::Table Class Reference}
+\label{classlp_1_1Table}\index{lp::Table@{lp::Table}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1Table}{Table}} class.  
+
+
+
+
+{\ttfamily \#include $<$table.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Table\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classlp_1_1Table__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Table\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classlp_1_1Table__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{Indent}\textbf{ Constructor}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1Table_a35ea731cb1f8a4cf175cdf533be1d63d}{Table}} ()
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1Table}{Table}} class ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Destroyer}\par
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1Table_ad6e9037884e73c2c902d12f5fc23fd70}{$\sim$\+Table}} ()
+\begin{DoxyCompactList}\small\item\em Destroyer of \mbox{\hyperlink{classlp_1_1Table}{Table}} class ~\newline
+ \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Observers}\par
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classlp_1_1Table_aa373e3d576e0e9accca108607fdfb187}{lookup\+Symbol}} (const std\+::string \&\mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}) const
+\begin{DoxyCompactList}\small\item\em lookup a \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}} \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1Symbol}{lp\+::\+Symbol}} $\ast$ \mbox{\hyperlink{classlp_1_1Table_a6701201183a3fe2e3fb9b0a9afaf838b}{get\+Symbol}} (const std\+::string \&\mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}})
+\begin{DoxyCompactList}\small\item\em Get the pointer to \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} saved in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classlp_1_1Table_a0f4ff9e6577b4dd08f5751c7d9241ed0}{is\+Empty}} () const
+\begin{DoxyCompactList}\small\item\em Check if the \mbox{\hyperlink{classlp_1_1Table}{Table}} is empty. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlp_1_1Table_a227c254d3db7d87241ba55dddeae7c95}{get\+Number\+Of\+Symbols}} () const
+\begin{DoxyCompactList}\small\item\em Return the number of Symbols saved in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Modifiers}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classlp_1_1Table_aef4ef0061f49bf9bba06e6570d40e979}{install\+Symbol}} (\mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} $\ast$s)
+\begin{DoxyCompactList}\small\item\em Insert a new pointer to \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1Table_ace1728aa7cc4af582de8aac8e0148b77}{erase\+Symbol}} (const std\+::string \&\mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}})
+\begin{DoxyCompactList}\small\item\em Delete a \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Output print}\par
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classlp_1_1Table_a9fc2ac7de6a70e059bd233108216a43a}{print\+Table}} ()
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classlp_1_1Table}{Table}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Private Attributes}
+\begin{Indent}\textbf{ Private atribute of Symbol class}\par
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, \mbox{\hyperlink{classlp_1_1Symbol}{lp\+::\+Symbol}} $\ast$ $>$ \mbox{\hyperlink{classlp_1_1Table_a07b5cf9cf7e3c94376d845ac89b2cdcd}{\+\_\+table}}
+\begin{DoxyCompactList}\small\item\em map of strings and pointers to \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1Table}{Table}} class. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1Table_a35ea731cb1f8a4cf175cdf533be1d63d}\label{classlp_1_1Table_a35ea731cb1f8a4cf175cdf533be1d63d}} 
+\index{lp::Table@{lp::Table}!Table@{Table}}
+\index{Table@{Table}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{Table()}{Table()}}
+{\footnotesize\ttfamily lp\+::\+Table\+::\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1Table}{Table}} class ~\newline
+ 
+
+\begin{DoxyNote}{Note}
+Función inline 
+\end{DoxyNote}
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The \mbox{\hyperlink{classlp_1_1Table}{Table}} is empty 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classlp_1_1Table_ad6e9037884e73c2c902d12f5fc23fd70}\label{classlp_1_1Table_ad6e9037884e73c2c902d12f5fc23fd70}} 
+\index{lp::Table@{lp::Table}!````~Table@{$\sim$Table}}
+\index{````~Table@{$\sim$Table}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{$\sim$Table()}{~Table()}}
+{\footnotesize\ttfamily lp\+::\+Table\+::$\sim$\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Destroyer of \mbox{\hyperlink{classlp_1_1Table}{Table}} class ~\newline
+ 
+
+\begin{DoxyNote}{Note}
+Función inline 
+\end{DoxyNote}
+\begin{DoxyPrecond}{Precondition}
+None 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The \mbox{\hyperlink{classlp_1_1Table}{Table}} is empty 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1Table_ace1728aa7cc4af582de8aac8e0148b77}\label{classlp_1_1Table_ace1728aa7cc4af582de8aac8e0148b77}} 
+\index{lp::Table@{lp::Table}!eraseSymbol@{eraseSymbol}}
+\index{eraseSymbol@{eraseSymbol}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{eraseSymbol()}{eraseSymbol()}}
+{\footnotesize\ttfamily void lp\+::\+Table\+::erase\+Symbol (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Delete a \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} to be deleted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \char`\"{}name\char`\"{} must be in the \mbox{\hyperlink{classlp_1_1Table}{Table}} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \char`\"{}name\char`\"{} must not be in the \mbox{\hyperlink{classlp_1_1Table}{Table}} 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1Table_aa373e3d576e0e9accca108607fdfb187}{lookup\+Symbol()}},\mbox{\hyperlink{classlp_1_1Table_aef4ef0061f49bf9bba06e6570d40e979}{install\+Symbol()}} 
+\end{DoxySeeAlso}
+\mbox{\Hypertarget{classlp_1_1Table_a227c254d3db7d87241ba55dddeae7c95}\label{classlp_1_1Table_a227c254d3db7d87241ba55dddeae7c95}} 
+\index{lp::Table@{lp::Table}!getNumberOfSymbols@{getNumberOfSymbols}}
+\index{getNumberOfSymbols@{getNumberOfSymbols}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{getNumberOfSymbols()}{getNumberOfSymbols()}}
+{\footnotesize\ttfamily int lp\+::\+Table\+::get\+Number\+Of\+Symbols (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Return the number of Symbols saved in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. 
+
+\begin{DoxyNote}{Note}
+Inline function 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+Integer number 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1Table_a0f4ff9e6577b4dd08f5751c7d9241ed0}{is\+Empty()}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1TableInterface_a9b0703c179dae1150a2c57138ab73db2}{lp\+::\+Table\+Interface}}.
+
+\mbox{\Hypertarget{classlp_1_1Table_a6701201183a3fe2e3fb9b0a9afaf838b}\label{classlp_1_1Table_a6701201183a3fe2e3fb9b0a9afaf838b}} 
+\index{lp::Table@{lp::Table}!getSymbol@{getSymbol}}
+\index{getSymbol@{getSymbol}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{getSymbol()}{getSymbol()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1Symbol}{lp\+::\+Symbol}} $\ast$ lp\+::\+Table\+::get\+Symbol (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the pointer to \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} saved in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. 
+
+\begin{DoxyPrecond}{Precondition}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} must be in the table 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} with the searched name 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1Table_aa373e3d576e0e9accca108607fdfb187}{lookup\+Symbol()}}, operator\mbox{[}\mbox{]} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1TableInterface_a290eeb8c747724ba4c74904b7f1cf47c}{lp\+::\+Table\+Interface}}.
+
+\mbox{\Hypertarget{classlp_1_1Table_aef4ef0061f49bf9bba06e6570d40e979}\label{classlp_1_1Table_aef4ef0061f49bf9bba06e6570d40e979}} 
+\index{lp::Table@{lp::Table}!installSymbol@{installSymbol}}
+\index{installSymbol@{installSymbol}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{installSymbol()}{installSymbol()}}
+{\footnotesize\ttfamily void lp\+::\+Table\+::install\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Insert a new pointer to \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & new pointer to \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \char`\"{}s\char`\"{} must not be in the \mbox{\hyperlink{classlp_1_1Table}{Table}} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \char`\"{}s\char`\"{} must be in the \mbox{\hyperlink{classlp_1_1Table}{Table}} 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1Table_aa373e3d576e0e9accca108607fdfb187}{lookup\+Symbol()}}, \mbox{\hyperlink{classlp_1_1Table_ace1728aa7cc4af582de8aac8e0148b77}{erase\+Symbol()}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1TableInterface_a12efe4c74f7edcbfc0c2d782ffd15fb9}{lp\+::\+Table\+Interface}}.
+
+\mbox{\Hypertarget{classlp_1_1Table_a0f4ff9e6577b4dd08f5751c7d9241ed0}\label{classlp_1_1Table_a0f4ff9e6577b4dd08f5751c7d9241ed0}} 
+\index{lp::Table@{lp::Table}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily bool lp\+::\+Table\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Check if the \mbox{\hyperlink{classlp_1_1Table}{Table}} is empty. 
+
+\begin{DoxyNote}{Note}
+Inline function 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+true, if the table is empty; false, otherwise 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1Table_a227c254d3db7d87241ba55dddeae7c95}{get\+Number\+Of\+Symbols()}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1TableInterface_aa1272d3c99a362c23a1ebc60ad18775e}{lp\+::\+Table\+Interface}}.
+
+\mbox{\Hypertarget{classlp_1_1Table_aa373e3d576e0e9accca108607fdfb187}\label{classlp_1_1Table_aa373e3d576e0e9accca108607fdfb187}} 
+\index{lp::Table@{lp::Table}!lookupSymbol@{lookupSymbol}}
+\index{lookupSymbol@{lookupSymbol}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{lookupSymbol()}{lookupSymbol()}}
+{\footnotesize\ttfamily bool lp\+::\+Table\+::lookup\+Symbol (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+lookup a \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & of a \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+true, if the \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} exists; false, otherwise 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1Table_a6701201183a3fe2e3fb9b0a9afaf838b}{get\+Symbol()}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1TableInterface_ac69a046f29e6ccfc4b82d99633585af6}{lp\+::\+Table\+Interface}}.
+
+\mbox{\Hypertarget{classlp_1_1Table_a9fc2ac7de6a70e059bd233108216a43a}\label{classlp_1_1Table_a9fc2ac7de6a70e059bd233108216a43a}} 
+\index{lp::Table@{lp::Table}!printTable@{printTable}}
+\index{printTable@{printTable}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{printTable()}{printTable()}}
+{\footnotesize\ttfamily void lp\+::\+Table\+::print\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print the \mbox{\hyperlink{classlp_1_1Table}{Table}}. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlp_1_1Table_a07b5cf9cf7e3c94376d845ac89b2cdcd}\label{classlp_1_1Table_a07b5cf9cf7e3c94376d845ac89b2cdcd}} 
+\index{lp::Table@{lp::Table}!\_table@{\_table}}
+\index{\_table@{\_table}!lp::Table@{lp::Table}}
+\doxysubsubsection{\texorpdfstring{\_table}{\_table}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, \mbox{\hyperlink{classlp_1_1Symbol}{lp\+::\+Symbol}} $\ast$$>$ lp\+::\+Table\+::\+\_\+table\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+map of strings and pointers to \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+table/\mbox{\hyperlink{table_8hpp}{table.\+hpp}}\item 
+table/\mbox{\hyperlink{table_8cpp}{table.\+cpp}}\end{DoxyCompactItemize}

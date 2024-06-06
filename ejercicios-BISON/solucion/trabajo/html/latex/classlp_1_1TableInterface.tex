@@ -1,0 +1,198 @@
+\hypertarget{classlp_1_1TableInterface}{}\doxysection{lp\+::Table\+Interface Class Reference}
+\label{classlp_1_1TableInterface}\index{lp::TableInterface@{lp::TableInterface}}
+
+
+Specificatons of the pure virtual methods.  
+
+
+
+
+{\ttfamily \#include $<$table\+Interface.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Table\+Interface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classlp_1_1TableInterface__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Table\+Interface\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classlp_1_1TableInterface__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Private Member Functions}
+\begin{Indent}\textbf{ Observers}\par
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classlp_1_1TableInterface_ac69a046f29e6ccfc4b82d99633585af6}{lookup\+Symbol}} (const std\+::string \&\mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}) const =0
+\begin{DoxyCompactList}\small\item\em lookup a \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}} \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classlp_1_1Symbol}{lp\+::\+Symbol}} $\ast$ \mbox{\hyperlink{classlp_1_1TableInterface_a290eeb8c747724ba4c74904b7f1cf47c}{get\+Symbol}} (const std\+::string \&\mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}})=0
+\begin{DoxyCompactList}\small\item\em Get the \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} saved in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classlp_1_1TableInterface_aa1272d3c99a362c23a1ebc60ad18775e}{is\+Empty}} () const =0
+\begin{DoxyCompactList}\small\item\em Check if the \mbox{\hyperlink{classlp_1_1Table}{Table}} is empty. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classlp_1_1TableInterface_a9b0703c179dae1150a2c57138ab73db2}{get\+Number\+Of\+Symbols}} () const =0
+\begin{DoxyCompactList}\small\item\em Return the number of Symbols saved in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Modifiers}\par
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classlp_1_1TableInterface_a12efe4c74f7edcbfc0c2d782ffd15fb9}{install\+Symbol}} (\mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} $\ast$s)=0
+\begin{DoxyCompactList}\small\item\em Insert a new \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\doxysubsection{Detailed Description}
+Specificatons of the pure virtual methods. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1TableInterface_a9b0703c179dae1150a2c57138ab73db2}\label{classlp_1_1TableInterface_a9b0703c179dae1150a2c57138ab73db2}} 
+\index{lp::TableInterface@{lp::TableInterface}!getNumberOfSymbols@{getNumberOfSymbols}}
+\index{getNumberOfSymbols@{getNumberOfSymbols}!lp::TableInterface@{lp::TableInterface}}
+\doxysubsubsection{\texorpdfstring{getNumberOfSymbols()}{getNumberOfSymbols()}}
+{\footnotesize\ttfamily virtual int lp\+::\+Table\+Interface\+::get\+Number\+Of\+Symbols (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+
+Return the number of Symbols saved in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. 
+
+\begin{DoxyWarning}{Warning}
+Pure virtual function\+: it must be redefined in the heir class 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+Integer number 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1TableInterface_aa1272d3c99a362c23a1ebc60ad18775e}{is\+Empty}} 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classlp_1_1Table_a227c254d3db7d87241ba55dddeae7c95}{lp\+::\+Table}}.
+
+\mbox{\Hypertarget{classlp_1_1TableInterface_a290eeb8c747724ba4c74904b7f1cf47c}\label{classlp_1_1TableInterface_a290eeb8c747724ba4c74904b7f1cf47c}} 
+\index{lp::TableInterface@{lp::TableInterface}!getSymbol@{getSymbol}}
+\index{getSymbol@{getSymbol}!lp::TableInterface@{lp::TableInterface}}
+\doxysubsubsection{\texorpdfstring{getSymbol()}{getSymbol()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classlp_1_1Symbol}{lp\+::\+Symbol}}$\ast$ lp\+::\+Table\+Interface\+::get\+Symbol (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+
+Get the \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} saved in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. 
+
+\begin{DoxyWarning}{Warning}
+Pure virtual function\+: it must be redefined in the heir class 
+\end{DoxyWarning}
+\begin{DoxyPrecond}{Precondition}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} must be in the table 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} with the searched name 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1TableInterface_ac69a046f29e6ccfc4b82d99633585af6}{lookup\+Symbol}} 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classlp_1_1Table_a6701201183a3fe2e3fb9b0a9afaf838b}{lp\+::\+Table}}.
+
+\mbox{\Hypertarget{classlp_1_1TableInterface_a12efe4c74f7edcbfc0c2d782ffd15fb9}\label{classlp_1_1TableInterface_a12efe4c74f7edcbfc0c2d782ffd15fb9}} 
+\index{lp::TableInterface@{lp::TableInterface}!installSymbol@{installSymbol}}
+\index{installSymbol@{installSymbol}!lp::TableInterface@{lp::TableInterface}}
+\doxysubsubsection{\texorpdfstring{installSymbol()}{installSymbol()}}
+{\footnotesize\ttfamily virtual void lp\+::\+Table\+Interface\+::install\+Symbol (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} $\ast$}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+
+Insert a new \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}}. 
+
+\begin{DoxyWarning}{Warning}
+Pure virtual function\+: it must be redefined in the heir class 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em s} & new \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \char`\"{}s\char`\"{} must not be in the \mbox{\hyperlink{classlp_1_1Table}{Table}} 
+\end{DoxyPrecond}
+\begin{DoxyPostcond}{Postcondition}
+The \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \char`\"{}s\char`\"{} must be in the \mbox{\hyperlink{classlp_1_1Table}{Table}} 
+\end{DoxyPostcond}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1TableInterface_ac69a046f29e6ccfc4b82d99633585af6}{lookup\+Symbol}} 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classlp_1_1Table_aef4ef0061f49bf9bba06e6570d40e979}{lp\+::\+Table}}.
+
+\mbox{\Hypertarget{classlp_1_1TableInterface_aa1272d3c99a362c23a1ebc60ad18775e}\label{classlp_1_1TableInterface_aa1272d3c99a362c23a1ebc60ad18775e}} 
+\index{lp::TableInterface@{lp::TableInterface}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!lp::TableInterface@{lp::TableInterface}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily virtual bool lp\+::\+Table\+Interface\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+
+Check if the \mbox{\hyperlink{classlp_1_1Table}{Table}} is empty. 
+
+\begin{DoxyWarning}{Warning}
+Pure virtual function\+: it must be redefined in the heir class 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+true, if the table is empty; false, otherwise 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1TableInterface_a9b0703c179dae1150a2c57138ab73db2}{get\+Number\+Of\+Symbols}} 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classlp_1_1Table_a0f4ff9e6577b4dd08f5751c7d9241ed0}{lp\+::\+Table}}.
+
+\mbox{\Hypertarget{classlp_1_1TableInterface_ac69a046f29e6ccfc4b82d99633585af6}\label{classlp_1_1TableInterface_ac69a046f29e6ccfc4b82d99633585af6}} 
+\index{lp::TableInterface@{lp::TableInterface}!lookupSymbol@{lookupSymbol}}
+\index{lookupSymbol@{lookupSymbol}!lp::TableInterface@{lp::TableInterface}}
+\doxysubsubsection{\texorpdfstring{lookupSymbol()}{lookupSymbol()}}
+{\footnotesize\ttfamily virtual bool lp\+::\+Table\+Interface\+::lookup\+Symbol (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [pure virtual]}}
+
+
+
+lookup a \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} in the \mbox{\hyperlink{classlp_1_1Table}{Table}} 
+
+\begin{DoxyWarning}{Warning}
+Pure virtual function\+: it must be redefined in the heir class 
+\end{DoxyWarning}
+
+\begin{DoxyParams}{Parameters}
+{\em name} & of a \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+none 
+\end{DoxyPrecond}
+\begin{DoxyReturn}{Returns}
+true, if the \mbox{\hyperlink{classlp_1_1Symbol}{Symbol}} exists; false, otherwise 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1TableInterface_a290eeb8c747724ba4c74904b7f1cf47c}{get\+Symbol}} 
+\end{DoxySeeAlso}
+
+
+Implemented in \mbox{\hyperlink{classlp_1_1Table_aa373e3d576e0e9accca108607fdfb187}{lp\+::\+Table}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+table/\mbox{\hyperlink{tableInterface_8hpp}{table\+Interface.\+hpp}}\end{DoxyCompactItemize}

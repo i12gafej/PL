@@ -1,0 +1,284 @@
+\hypertarget{init_8hpp}{}\doxysection{table/init.hpp File Reference}
+\label{init_8hpp}\index{table/init.hpp@{table/init.hpp}}
+
+
+Prototype of the function for the initialization of table of symbols.  
+
+
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}table.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../ast/ast.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../parser/interpreter.\+tab.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}math\+Function.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}builtin\+Parameter1.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}builtin\+Parameter0.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}builtin\+Parameter2.\+hpp\char`\"{}}\newline
+Include dependency graph for init.\+hpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{init_8hpp__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=161pt]{init_8hpp__dep__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{init_8hpp_ae7bf5ad90e29870521071cd69cd00f37}{init}} (\mbox{\hyperlink{classlp_1_1Table}{lp\+::\+Table}} \&t)
+\begin{DoxyCompactList}\small\item\em Initialize the table of symbols. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>std::string \mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}\\
+\>double \mbox{\hyperlink{init_8hpp_a5c33da5929c9f2f9ef8d006d2350e6ec}{value}}\\
+\} \mbox{\hyperlink{init_8hpp_a8e404f5397f819cce1374dd23c6c2987}{numericConstant}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>std::string \mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}\\
+\>bool \mbox{\hyperlink{init_8hpp_a5c33da5929c9f2f9ef8d006d2350e6ec}{value}}\\
+\} \mbox{\hyperlink{init_8hpp_a500f28cf9a67f1586d7475e76ee2b042}{logicalConstant}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>std::string \mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}\\
+\>std::string \mbox{\hyperlink{init_8hpp_a5c33da5929c9f2f9ef8d006d2350e6ec}{value}}\\
+\} \mbox{\hyperlink{init_8hpp_a04e669298da60684c19893aeaef62cec}{StringConstant}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>std::string \mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}\\
+\>int \mbox{\hyperlink{init_8hpp_a8abb7e972adc09624edab301e021dc5f}{token}}\\
+\} \mbox{\hyperlink{init_8hpp_a602afe8af686b268babba0d68e76ae9a}{keyword}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>std::string \mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}\\
+\>\mbox{\hyperlink{namespacelp_aad794af30bdb49cdd66b76ff23f29b76}{lp::TypePointerDoubleFunction\_1}} \mbox{\hyperlink{init_8hpp_a06e0d9a0a1e2ef081257e89ff8e586fe}{function}}\\
+\} \mbox{\hyperlink{init_8hpp_a69659f37fbbcab7c213a4b2562d90ba7}{function\_1}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>std::string \mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}\\
+\>\mbox{\hyperlink{namespacelp_ad75f5ab78869e10c7cf64a1d652e9b4a}{lp::TypePointerDoubleFunction\_0}} \mbox{\hyperlink{init_8hpp_a06e0d9a0a1e2ef081257e89ff8e586fe}{function}}\\
+\} \mbox{\hyperlink{init_8hpp_a174acf0249ced30bd08e0d84ffa7ad24}{function\_0}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>std::string \mbox{\hyperlink{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}{name}}\\
+\>\mbox{\hyperlink{namespacelp_a0fae20f361dbeb394970954d0b134e9b}{lp::TypePointerDoubleFunction\_2}} \mbox{\hyperlink{init_8hpp_a06e0d9a0a1e2ef081257e89ff8e586fe}{function}}\\
+\} \mbox{\hyperlink{init_8hpp_a3ddfa5ea4dcf5dbbbc9e4e550bc88db8}{function\_2}} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Prototype of the function for the initialization of table of symbols. 
+
+\begin{DoxyAuthor}{Author}
+~\newline
+ 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+2017-\/12-\/5 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{init_8hpp_ae7bf5ad90e29870521071cd69cd00f37}\label{init_8hpp_ae7bf5ad90e29870521071cd69cd00f37}} 
+\index{init.hpp@{init.hpp}!init@{init}}
+\index{init@{init}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{init()}{init()}}
+{\footnotesize\ttfamily void init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1Table}{lp\+::\+Table}} \&}]{t }\end{DoxyParamCaption})}
+
+
+
+Initialize the table of symbols. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{init_8hpp_a06e0d9a0a1e2ef081257e89ff8e586fe}\label{init_8hpp_a06e0d9a0a1e2ef081257e89ff8e586fe}} 
+\index{init.hpp@{init.hpp}!function@{function}}
+\index{function@{function}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{function}{function}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespacelp_a0fae20f361dbeb394970954d0b134e9b}{lp\+::\+Type\+Pointer\+Double\+Function\+\_\+2}} function}
+
+\mbox{\Hypertarget{init_8hpp_a174acf0249ced30bd08e0d84ffa7ad24}\label{init_8hpp_a174acf0249ced30bd08e0d84ffa7ad24}} 
+\index{init.hpp@{init.hpp}!function\_0@{function\_0}}
+\index{function\_0@{function\_0}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily struct \{ ... \}  function\+\_\+0\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}random"{}}, \mbox{\hyperlink{mathFunction_8cpp_a10b2d281f4a690aee72efa8046b877b1}{Random}}\},}
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}"{}},       0\}}
+\DoxyCodeLine{                      \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{init_8hpp_a69659f37fbbcab7c213a4b2562d90ba7}\label{init_8hpp_a69659f37fbbcab7c213a4b2562d90ba7}} 
+\index{init.hpp@{init.hpp}!function\_1@{function\_1}}
+\index{function\_1@{function\_1}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily struct \{ ... \}  function\+\_\+1\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}sin"{}},     sin\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}cos"{}},     cos\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}atan"{}},    atan\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}log"{}},     \mbox{\hyperlink{mathFunction_8cpp_ab190405c8d2ef86c06c2a76c8919a5ec}{Log}}\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}log10"{}},   \mbox{\hyperlink{mathFunction_8cpp_a6f34bf0aa6b49d312f200d73282f235d}{Log10}}\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}exp"{}},     \mbox{\hyperlink{mathFunction_8cpp_ab778ae483c09efc88fe80ee315634247}{Exp}}\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}sqrt"{}},    \mbox{\hyperlink{mathFunction_8cpp_a0df8e683452b4bc3bf2bac39300b78fb}{Sqrt}}\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}integer"{}}, \mbox{\hyperlink{mathFunction_8cpp_a866aaa40dad8109135f82fab2fd1e552}{integer}}\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}abs"{}},     fabs\},   }
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}"{}},       0\}}
+\DoxyCodeLine{                      \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{init_8hpp_a3ddfa5ea4dcf5dbbbc9e4e550bc88db8}\label{init_8hpp_a3ddfa5ea4dcf5dbbbc9e4e550bc88db8}} 
+\index{init.hpp@{init.hpp}!function\_2@{function\_2}}
+\index{function\_2@{function\_2}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily struct \{ ... \}  function\+\_\+2\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}atan2"{}},   \mbox{\hyperlink{mathFunction_8cpp_aaa5ab3c65b9641f75f6d58a780d1a624}{Atan2}}\},}
+\DoxyCodeLine{                       \{\textcolor{stringliteral}{"{}"{}},       0\}}
+\DoxyCodeLine{                      \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{init_8hpp_a602afe8af686b268babba0d68e76ae9a}\label{init_8hpp_a602afe8af686b268babba0d68e76ae9a}} 
+\index{init.hpp@{init.hpp}!keyword@{keyword}}
+\index{keyword@{keyword}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily struct \{ ... \}  keyword\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{ }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}escribir"{}}, PRINT\},            }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}leer"{}},  READ\},                }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}leer\_cadena"{}}, READ\_STRING\},   }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}si"{}},    IF\},                  }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}entonces"{}}, THEN\},             }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}si\_no"{}},  ELSE\},               }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}fin\_si"{}}, END\_IF\},             }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}mientras"{}}, WHILE\},            }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}hacer"{}}, DO\},                  }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}fin\_mientras"{}}, END\_WHILE\},    }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}repetir"{}}, REPEAT\},            }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}para"{}}, FOR\},                  }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}desde"{}}, FROM\},                }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}hasta"{}}, UNTIL\},               }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}fin\_para"{}}, END\_FOR\},          }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}paso"{}}, STEP\},                 }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}casos"{}}, CASES\},               }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}valor"{}},VALUE\},                }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}defecto"{}},DEFAULT\},            }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}fin\_casos"{}}, END\_CASES\},       }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}borrar\_pantalla"{}}, CLEAR\},     }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}lugar"{}}, PLACE\},                       }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}"{}},      0\}}
+\DoxyCodeLine{                       \}}
+
+\end{DoxyCode}
+\textbackslash{} brief Predefined keywords \mbox{\Hypertarget{init_8hpp_a500f28cf9a67f1586d7475e76ee2b042}\label{init_8hpp_a500f28cf9a67f1586d7475e76ee2b042}} 
+\index{init.hpp@{init.hpp}!logicalConstant@{logicalConstant}}
+\index{logicalConstant@{logicalConstant}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily struct \{ ... \}  logical\+Constant\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{ }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}verdadero"{}}, \textcolor{keyword}{true}\}, }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}falso"{}}, \textcolor{keyword}{false}\},    }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}"{}},      0\}}
+\DoxyCodeLine{                       \}}
+
+\end{DoxyCode}
+\textbackslash{} brief Predefined logical constants \mbox{\Hypertarget{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}\label{init_8hpp_a9b45b3e13bd9167aab02e17e08916231}} 
+\index{init.hpp@{init.hpp}!name@{name}}
+\index{name@{name}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily std\+::string name}
+
+\mbox{\Hypertarget{init_8hpp_a8e404f5397f819cce1374dd23c6c2987}\label{init_8hpp_a8e404f5397f819cce1374dd23c6c2987}} 
+\index{init.hpp@{init.hpp}!numericConstant@{numericConstant}}
+\index{numericConstant@{numericConstant}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily struct \{ ... \}  numeric\+Constant\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}pi"{}},    3.14159265358979323846\}, }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}e"{}},     2.71828182845904523536\}, }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}gamma"{}}, 0.57721566490153286060\}, }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}deg"{}},  57.29577951308232087680\}, }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}phi"{}},   1.61803398874989484820\}, }
+\DoxyCodeLine{                        \{\textcolor{stringliteral}{"{}"{}},      0\}}
+\DoxyCodeLine{                       \}}
+
+\end{DoxyCode}
+\textbackslash{} brief Predefined numeric constants \mbox{\Hypertarget{init_8hpp_a04e669298da60684c19893aeaef62cec}\label{init_8hpp_a04e669298da60684c19893aeaef62cec}} 
+\index{init.hpp@{init.hpp}!StringConstant@{StringConstant}}
+\index{StringConstant@{StringConstant}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{}{}}
+{\footnotesize\ttfamily struct \{ ... \}  String\+Constant\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{                    \{\textcolor{stringliteral}{"{}holamundo"{}}, \textcolor{stringliteral}{"{}Hola Mundo"{}}\},}
+\DoxyCodeLine{                    \{\textcolor{stringliteral}{"{}adiosmundo"{}}, \textcolor{stringliteral}{"{}Adios Mundo"{}}\},}
+\DoxyCodeLine{                    \{\textcolor{stringliteral}{"{}"{}},    \textcolor{stringliteral}{"{}"{}}\}}
+\DoxyCodeLine{                    \}}
+
+\end{DoxyCode}
+\textbackslash{} brief Predefined string constants \mbox{\Hypertarget{init_8hpp_a8abb7e972adc09624edab301e021dc5f}\label{init_8hpp_a8abb7e972adc09624edab301e021dc5f}} 
+\index{init.hpp@{init.hpp}!token@{token}}
+\index{token@{token}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{token}{token}}
+{\footnotesize\ttfamily int token}
+
+\mbox{\Hypertarget{init_8hpp_a5c33da5929c9f2f9ef8d006d2350e6ec}\label{init_8hpp_a5c33da5929c9f2f9ef8d006d2350e6ec}} 
+\index{init.hpp@{init.hpp}!value@{value}}
+\index{value@{value}!init.hpp@{init.hpp}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily std\+::string value}
+

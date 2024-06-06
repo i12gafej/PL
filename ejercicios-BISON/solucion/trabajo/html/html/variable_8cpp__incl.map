@@ -1,0 +1,8 @@
+<map id="table/variable.cpp" name="table/variable.cpp">
+<area shape="rect" id="node1" title="Code of some functions of Variable class." alt="" coords="15,5,153,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,85,181"/>
+<area shape="rect" id="node3" href="$variable_8hpp.html" title="Declaration of Variable class." alt="" coords="78,80,181,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="147,304,205,331"/>
+<area shape="rect" id="node5" href="$symbol_8hpp.html" title="Declaration of Symbol class." alt="" coords="163,155,261,181"/>
+<area shape="rect" id="node6" href="$symbolInterface_8hpp.html" title="Declaration of abstract SymbolInterface class." alt="" coords="214,229,370,256"/>
+</map>
