@@ -1,0 +1,155 @@
+\hypertarget{classlp_1_1PreDecrementNode}{}\doxysection{lp\+::Pre\+Decrement\+Node Class Reference}
+\label{classlp_1_1PreDecrementNode}\index{lp::PreDecrementNode@{lp::PreDecrementNode}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1PreDecrementNode}{Pre\+Decrement\+Node}} class.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Pre\+Decrement\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classlp_1_1PreDecrementNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Pre\+Decrement\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classlp_1_1PreDecrementNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1PreDecrementNode_a8c57d8d74413e8f43a158bcf70285bf6}{Pre\+Decrement\+Node}} (std\+::string id)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1PreDecrementNode}{Pre\+Decrement\+Node}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlp_1_1PreDecrementNode_aeef2f282a63ec2ff773df6d6da88a4c7}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Get the type of the expression\+: NUMBER. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1PreDecrementNode_a0de2676eab64ab1fd3c66442d623a0dd}{print\+AST}} ()
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for expression. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classlp_1_1PreDecrementNode_ace5b9d9cee2fce9abec5d15171bdc6f3}{evaluate\+Number}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classlp_1_1PreDecrementNode_ad41dcc37bb4a4411af2c07cbe51aae44}{\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em number of the \mbox{\hyperlink{classlp_1_1PreDecrementNode}{Pre\+Decrement\+Node}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1PreDecrementNode}{Pre\+Decrement\+Node}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1PreDecrementNode}{Pre\+Decrement\+Node}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} class 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1PreDecrementNode_a8c57d8d74413e8f43a158bcf70285bf6}\label{classlp_1_1PreDecrementNode_a8c57d8d74413e8f43a158bcf70285bf6}} 
+\index{lp::PreDecrementNode@{lp::PreDecrementNode}!PreDecrementNode@{PreDecrementNode}}
+\index{PreDecrementNode@{PreDecrementNode}!lp::PreDecrementNode@{lp::PreDecrementNode}}
+\doxysubsubsection{\texorpdfstring{PreDecrementNode()}{PreDecrementNode()}}
+{\footnotesize\ttfamily lp\+::\+Pre\+Decrement\+Node\+::\+Pre\+Decrement\+Node (\begin{DoxyParamCaption}\item[{std\+::string}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1PreDecrementNode}{Pre\+Decrement\+Node}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & std\+::string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1PreDecrementNode}{Pre\+Decrement\+Node}} is created with the value of the parameter 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Inline function 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1PreDecrementNode_ace5b9d9cee2fce9abec5d15171bdc6f3}\label{classlp_1_1PreDecrementNode_ace5b9d9cee2fce9abec5d15171bdc6f3}} 
+\index{lp::PreDecrementNode@{lp::PreDecrementNode}!evaluateNumber@{evaluateNumber}}
+\index{evaluateNumber@{evaluateNumber}!lp::PreDecrementNode@{lp::PreDecrementNode}}
+\doxysubsubsection{\texorpdfstring{evaluateNumber()}{evaluateNumber()}}
+{\footnotesize\ttfamily double lp\+::\+Pre\+Decrement\+Node\+::evaluate\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the expression. 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1PreDecrementNode_aeef2f282a63ec2ff773df6d6da88a4c7}{get\+Type}}, \mbox{\hyperlink{classlp_1_1PreDecrementNode_a0de2676eab64ab1fd3c66442d623a0dd}{print\+AST}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1ExpNode_a4a71d424c149c81abb3bb242fe586a9e}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1PreDecrementNode_aeef2f282a63ec2ff773df6d6da88a4c7}\label{classlp_1_1PreDecrementNode_aeef2f282a63ec2ff773df6d6da88a4c7}} 
+\index{lp::PreDecrementNode@{lp::PreDecrementNode}!getType@{getType}}
+\index{getType@{getType}!lp::PreDecrementNode@{lp::PreDecrementNode}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily int lp\+::\+Pre\+Decrement\+Node\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the type of the expression\+: NUMBER. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1PreDecrementNode_a0de2676eab64ab1fd3c66442d623a0dd}{print\+AST}}, \mbox{\hyperlink{classlp_1_1PreDecrementNode_ace5b9d9cee2fce9abec5d15171bdc6f3}{evaluate\+Number}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_a61d3eabda25d2604efd15f65f8260043}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1PreDecrementNode_a0de2676eab64ab1fd3c66442d623a0dd}\label{classlp_1_1PreDecrementNode_a0de2676eab64ab1fd3c66442d623a0dd}} 
+\index{lp::PreDecrementNode@{lp::PreDecrementNode}!printAST@{printAST}}
+\index{printAST@{printAST}!lp::PreDecrementNode@{lp::PreDecrementNode}}
+\doxysubsubsection{\texorpdfstring{printAST()}{printAST()}}
+{\footnotesize\ttfamily void lp\+::\+Pre\+Decrement\+Node\+::print\+AST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for expression. 
+
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_ac03101684d81659ddc6a0d0e8d5d2ff3}{lp\+::\+Exp\+Node}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlp_1_1PreDecrementNode_ad41dcc37bb4a4411af2c07cbe51aae44}\label{classlp_1_1PreDecrementNode_ad41dcc37bb4a4411af2c07cbe51aae44}} 
+\index{lp::PreDecrementNode@{lp::PreDecrementNode}!\_id@{\_id}}
+\index{\_id@{\_id}!lp::PreDecrementNode@{lp::PreDecrementNode}}
+\doxysubsubsection{\texorpdfstring{\_id}{\_id}}
+{\footnotesize\ttfamily std\+::string lp\+::\+Pre\+Decrement\+Node\+::\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+number of the \mbox{\hyperlink{classlp_1_1PreDecrementNode}{Pre\+Decrement\+Node}} 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\item 
+ast/\mbox{\hyperlink{ast_8cpp}{ast.\+cpp}}\end{DoxyCompactItemize}

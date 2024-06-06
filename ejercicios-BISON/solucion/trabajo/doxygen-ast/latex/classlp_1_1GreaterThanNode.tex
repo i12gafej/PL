@@ -1,0 +1,121 @@
+\hypertarget{classlp_1_1GreaterThanNode}{}\doxysection{lp\+::Greater\+Than\+Node Class Reference}
+\label{classlp_1_1GreaterThanNode}\index{lp::GreaterThanNode@{lp::GreaterThanNode}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}} class.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Greater\+Than\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{classlp_1_1GreaterThanNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Greater\+Than\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{classlp_1_1GreaterThanNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1GreaterThanNode_ab0e0839de1d2d349426b8b04b51d7930}{Greater\+Than\+Node}} (\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$L, \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$R)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}} uses \mbox{\hyperlink{classlp_1_1RelationalOperatorNode}{Relational\+Operator\+Node}}\textquotesingle{}s constructor as members initializer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1GreaterThanNode_aef0e8162874837b1d2206b7eece514c0}{print\+AST}} ()
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classlp_1_1GreaterThanNode_a365005b25cdbdad26576db1e16a6165d}{evaluate\+Bool}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1RelationalOperatorNode}{Relational\+Operator\+Node}} class and adds its own print\+AST and evaluate functions 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1GreaterThanNode_ab0e0839de1d2d349426b8b04b51d7930}\label{classlp_1_1GreaterThanNode_ab0e0839de1d2d349426b8b04b51d7930}} 
+\index{lp::GreaterThanNode@{lp::GreaterThanNode}!GreaterThanNode@{GreaterThanNode}}
+\index{GreaterThanNode@{GreaterThanNode}!lp::GreaterThanNode@{lp::GreaterThanNode}}
+\doxysubsubsection{\texorpdfstring{GreaterThanNode()}{GreaterThanNode()}}
+{\footnotesize\ttfamily lp\+::\+Greater\+Than\+Node\+::\+Greater\+Than\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{L,  }\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{R }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}} uses \mbox{\hyperlink{classlp_1_1RelationalOperatorNode}{Relational\+Operator\+Node}}\textquotesingle{}s constructor as members initializer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & pointer to \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} \\
+\hline
+{\em R} & pointer to \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}} is created with the parameter 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1GreaterThanNode_a365005b25cdbdad26576db1e16a6165d}\label{classlp_1_1GreaterThanNode_a365005b25cdbdad26576db1e16a6165d}} 
+\index{lp::GreaterThanNode@{lp::GreaterThanNode}!evaluateBool@{evaluateBool}}
+\index{evaluateBool@{evaluateBool}!lp::GreaterThanNode@{lp::GreaterThanNode}}
+\doxysubsubsection{\texorpdfstring{evaluateBool()}{evaluateBool()}}
+{\footnotesize\ttfamily bool lp\+::\+Greater\+Than\+Node\+::evaluate\+Bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}}. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1GreaterThanNode_aef0e8162874837b1d2206b7eece514c0}{print\+AST}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1ExpNode_a8d3aa506d97154b6be2df5c81eef6817}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1GreaterThanNode_aef0e8162874837b1d2206b7eece514c0}\label{classlp_1_1GreaterThanNode_aef0e8162874837b1d2206b7eece514c0}} 
+\index{lp::GreaterThanNode@{lp::GreaterThanNode}!printAST@{printAST}}
+\index{printAST@{printAST}!lp::GreaterThanNode@{lp::GreaterThanNode}}
+\doxysubsubsection{\texorpdfstring{printAST()}{printAST()}}
+{\footnotesize\ttfamily void lp\+::\+Greater\+Than\+Node\+::print\+AST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for \mbox{\hyperlink{classlp_1_1GreaterThanNode}{Greater\+Than\+Node}}. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1GreaterThanNode_a365005b25cdbdad26576db1e16a6165d}{evaluate\+Bool}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_ac03101684d81659ddc6a0d0e8d5d2ff3}{lp\+::\+Exp\+Node}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\item 
+ast/\mbox{\hyperlink{ast_8cpp}{ast.\+cpp}}\end{DoxyCompactItemize}

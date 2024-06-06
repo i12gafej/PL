@@ -1,0 +1,123 @@
+\hypertarget{classlp_1_1UnaryOperatorNode}{}\doxysection{lp\+::Unary\+Operator\+Node Class Reference}
+\label{classlp_1_1UnaryOperatorNode}\index{lp::UnaryOperatorNode@{lp::UnaryOperatorNode}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1UnaryOperatorNode}{Unary\+Operator\+Node}} class.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Unary\+Operator\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classlp_1_1UnaryOperatorNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Unary\+Operator\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classlp_1_1UnaryOperatorNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1UnaryOperatorNode_aa7a491987c6fa94bed21aa7cfdc8c315}{Unary\+Operator\+Node}} (\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$expression)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1UnaryOperatorNode}{Unary\+Operator\+Node}} links the node to it child, and stores the character representation of the operator. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlp_1_1UnaryOperatorNode_a16d5fb7a7dacc017be9904761df82d9d}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Get the type of the child expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$ \mbox{\hyperlink{classlp_1_1UnaryOperatorNode_a253ba9141f3e7202b67dc094197825f7}{\+\_\+exp}}
+\begin{DoxyCompactList}\small\item\em Child expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1UnaryOperatorNode}{Unary\+Operator\+Node}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1UnaryOperatorNode}{Unary\+Operator\+Node}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} class 
+\end{DoxyNote}
+\begin{DoxyWarning}{Warning}
+Abstract class, because it does not redefine the print\+AST method of \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} 
+\end{DoxyWarning}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1UnaryOperatorNode_aa7a491987c6fa94bed21aa7cfdc8c315}\label{classlp_1_1UnaryOperatorNode_aa7a491987c6fa94bed21aa7cfdc8c315}} 
+\index{lp::UnaryOperatorNode@{lp::UnaryOperatorNode}!UnaryOperatorNode@{UnaryOperatorNode}}
+\index{UnaryOperatorNode@{UnaryOperatorNode}!lp::UnaryOperatorNode@{lp::UnaryOperatorNode}}
+\doxysubsubsection{\texorpdfstring{UnaryOperatorNode()}{UnaryOperatorNode()}}
+{\footnotesize\ttfamily lp\+::\+Unary\+Operator\+Node\+::\+Unary\+Operator\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{expression }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1UnaryOperatorNode}{Unary\+Operator\+Node}} links the node to it child, and stores the character representation of the operator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em expression} & pointer to \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1OperatorNode}{Operator\+Node}} is created with the parameters 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Inline function 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1UnaryOperatorNode_a16d5fb7a7dacc017be9904761df82d9d}\label{classlp_1_1UnaryOperatorNode_a16d5fb7a7dacc017be9904761df82d9d}} 
+\index{lp::UnaryOperatorNode@{lp::UnaryOperatorNode}!getType@{getType}}
+\index{getType@{getType}!lp::UnaryOperatorNode@{lp::UnaryOperatorNode}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily int lp\+::\+Unary\+Operator\+Node\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get the type of the child expression. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1ExpNode_ac03101684d81659ddc6a0d0e8d5d2ff3}{print\+AST}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_a61d3eabda25d2604efd15f65f8260043}{lp\+::\+Exp\+Node}}.
+
+
+
+Reimplemented in \mbox{\hyperlink{classlp_1_1LogicalUnaryOperatorNode_a01278f321aafefddaa3a242692b2d7d6}{lp\+::\+Logical\+Unary\+Operator\+Node}}, and \mbox{\hyperlink{classlp_1_1NumericUnaryOperatorNode_a79c5f568684c79b2ea17acc45c68fa79}{lp\+::\+Numeric\+Unary\+Operator\+Node}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlp_1_1UnaryOperatorNode_a253ba9141f3e7202b67dc094197825f7}\label{classlp_1_1UnaryOperatorNode_a253ba9141f3e7202b67dc094197825f7}} 
+\index{lp::UnaryOperatorNode@{lp::UnaryOperatorNode}!\_exp@{\_exp}}
+\index{\_exp@{\_exp}!lp::UnaryOperatorNode@{lp::UnaryOperatorNode}}
+\doxysubsubsection{\texorpdfstring{\_exp}{\_exp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}}$\ast$ lp\+::\+Unary\+Operator\+Node\+::\+\_\+exp\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Child expression. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\end{DoxyCompactItemize}

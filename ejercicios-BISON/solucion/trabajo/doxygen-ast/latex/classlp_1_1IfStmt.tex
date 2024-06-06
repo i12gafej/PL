@@ -1,0 +1,186 @@
+\hypertarget{classlp_1_1IfStmt}{}\doxysection{lp\+::If\+Stmt Class Reference}
+\label{classlp_1_1IfStmt}\index{lp::IfStmt@{lp::IfStmt}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} class.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::If\+Stmt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classlp_1_1IfStmt__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::If\+Stmt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classlp_1_1IfStmt__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1IfStmt_aff2b8d2b26f37d3c23ca70eed78b6298}{If\+Stmt}} (\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$condition, std\+::list$<$ \mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$ $>$ $\ast$statement1)
+\begin{DoxyCompactList}\small\item\em Constructor of Single \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} (without alternative) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1IfStmt_a43dced3a79fb6dbadfeceaa447eebc74}{If\+Stmt}} (\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$condition, std\+::list$<$ \mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$ $>$ $\ast$statement1, std\+::list$<$ \mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$ $>$ $\ast$statement2)
+\begin{DoxyCompactList}\small\item\em Constructor of Compound \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} (with alternative) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1IfStmt_af14775a68f123074251385f76a449e28}{print\+AST}} ()
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1IfStmt_a9f64a20de8d61504041d0180c2b00e56}{evaluate}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$ \mbox{\hyperlink{classlp_1_1IfStmt_aaac30f7c9758378587cb614e145318d2}{\+\_\+cond}}
+\begin{DoxyCompactList}\small\item\em Condicion of the if statement. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{classlp_1_1IfStmt_a5b95d970390595b66c9efd0aabfb17c4}{\+\_\+stmts1}}
+\begin{DoxyCompactList}\small\item\em List of statements. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{classlp_1_1IfStmt_ad1fdd8ee34fbbfb79cea251c55d104c6}{\+\_\+stmts2}}
+\begin{DoxyCompactList}\small\item\em List of statements. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1Statement}{Statement}} class and adds its own print\+AST and evaluate functions 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1IfStmt_aff2b8d2b26f37d3c23ca70eed78b6298}\label{classlp_1_1IfStmt_aff2b8d2b26f37d3c23ca70eed78b6298}} 
+\index{lp::IfStmt@{lp::IfStmt}!IfStmt@{IfStmt}}
+\index{IfStmt@{IfStmt}!lp::IfStmt@{lp::IfStmt}}
+\doxysubsubsection{\texorpdfstring{IfStmt()}{IfStmt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily lp\+::\+If\+Stmt\+::\+If\+Stmt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{condition,  }\item[{std\+::list$<$ \mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$ $>$ $\ast$}]{statement1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of Single \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} (without alternative) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em condition} & \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} of the condition \\
+\hline
+{\em statement1} & \mbox{\hyperlink{classlp_1_1Statement}{Statement}} of the consequent \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} is created with the parameters 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classlp_1_1IfStmt_a43dced3a79fb6dbadfeceaa447eebc74}\label{classlp_1_1IfStmt_a43dced3a79fb6dbadfeceaa447eebc74}} 
+\index{lp::IfStmt@{lp::IfStmt}!IfStmt@{IfStmt}}
+\index{IfStmt@{IfStmt}!lp::IfStmt@{lp::IfStmt}}
+\doxysubsubsection{\texorpdfstring{IfStmt()}{IfStmt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily lp\+::\+If\+Stmt\+::\+If\+Stmt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{condition,  }\item[{std\+::list$<$ \mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$ $>$ $\ast$}]{statement1,  }\item[{std\+::list$<$ \mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$ $>$ $\ast$}]{statement2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of Compound \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} (with alternative) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em condition} & \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} of the condition \\
+\hline
+{\em statement1} & \mbox{\hyperlink{classlp_1_1Statement}{Statement}} of the consequent \\
+\hline
+{\em statement2} & \mbox{\hyperlink{classlp_1_1Statement}{Statement}} of the alternative \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}} is created with the parameters 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1IfStmt_a9f64a20de8d61504041d0180c2b00e56}\label{classlp_1_1IfStmt_a9f64a20de8d61504041d0180c2b00e56}} 
+\index{lp::IfStmt@{lp::IfStmt}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!lp::IfStmt@{lp::IfStmt}}
+\doxysubsubsection{\texorpdfstring{evaluate()}{evaluate()}}
+{\footnotesize\ttfamily void lp\+::\+If\+Stmt\+::evaluate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}}. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1IfStmt_af14775a68f123074251385f76a449e28}{print\+AST}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1Statement_a3973fbf31c6ef15bc5e7c644c3ba54ea}{lp\+::\+Statement}}.
+
+\mbox{\Hypertarget{classlp_1_1IfStmt_af14775a68f123074251385f76a449e28}\label{classlp_1_1IfStmt_af14775a68f123074251385f76a449e28}} 
+\index{lp::IfStmt@{lp::IfStmt}!printAST@{printAST}}
+\index{printAST@{printAST}!lp::IfStmt@{lp::IfStmt}}
+\doxysubsubsection{\texorpdfstring{printAST()}{printAST()}}
+{\footnotesize\ttfamily void lp\+::\+If\+Stmt\+::print\+AST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for \mbox{\hyperlink{classlp_1_1IfStmt}{If\+Stmt}}. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1IfStmt_a9f64a20de8d61504041d0180c2b00e56}{evaluate}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1Statement_a3cb7e45102a0cef34030d308579a0bc0}{lp\+::\+Statement}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlp_1_1IfStmt_aaac30f7c9758378587cb614e145318d2}\label{classlp_1_1IfStmt_aaac30f7c9758378587cb614e145318d2}} 
+\index{lp::IfStmt@{lp::IfStmt}!\_cond@{\_cond}}
+\index{\_cond@{\_cond}!lp::IfStmt@{lp::IfStmt}}
+\doxysubsubsection{\texorpdfstring{\_cond}{\_cond}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}}$\ast$ lp\+::\+If\+Stmt\+::\+\_\+cond\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Condicion of the if statement. 
+
+\mbox{\Hypertarget{classlp_1_1IfStmt_a5b95d970390595b66c9efd0aabfb17c4}\label{classlp_1_1IfStmt_a5b95d970390595b66c9efd0aabfb17c4}} 
+\index{lp::IfStmt@{lp::IfStmt}!\_stmts1@{\_stmts1}}
+\index{\_stmts1@{\_stmts1}!lp::IfStmt@{lp::IfStmt}}
+\doxysubsubsection{\texorpdfstring{\_stmts1}{\_stmts1}}
+{\footnotesize\ttfamily std\+::list$<$\mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$$>$$\ast$ lp\+::\+If\+Stmt\+::\+\_\+stmts1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of statements. 
+
+\mbox{\Hypertarget{classlp_1_1IfStmt_ad1fdd8ee34fbbfb79cea251c55d104c6}\label{classlp_1_1IfStmt_ad1fdd8ee34fbbfb79cea251c55d104c6}} 
+\index{lp::IfStmt@{lp::IfStmt}!\_stmts2@{\_stmts2}}
+\index{\_stmts2@{\_stmts2}!lp::IfStmt@{lp::IfStmt}}
+\doxysubsubsection{\texorpdfstring{\_stmts2}{\_stmts2}}
+{\footnotesize\ttfamily std\+::list$<$\mbox{\hyperlink{classlp_1_1Statement}{Statement}} $\ast$$>$$\ast$ lp\+::\+If\+Stmt\+::\+\_\+stmts2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of statements. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\item 
+ast/\mbox{\hyperlink{ast_8cpp}{ast.\+cpp}}\end{DoxyCompactItemize}

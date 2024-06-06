@@ -1,0 +1,187 @@
+\hypertarget{classlp_1_1AssignmentStmt}{}\doxysection{lp\+::Assignment\+Stmt Class Reference}
+\label{classlp_1_1AssignmentStmt}\index{lp::AssignmentStmt@{lp::AssignmentStmt}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} class.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Assignment\+Stmt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classlp_1_1AssignmentStmt__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Assignment\+Stmt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=298pt]{classlp_1_1AssignmentStmt__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1AssignmentStmt_a81b94efa17268ff59a49fe6e63c6fa5d}{Assignment\+Stmt}} (std\+::string id, \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$expression)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1AssignmentStmt_a58bc012602ec27227142a269abdab95e}{Assignment\+Stmt}} (std\+::string id, \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} $\ast$asgn)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1AssignmentStmt_a0dfcfb74dbc6613ca1962b331dc778a6}{print\+AST}} ()
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1AssignmentStmt_a47da6a6ee03b0808aba85f4ebb08f6f0}{evaluate}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classlp_1_1AssignmentStmt_a57e0d4248fb941a6e0af91b28756294e}{\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em Name of the variable of the assignment statement. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$ \mbox{\hyperlink{classlp_1_1AssignmentStmt_a53067baa676267b841eb96bf68841cd8}{\+\_\+exp}}
+\begin{DoxyCompactList}\small\item\em Expresssion the assignment statement. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} $\ast$ \mbox{\hyperlink{classlp_1_1AssignmentStmt_a619e3944a78af6942989684a9f9adf92}{\+\_\+asgn}}
+\begin{DoxyCompactList}\small\item\em Allow multiple assigment -\/$>$ a = b = 2. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1Statement}{Statement}} class and adds its own print\+AST and evaluate functions 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1AssignmentStmt_a81b94efa17268ff59a49fe6e63c6fa5d}\label{classlp_1_1AssignmentStmt_a81b94efa17268ff59a49fe6e63c6fa5d}} 
+\index{lp::AssignmentStmt@{lp::AssignmentStmt}!AssignmentStmt@{AssignmentStmt}}
+\index{AssignmentStmt@{AssignmentStmt}!lp::AssignmentStmt@{lp::AssignmentStmt}}
+\doxysubsubsection{\texorpdfstring{AssignmentStmt()}{AssignmentStmt()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily lp\+::\+Assignment\+Stmt\+::\+Assignment\+Stmt (\begin{DoxyParamCaption}\item[{std\+::string}]{id,  }\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{expression }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & string, variable of the \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} \\
+\hline
+{\em expression} & pointer to \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} is created with the parameters 
+\end{DoxyPostcond}
+\mbox{\Hypertarget{classlp_1_1AssignmentStmt_a58bc012602ec27227142a269abdab95e}\label{classlp_1_1AssignmentStmt_a58bc012602ec27227142a269abdab95e}} 
+\index{lp::AssignmentStmt@{lp::AssignmentStmt}!AssignmentStmt@{AssignmentStmt}}
+\index{AssignmentStmt@{AssignmentStmt}!lp::AssignmentStmt@{lp::AssignmentStmt}}
+\doxysubsubsection{\texorpdfstring{AssignmentStmt()}{AssignmentStmt()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily lp\+::\+Assignment\+Stmt\+::\+Assignment\+Stmt (\begin{DoxyParamCaption}\item[{std\+::string}]{id,  }\item[{\mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} $\ast$}]{asgn }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & string, variable of the \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} \\
+\hline
+{\em asgn} & pointer to \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}} is created with the parameters 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Allow multiple assigment -\/$>$ a = b = 2 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1AssignmentStmt_a47da6a6ee03b0808aba85f4ebb08f6f0}\label{classlp_1_1AssignmentStmt_a47da6a6ee03b0808aba85f4ebb08f6f0}} 
+\index{lp::AssignmentStmt@{lp::AssignmentStmt}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!lp::AssignmentStmt@{lp::AssignmentStmt}}
+\doxysubsubsection{\texorpdfstring{evaluate()}{evaluate()}}
+{\footnotesize\ttfamily void lp\+::\+Assignment\+Stmt\+::evaluate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1AssignmentStmt_a0dfcfb74dbc6613ca1962b331dc778a6}{print\+AST}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1Statement_a3973fbf31c6ef15bc5e7c644c3ba54ea}{lp\+::\+Statement}}.
+
+\mbox{\Hypertarget{classlp_1_1AssignmentStmt_a0dfcfb74dbc6613ca1962b331dc778a6}\label{classlp_1_1AssignmentStmt_a0dfcfb74dbc6613ca1962b331dc778a6}} 
+\index{lp::AssignmentStmt@{lp::AssignmentStmt}!printAST@{printAST}}
+\index{printAST@{printAST}!lp::AssignmentStmt@{lp::AssignmentStmt}}
+\doxysubsubsection{\texorpdfstring{printAST()}{printAST()}}
+{\footnotesize\ttfamily void lp\+::\+Assignment\+Stmt\+::print\+AST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1AssignmentStmt_a47da6a6ee03b0808aba85f4ebb08f6f0}{evaluate}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1Statement_a3cb7e45102a0cef34030d308579a0bc0}{lp\+::\+Statement}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlp_1_1AssignmentStmt_a619e3944a78af6942989684a9f9adf92}\label{classlp_1_1AssignmentStmt_a619e3944a78af6942989684a9f9adf92}} 
+\index{lp::AssignmentStmt@{lp::AssignmentStmt}!\_asgn@{\_asgn}}
+\index{\_asgn@{\_asgn}!lp::AssignmentStmt@{lp::AssignmentStmt}}
+\doxysubsubsection{\texorpdfstring{\_asgn}{\_asgn}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1AssignmentStmt}{Assignment\+Stmt}}$\ast$ lp\+::\+Assignment\+Stmt\+::\+\_\+asgn\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Allow multiple assigment -\/$>$ a = b = 2. 
+
+\mbox{\Hypertarget{classlp_1_1AssignmentStmt_a53067baa676267b841eb96bf68841cd8}\label{classlp_1_1AssignmentStmt_a53067baa676267b841eb96bf68841cd8}} 
+\index{lp::AssignmentStmt@{lp::AssignmentStmt}!\_exp@{\_exp}}
+\index{\_exp@{\_exp}!lp::AssignmentStmt@{lp::AssignmentStmt}}
+\doxysubsubsection{\texorpdfstring{\_exp}{\_exp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}}$\ast$ lp\+::\+Assignment\+Stmt\+::\+\_\+exp\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Expresssion the assignment statement. 
+
+\mbox{\Hypertarget{classlp_1_1AssignmentStmt_a57e0d4248fb941a6e0af91b28756294e}\label{classlp_1_1AssignmentStmt_a57e0d4248fb941a6e0af91b28756294e}} 
+\index{lp::AssignmentStmt@{lp::AssignmentStmt}!\_id@{\_id}}
+\index{\_id@{\_id}!lp::AssignmentStmt@{lp::AssignmentStmt}}
+\doxysubsubsection{\texorpdfstring{\_id}{\_id}}
+{\footnotesize\ttfamily std\+::string lp\+::\+Assignment\+Stmt\+::\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Name of the variable of the assignment statement. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\item 
+ast/\mbox{\hyperlink{ast_8cpp}{ast.\+cpp}}\end{DoxyCompactItemize}

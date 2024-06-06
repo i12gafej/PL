@@ -1,0 +1,161 @@
+\hypertarget{classlp_1_1NumberNode}{}\doxysection{lp\+::Number\+Node Class Reference}
+\label{classlp_1_1NumberNode}\index{lp::NumberNode@{lp::NumberNode}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1NumberNode}{Number\+Node}} class.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Number\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classlp_1_1NumberNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Number\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classlp_1_1NumberNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1NumberNode_a13011fc48aaee102a84cf815b125393d}{Number\+Node}} (double value)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1NumberNode}{Number\+Node}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classlp_1_1NumberNode_abd913ac73241b91d14ad8c91e0939ba5}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Get the type of the expression\+: NUMBER. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1NumberNode_af0a20a94210f742e4581a47d8684f9aa}{print\+AST}} ()
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for expression. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classlp_1_1NumberNode_af1acffa8d74f308328528d28da3cf24a}{evaluate\+Number}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classlp_1_1NumberNode_a1798440254a0af6d7c835469805f10e6}{\+\_\+number}}
+\begin{DoxyCompactList}\small\item\em number of the \mbox{\hyperlink{classlp_1_1NumberNode}{Number\+Node}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1NumberNode}{Number\+Node}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1NumberNode}{Number\+Node}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} class 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1NumberNode_a13011fc48aaee102a84cf815b125393d}\label{classlp_1_1NumberNode_a13011fc48aaee102a84cf815b125393d}} 
+\index{lp::NumberNode@{lp::NumberNode}!NumberNode@{NumberNode}}
+\index{NumberNode@{NumberNode}!lp::NumberNode@{lp::NumberNode}}
+\doxysubsubsection{\texorpdfstring{NumberNode()}{NumberNode()}}
+{\footnotesize\ttfamily lp\+::\+Number\+Node\+::\+Number\+Node (\begin{DoxyParamCaption}\item[{double}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1NumberNode}{Number\+Node}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & double \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1NumberNode}{Number\+Node}} is created with the value of the parameter 
+\end{DoxyPostcond}
+\begin{DoxyNote}{Note}
+Inline function 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1NumberNode_af1acffa8d74f308328528d28da3cf24a}\label{classlp_1_1NumberNode_af1acffa8d74f308328528d28da3cf24a}} 
+\index{lp::NumberNode@{lp::NumberNode}!evaluateNumber@{evaluateNumber}}
+\index{evaluateNumber@{evaluateNumber}!lp::NumberNode@{lp::NumberNode}}
+\doxysubsubsection{\texorpdfstring{evaluateNumber()}{evaluateNumber()}}
+{\footnotesize\ttfamily double lp\+::\+Number\+Node\+::evaluate\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the expression. 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1NumberNode_abd913ac73241b91d14ad8c91e0939ba5}{get\+Type}}, \mbox{\hyperlink{classlp_1_1NumberNode_af0a20a94210f742e4581a47d8684f9aa}{print\+AST}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1ExpNode_a4a71d424c149c81abb3bb242fe586a9e}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1NumberNode_abd913ac73241b91d14ad8c91e0939ba5}\label{classlp_1_1NumberNode_abd913ac73241b91d14ad8c91e0939ba5}} 
+\index{lp::NumberNode@{lp::NumberNode}!getType@{getType}}
+\index{getType@{getType}!lp::NumberNode@{lp::NumberNode}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily int lp\+::\+Number\+Node\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Get the type of the expression\+: NUMBER. 
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1NumberNode_af0a20a94210f742e4581a47d8684f9aa}{print\+AST}}, \mbox{\hyperlink{classlp_1_1NumberNode_af1acffa8d74f308328528d28da3cf24a}{evaluate\+Number}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_a61d3eabda25d2604efd15f65f8260043}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1NumberNode_af0a20a94210f742e4581a47d8684f9aa}\label{classlp_1_1NumberNode_af0a20a94210f742e4581a47d8684f9aa}} 
+\index{lp::NumberNode@{lp::NumberNode}!printAST@{printAST}}
+\index{printAST@{printAST}!lp::NumberNode@{lp::NumberNode}}
+\doxysubsubsection{\texorpdfstring{printAST()}{printAST()}}
+{\footnotesize\ttfamily void lp\+::\+Number\+Node\+::print\+AST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for expression. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1NumberNode_abd913ac73241b91d14ad8c91e0939ba5}{get\+Type}}, \mbox{\hyperlink{classlp_1_1NumberNode_af1acffa8d74f308328528d28da3cf24a}{evaluate\+Number}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_ac03101684d81659ddc6a0d0e8d5d2ff3}{lp\+::\+Exp\+Node}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlp_1_1NumberNode_a1798440254a0af6d7c835469805f10e6}\label{classlp_1_1NumberNode_a1798440254a0af6d7c835469805f10e6}} 
+\index{lp::NumberNode@{lp::NumberNode}!\_number@{\_number}}
+\index{\_number@{\_number}!lp::NumberNode@{lp::NumberNode}}
+\doxysubsubsection{\texorpdfstring{\_number}{\_number}}
+{\footnotesize\ttfamily double lp\+::\+Number\+Node\+::\+\_\+number\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+number of the \mbox{\hyperlink{classlp_1_1NumberNode}{Number\+Node}} 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\item 
+ast/\mbox{\hyperlink{ast_8cpp}{ast.\+cpp}}\end{DoxyCompactItemize}

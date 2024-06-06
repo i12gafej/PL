@@ -1,0 +1,235 @@
+\hypertarget{classlp_1_1AlternativeNode}{}\doxysection{lp\+::Alternative\+Node Class Reference}
+\label{classlp_1_1AlternativeNode}\index{lp::AlternativeNode@{lp::AlternativeNode}}
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Alternative\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classlp_1_1AlternativeNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Alternative\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{classlp_1_1AlternativeNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1AlternativeNode_a639f7ef578ec13dc7ab45ef619c40d4b}{Alternative\+Node}} (\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$condition, \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$exp1, \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$exp2)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1AlternativeNode}{Alternative\+Node}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$ \mbox{\hyperlink{classlp_1_1AlternativeNode_a200718ba4d286e81cebee8ab8071d3eb}{get\+Exp1}} ()
+\item 
+\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$ \mbox{\hyperlink{classlp_1_1AlternativeNode_a8a6303fda26931274fe0a4a183dd0002}{get\+Exp2}} ()
+\item 
+void \mbox{\hyperlink{classlp_1_1AlternativeNode_a74b6cd2a0f67f02a755e8f9695caeaf3}{print\+AST}} ()
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for expression. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classlp_1_1AlternativeNode_a60eae8c38930aaeeeff44a4da0c54443}{evaluate\+Bool}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the expression as BOOL. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classlp_1_1AlternativeNode_a9e137a59a5d8cb2c9f4db53dd98b72aa}{evaluate\+Number}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the expression as NUMBER. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classlp_1_1AlternativeNode_a849a143e5a3e47df8542bcf522f4d778}{evaluate\+String}} ()
+\item 
+int \mbox{\hyperlink{classlp_1_1AlternativeNode_a717cc35518bf0777f2818fa4f24bba47}{get\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Type of the expression. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$ \mbox{\hyperlink{classlp_1_1AlternativeNode_ad593f9d35bb20140cee303ad798893d7}{\+\_\+cond}}
+\begin{DoxyCompactList}\small\item\em Condicion of the while statement. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$ \mbox{\hyperlink{classlp_1_1AlternativeNode_a0b2d0feeb8945c153ff3087fa16340ef}{\+\_\+exp1}}
+\begin{DoxyCompactList}\small\item\em Name of the variable of the assignment statement. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$ \mbox{\hyperlink{classlp_1_1AlternativeNode_ab2a25f1eb1dab084b3d02c33cb0e1607}{\+\_\+exp2}}
+\begin{DoxyCompactList}\small\item\em Name of the variable of the assignment statement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a639f7ef578ec13dc7ab45ef619c40d4b}\label{classlp_1_1AlternativeNode_a639f7ef578ec13dc7ab45ef619c40d4b}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!AlternativeNode@{AlternativeNode}}
+\index{AlternativeNode@{AlternativeNode}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{AlternativeNode()}{AlternativeNode()}}
+{\footnotesize\ttfamily lp\+::\+Alternative\+Node\+::\+Alternative\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{condition,  }\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{exp1,  }\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{exp2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1AlternativeNode}{Alternative\+Node}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em condition} & \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} of the condition \\
+\hline
+{\em exp1} & \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} of the consequent \\
+\hline
+{\em exp2} & \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} of the alternative \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1AlternativeNode}{Alternative\+Node}} is created with the parameters 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a60eae8c38930aaeeeff44a4da0c54443}\label{classlp_1_1AlternativeNode_a60eae8c38930aaeeeff44a4da0c54443}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!evaluateBool@{evaluateBool}}
+\index{evaluateBool@{evaluateBool}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{evaluateBool()}{evaluateBool()}}
+{\footnotesize\ttfamily bool lp\+::\+Alternative\+Node\+::evaluate\+Bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the expression as BOOL. 
+
+\begin{DoxyWarning}{Warning}
+Virtual function\+: could be redefined in the heir classes 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1AlternativeNode_a717cc35518bf0777f2818fa4f24bba47}{get\+Type}}, \mbox{\hyperlink{classlp_1_1AlternativeNode_a74b6cd2a0f67f02a755e8f9695caeaf3}{print\+AST}}, \mbox{\hyperlink{classlp_1_1AlternativeNode_a9e137a59a5d8cb2c9f4db53dd98b72aa}{evaluate\+Number}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1ExpNode_a8d3aa506d97154b6be2df5c81eef6817}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a9e137a59a5d8cb2c9f4db53dd98b72aa}\label{classlp_1_1AlternativeNode_a9e137a59a5d8cb2c9f4db53dd98b72aa}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!evaluateNumber@{evaluateNumber}}
+\index{evaluateNumber@{evaluateNumber}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{evaluateNumber()}{evaluateNumber()}}
+{\footnotesize\ttfamily double lp\+::\+Alternative\+Node\+::evaluate\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the expression as NUMBER. 
+
+\begin{DoxyWarning}{Warning}
+Virtual function\+: could be redefined in the heir classes 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1AlternativeNode_a717cc35518bf0777f2818fa4f24bba47}{get\+Type}}, \mbox{\hyperlink{classlp_1_1AlternativeNode_a74b6cd2a0f67f02a755e8f9695caeaf3}{print\+AST}}, \mbox{\hyperlink{classlp_1_1AlternativeNode_a60eae8c38930aaeeeff44a4da0c54443}{evaluate\+Bool}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1ExpNode_a4a71d424c149c81abb3bb242fe586a9e}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a849a143e5a3e47df8542bcf522f4d778}\label{classlp_1_1AlternativeNode_a849a143e5a3e47df8542bcf522f4d778}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!evaluateString@{evaluateString}}
+\index{evaluateString@{evaluateString}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{evaluateString()}{evaluateString()}}
+{\footnotesize\ttfamily std\+::string lp\+::\+Alternative\+Node\+::evaluate\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1ExpNode_ab424ca67498ce298e51a35f29f98b61a}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a200718ba4d286e81cebee8ab8071d3eb}\label{classlp_1_1AlternativeNode_a200718ba4d286e81cebee8ab8071d3eb}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!getExp1@{getExp1}}
+\index{getExp1@{getExp1}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{getExp1()}{getExp1()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}}$\ast$ lp\+::\+Alternative\+Node\+::get\+Exp1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a8a6303fda26931274fe0a4a183dd0002}\label{classlp_1_1AlternativeNode_a8a6303fda26931274fe0a4a183dd0002}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!getExp2@{getExp2}}
+\index{getExp2@{getExp2}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{getExp2()}{getExp2()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}}$\ast$ lp\+::\+Alternative\+Node\+::get\+Exp2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a717cc35518bf0777f2818fa4f24bba47}\label{classlp_1_1AlternativeNode_a717cc35518bf0777f2818fa4f24bba47}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!getType@{getType}}
+\index{getType@{getType}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily int lp\+::\+Alternative\+Node\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Type of the expression. 
+
+\begin{DoxyWarning}{Warning}
+Pure virtual function\+: must be redefined in the heir classes 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1AlternativeNode_a74b6cd2a0f67f02a755e8f9695caeaf3}{print\+AST}}, \mbox{\hyperlink{classlp_1_1AlternativeNode_a9e137a59a5d8cb2c9f4db53dd98b72aa}{evaluate\+Number}}, \mbox{\hyperlink{classlp_1_1AlternativeNode_a60eae8c38930aaeeeff44a4da0c54443}{evaluate\+Bool}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_a61d3eabda25d2604efd15f65f8260043}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a74b6cd2a0f67f02a755e8f9695caeaf3}\label{classlp_1_1AlternativeNode_a74b6cd2a0f67f02a755e8f9695caeaf3}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!printAST@{printAST}}
+\index{printAST@{printAST}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{printAST()}{printAST()}}
+{\footnotesize\ttfamily void lp\+::\+Alternative\+Node\+::print\+AST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for expression. 
+
+\begin{DoxyWarning}{Warning}
+Pure virtual function\+: must be redefined in the heir classes 
+\end{DoxyWarning}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1AlternativeNode_a717cc35518bf0777f2818fa4f24bba47}{get\+Type}}, \mbox{\hyperlink{classlp_1_1AlternativeNode_a9e137a59a5d8cb2c9f4db53dd98b72aa}{evaluate\+Number}}, \mbox{\hyperlink{classlp_1_1AlternativeNode_a60eae8c38930aaeeeff44a4da0c54443}{evaluate\+Bool}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_ac03101684d81659ddc6a0d0e8d5d2ff3}{lp\+::\+Exp\+Node}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_ad593f9d35bb20140cee303ad798893d7}\label{classlp_1_1AlternativeNode_ad593f9d35bb20140cee303ad798893d7}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!\_cond@{\_cond}}
+\index{\_cond@{\_cond}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{\_cond}{\_cond}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}}$\ast$ lp\+::\+Alternative\+Node\+::\+\_\+cond\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Condicion of the while statement. 
+
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_a0b2d0feeb8945c153ff3087fa16340ef}\label{classlp_1_1AlternativeNode_a0b2d0feeb8945c153ff3087fa16340ef}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!\_exp1@{\_exp1}}
+\index{\_exp1@{\_exp1}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{\_exp1}{\_exp1}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}}$\ast$ lp\+::\+Alternative\+Node\+::\+\_\+exp1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Name of the variable of the assignment statement. 
+
+\mbox{\Hypertarget{classlp_1_1AlternativeNode_ab2a25f1eb1dab084b3d02c33cb0e1607}\label{classlp_1_1AlternativeNode_ab2a25f1eb1dab084b3d02c33cb0e1607}} 
+\index{lp::AlternativeNode@{lp::AlternativeNode}!\_exp2@{\_exp2}}
+\index{\_exp2@{\_exp2}!lp::AlternativeNode@{lp::AlternativeNode}}
+\doxysubsubsection{\texorpdfstring{\_exp2}{\_exp2}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}}$\ast$ lp\+::\+Alternative\+Node\+::\+\_\+exp2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Name of the variable of the assignment statement. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\item 
+ast/\mbox{\hyperlink{ast_8cpp}{ast.\+cpp}}\end{DoxyCompactItemize}

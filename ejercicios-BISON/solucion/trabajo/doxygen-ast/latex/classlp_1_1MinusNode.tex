@@ -1,0 +1,121 @@
+\hypertarget{classlp_1_1MinusNode}{}\doxysection{lp\+::Minus\+Node Class Reference}
+\label{classlp_1_1MinusNode}\index{lp::MinusNode@{lp::MinusNode}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}} class.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::Minus\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classlp_1_1MinusNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::Minus\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classlp_1_1MinusNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1MinusNode_a89047c5c12b324573d383147e89dbc0b}{Minus\+Node}} (\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$L, \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$R)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}} uses \mbox{\hyperlink{classlp_1_1NumericOperatorNode}{Numeric\+Operator\+Node}}\textquotesingle{}s constructor as members initializer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1MinusNode_abdf58c475a5d99db784fafa9f3b57c2e}{print\+AST}} ()
+\begin{DoxyCompactList}\small\item\em print\+AST the \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}} \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classlp_1_1MinusNode_aaf3ac141e08f882e19016c6eea048cc7}{evaluate\+Number}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1NumericOperatorNode}{Numeric\+Operator\+Node}} class and adds its own print\+AST and evaluate functions 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1MinusNode_a89047c5c12b324573d383147e89dbc0b}\label{classlp_1_1MinusNode_a89047c5c12b324573d383147e89dbc0b}} 
+\index{lp::MinusNode@{lp::MinusNode}!MinusNode@{MinusNode}}
+\index{MinusNode@{MinusNode}!lp::MinusNode@{lp::MinusNode}}
+\doxysubsubsection{\texorpdfstring{MinusNode()}{MinusNode()}}
+{\footnotesize\ttfamily lp\+::\+Minus\+Node\+::\+Minus\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{L,  }\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{R }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}} uses \mbox{\hyperlink{classlp_1_1NumericOperatorNode}{Numeric\+Operator\+Node}}\textquotesingle{}s constructor as members initializer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & pointer to \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} \\
+\hline
+{\em R} & pointer to \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}} is created with the parameter 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1MinusNode_aaf3ac141e08f882e19016c6eea048cc7}\label{classlp_1_1MinusNode_aaf3ac141e08f882e19016c6eea048cc7}} 
+\index{lp::MinusNode@{lp::MinusNode}!evaluateNumber@{evaluateNumber}}
+\index{evaluateNumber@{evaluateNumber}!lp::MinusNode@{lp::MinusNode}}
+\doxysubsubsection{\texorpdfstring{evaluateNumber()}{evaluateNumber()}}
+{\footnotesize\ttfamily double lp\+::\+Minus\+Node\+::evaluate\+Number (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}}. 
+
+\begin{DoxyReturn}{Returns}
+double 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1MinusNode_abdf58c475a5d99db784fafa9f3b57c2e}{print\+AST}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1ExpNode_a4a71d424c149c81abb3bb242fe586a9e}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1MinusNode_abdf58c475a5d99db784fafa9f3b57c2e}\label{classlp_1_1MinusNode_abdf58c475a5d99db784fafa9f3b57c2e}} 
+\index{lp::MinusNode@{lp::MinusNode}!printAST@{printAST}}
+\index{printAST@{printAST}!lp::MinusNode@{lp::MinusNode}}
+\doxysubsubsection{\texorpdfstring{printAST()}{printAST()}}
+{\footnotesize\ttfamily void lp\+::\+Minus\+Node\+::print\+AST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+print\+AST the \mbox{\hyperlink{classlp_1_1MinusNode}{Minus\+Node}} 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1MinusNode_aaf3ac141e08f882e19016c6eea048cc7}{evaluate\+Number}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_ac03101684d81659ddc6a0d0e8d5d2ff3}{lp\+::\+Exp\+Node}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\item 
+ast/\mbox{\hyperlink{ast_8cpp}{ast.\+cpp}}\end{DoxyCompactItemize}

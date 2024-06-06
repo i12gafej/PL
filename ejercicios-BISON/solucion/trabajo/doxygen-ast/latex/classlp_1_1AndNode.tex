@@ -1,0 +1,121 @@
+\hypertarget{classlp_1_1AndNode}{}\doxysection{lp\+::And\+Node Class Reference}
+\label{classlp_1_1AndNode}\index{lp::AndNode@{lp::AndNode}}
+
+
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}} class.  
+
+
+
+
+{\ttfamily \#include $<$ast.\+hpp$>$}
+
+
+
+Inheritance diagram for lp\+::And\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classlp_1_1AndNode__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for lp\+::And\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classlp_1_1AndNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classlp_1_1AndNode_a93c2b336f0927838c565a9e48ae3cb76}{And\+Node}} (\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$L, \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$R)
+\begin{DoxyCompactList}\small\item\em Constructor of \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}} uses \mbox{\hyperlink{classlp_1_1LogicalOperatorNode}{Logical\+Operator\+Node}}\textquotesingle{}s constructor as members initializer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classlp_1_1AndNode_a49f98d9b9dcc9bae5937a261951ac678}{print\+AST}} ()
+\begin{DoxyCompactList}\small\item\em Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classlp_1_1AndNode_a777ea0c082355504cf1f124c00277643}{evaluate\+Bool}} ()
+\begin{DoxyCompactList}\small\item\em Evaluate the \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Definition of atributes and methods of \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}} class. 
+
+\begin{DoxyNote}{Note}
+\mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}} Class publicly inherits from \mbox{\hyperlink{classlp_1_1LogicalOperatorNode}{Logical\+Operator\+Node}} class and adds its own print\+AST and evaluate functions 
+\end{DoxyNote}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlp_1_1AndNode_a93c2b336f0927838c565a9e48ae3cb76}\label{classlp_1_1AndNode_a93c2b336f0927838c565a9e48ae3cb76}} 
+\index{lp::AndNode@{lp::AndNode}!AndNode@{AndNode}}
+\index{AndNode@{AndNode}!lp::AndNode@{lp::AndNode}}
+\doxysubsubsection{\texorpdfstring{AndNode()}{AndNode()}}
+{\footnotesize\ttfamily lp\+::\+And\+Node\+::\+And\+Node (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{L,  }\item[{\mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} $\ast$}]{R }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor of \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}} uses \mbox{\hyperlink{classlp_1_1LogicalOperatorNode}{Logical\+Operator\+Node}}\textquotesingle{}s constructor as members initializer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em L} & pointer to \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} \\
+\hline
+{\em R} & pointer to \mbox{\hyperlink{classlp_1_1ExpNode}{Exp\+Node}} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPostcond}{Postcondition}
+A new \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}} is created with the parameter 
+\end{DoxyPostcond}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classlp_1_1AndNode_a777ea0c082355504cf1f124c00277643}\label{classlp_1_1AndNode_a777ea0c082355504cf1f124c00277643}} 
+\index{lp::AndNode@{lp::AndNode}!evaluateBool@{evaluateBool}}
+\index{evaluateBool@{evaluateBool}!lp::AndNode@{lp::AndNode}}
+\doxysubsubsection{\texorpdfstring{evaluateBool()}{evaluateBool()}}
+{\footnotesize\ttfamily bool lp\+::\+And\+Node\+::evaluate\+Bool (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Evaluate the \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}}. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1AndNode_a49f98d9b9dcc9bae5937a261951ac678}{print\+AST}} 
+\end{DoxySeeAlso}
+
+
+Reimplemented from \mbox{\hyperlink{classlp_1_1ExpNode_a8d3aa506d97154b6be2df5c81eef6817}{lp\+::\+Exp\+Node}}.
+
+\mbox{\Hypertarget{classlp_1_1AndNode_a49f98d9b9dcc9bae5937a261951ac678}\label{classlp_1_1AndNode_a49f98d9b9dcc9bae5937a261951ac678}} 
+\index{lp::AndNode@{lp::AndNode}!printAST@{printAST}}
+\index{printAST@{printAST}!lp::AndNode@{lp::AndNode}}
+\doxysubsubsection{\texorpdfstring{printAST()}{printAST()}}
+{\footnotesize\ttfamily void lp\+::\+And\+Node\+::print\+AST (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Print the \mbox{\hyperlink{classlp_1_1AST}{AST}} for \mbox{\hyperlink{classlp_1_1AndNode}{And\+Node}}. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classlp_1_1AndNode_a777ea0c082355504cf1f124c00277643}{evaluate\+Bool}} 
+\end{DoxySeeAlso}
+
+
+Implements \mbox{\hyperlink{classlp_1_1ExpNode_ac03101684d81659ddc6a0d0e8d5d2ff3}{lp\+::\+Exp\+Node}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+ast/\mbox{\hyperlink{ast_8hpp}{ast.\+hpp}}\item 
+ast/\mbox{\hyperlink{ast_8cpp}{ast.\+cpp}}\end{DoxyCompactItemize}
