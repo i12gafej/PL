@@ -112,8 +112,21 @@ int main(int argc, char *argv[])
  if (argc == 2) 
  {
      yyin = fopen(argv[1],"r");
-
-	 interactiveMode = false;
+     if(yyin == NULL)
+     {
+        std::cout << "Archivo " << argv[1] << " no existe. \nIniciando en modo interactivo." << std::endl;
+        interactiveMode = true;
+     } else{
+        std::string arg = argv[1];
+        if(arg.find(".e") != std::string::npos){
+          interactiveMode = false;
+        }
+        else{
+          yyin = stdin;
+          std::cout << "Archivo " << argv[1] << " no es de extensión .e. \nIniciando en modo interactivo." << std::endl;
+          interactiveMode = true;
+        }
+     }
  }
 else
  {

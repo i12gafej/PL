@@ -13,6 +13,7 @@
 #include <sstream>
 #include <list>
 #include <cstring>
+#include <string>
 
 // Para usar la funciones pow y std::abs
 #include <cmath>
@@ -1992,6 +1993,7 @@ void lp::ReadStmt::evaluate()
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		warning("Runtime error: incompatible type for ", "Read");
 	} else {
+		std::cin.ignore();
 		/* Get the identifier in the table of symbols as Variable */
 		lp::Variable *var = (lp::Variable *) table.getSymbol(this->_id);
 
@@ -2336,76 +2338,78 @@ void lp::ForStmt::evaluate()
 				this->_exp3 = new NumberNode(-1);
 			}
 
-		} else {
+		} 
+		
 
-			if((this->_exp3->evaluateNumber() > 0 && this->_exp1->evaluateNumber() > this->_exp2->evaluateNumber()) || 
-			(this->_exp3->evaluateNumber() < 0 && this->_exp1->evaluateNumber() < this->_exp2->evaluateNumber()) )
-			{
-				warning("For loop is infinite", this->_id);
-			}
-		}
-					// Get the initial value
-		double value1 = this->_exp1->evaluateNumber();
-		// Get the final value
-		double value2 = this->_exp2->evaluateNumber();
-		// Get the step
-		double value3 = this->_exp3->evaluateNumber();
 
-		// Get the identifier in the table of symbols as NumericVariable
-		lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
-
-		if(v != NULL) // En el caso en el que la variable ya exista, se actualiza su valor y se usa
+		if((this->_exp3->evaluateNumber() > 0 && this->_exp1->evaluateNumber() > this->_exp2->evaluateNumber()) || 
+		(this->_exp3->evaluateNumber() < 0 && this->_exp1->evaluateNumber() < this->_exp2->evaluateNumber()) )
 		{
-			// The step is not zero
-			if (value3 != 0)
+			warning("For loop is infinite", this->_id);
+		}
+		else{
+			double value1 = this->_exp1->evaluateNumber();
+			// Get the final value
+			double value2 = this->_exp2->evaluateNumber();
+			// Get the step
+			double value3 = this->_exp3->evaluateNumber();
+
+			// Get the identifier in the table of symbols as NumericVariable
+			lp::NumericVariable *v = (lp::NumericVariable *) table.getSymbol(this->_id);
+
+			if(v != NULL) // En el caso en el que la variable ya exista, se actualiza su valor y se usa
 			{
-				// The step is positive
-				if (value1 < value2)
+				// The step is not zero
+				if (value3 != 0)
 				{
-					// The body is run
-					for (double i = value1; i <= value2; i += value3)
+					// The step is positive
+					if (value1 < value2)
 					{
-						v->setValue(i);
-
-						std::list<Statement *>::iterator stmtIter;
-
-						for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+						// The body is run
+						for (double i = value1; i <= value2; i += value3)
 						{
-							(*stmtIter)->evaluate();
+							if(i < ERROR_BOUND)
+								v->setValue(0);
+							else
+								v->setValue(i);
+
+							std::list<Statement *>::iterator stmtIter;
+
+							for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+							{
+								(*stmtIter)->evaluate();
+							}
+						}
+					}
+					// The step is negative
+					else
+					{
+						// The body is run
+						for (double i = value1; i >= value2; i += value3)
+						{
+							if(i < ERROR_BOUND)
+								v->setValue(0);
+							else
+								v->setValue(i);
+
+							std::list<Statement *>::iterator stmtIter;
+
+							for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
+							{
+								(*stmtIter)->evaluate();
+							}
 						}
 					}
 				}
-				// The step is negative
 				else
 				{
-					// The body is run
-					for (double i = value1; i >= value2; i += value3)
-					{
-						v->setValue(i);
-
-						std::list<Statement *>::iterator stmtIter;
-
-						for (stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
-						{
-							(*stmtIter)->evaluate();
-						}
-					}
+					warning("Runtime error: the step is zero in the for loop", "");
 				}
 			}
-			else
-			{
-				warning("Runtime error: the step is zero in the for loop", "");
-			}
 		}
-		
 	} else {
 		warning("Runtime error: incompatible type of expression for", "For loop");
-	}
-
-
-
-	
-  
+	}  
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -2547,14 +2551,10 @@ void lp::CasesStmt::evaluate(){
 			//Recorremos las expresiones de los casos
 			for (std::list<ValueStmt *>::iterator stmtIter = this->_stmts->begin(); stmtIter != this->_stmts->end(); stmtIter++) 
 			{
-				// vemos de que tipo es en cada caso, por si no son tipos compatibles
-				if(value == (*stmtIter)->getExp()->evaluateNumber()){
+				
+				if(std::abs(value - (*stmtIter)->getExp()->evaluateNumber()) < ERROR_BOUND){
 					(*stmtIter)->evaluate();
 					done = true;
-					break;
-				} else {
-					warning("Runtime error: incompatible type for ", "CasesStmt");
-					error = true;
 					break;
 				}
 			}

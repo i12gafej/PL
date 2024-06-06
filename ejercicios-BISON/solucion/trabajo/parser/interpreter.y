@@ -525,11 +525,12 @@ for: FOR controlSymbol VARIABLE FROM exp UNTIL exp DO stmtlist END_FOR
 		}
 ;
 
-cases: CASES LPAREN exp RPAREN value_list default END_CASES
+cases: CASES controlSymbol LPAREN exp RPAREN value_list default END_CASES
 		{
 			// Create a new cases statement node
-			$$ = new lp::CasesStmt($3, (std::list<lp::ValueStmt *> *) $5, (lp::DefaultStmt *) $6);
+			$$ = new lp::CasesStmt($4, (std::list<lp::ValueStmt *> *) $6, (lp::DefaultStmt *) $7);
 			
+			control--;
 		}
 ;
 
