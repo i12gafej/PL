@@ -305,11 +305,11 @@ repetir
                             hacer
                                 lugar(posicion, 4);
                                 escribir('Valor de i: ');
-                                lugar(posicion-2, 20);
+                                lugar(posicion, 20);
                                 escribir(i);
                                 posicion+:=2;
                                 i := i + valor_incremento;
-                            mientras (i <= valor_final) #o (i >= valor_final);  !! El bucle termina si el incremento genera valores fuera del rango
+                            mientras ((i <= valor_final) #o (i >= valor_final));  !! El bucle termina si el incremento genera valores fuera del rango
                         fin_si;
                 si_no
                     si (valor_inicial < valor_final)
@@ -319,7 +319,7 @@ repetir
                             hacer
                                 lugar(posicion, 4);
                                 escribir('Valor de i: ');
-                                lugar(posicion-2, 20);
+                                lugar(posicion, 20);
                                 escribir(i);
                                 posicion+:=2;
                                 i := i + 1;
@@ -332,11 +332,11 @@ repetir
                                 hacer
                                     lugar(posicion, 4);
                                     escribir('Valor de i: ');
-                                    lugar(posicion-2, 20);
+                                    lugar(posicion, 20);
                                     escribir(i);
                                     posicion+:=2;
                                     i := i + 1;
-                                mientras (i > valor_final);
+                                mientras (i >= valor_final);
                         fin_si;
                     fin_si;
                 fin_si;
@@ -742,4 +742,6 @@ hasta (opcion = 0);
 !! Despedida final
 borrar_pantalla;
 lugar(10,10);
+escribir(nombre)
+escribir('Gracias por utilizar el intérprete.');
 escribir('El programa ha concluido. \n');

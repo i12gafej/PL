@@ -8,6 +8,7 @@
 
 #include <string>
 
+
 // rand, RAND_MAX
 #include <stdlib.h>
 
@@ -58,8 +59,11 @@ double integer(double x)
 
 double Random()
 {
- srand (time(NULL));
-
+ static bool initialized = false;
+    if (!initialized) {
+        std::srand(time(0));
+        initialized = true;
+    }
  return (double) (long) rand() / RAND_MAX;
 }
 
