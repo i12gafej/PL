@@ -1,7 +1,0 @@
-<map id="table/tableInterface.hpp" name="table/tableInterface.hpp">
-<area shape="rect" id="node1" title="Declaration of abstract TableInterface class." alt="" coords="16,5,195,32"/>
-<area shape="rect" id="node2" href="$table_8hpp.html" title="Declaration of TableInterface class." alt="" coords="45,80,165,107"/>
-<area shape="rect" id="node3" href="$init_8cpp.html" title="Code of the function for the initialization of table of symbols." alt="" coords="5,229,112,256"/>
-<area shape="rect" id="node4" href="$init_8hpp.html" title="Prototype of the function for the initialization of table of symbols." alt="" coords="51,155,159,181"/>
-<area shape="rect" id="node5" href="$table_8cpp.html" title="Code of some functions of Table class." alt="" coords="183,155,302,181"/>
-</map>

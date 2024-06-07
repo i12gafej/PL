@@ -1,8 +1,0 @@
-<map id="table/numericConstant.hpp" name="table/numericConstant.hpp">
-<area shape="rect" id="node1" title="Declaration of NumericConstant class." alt="" coords="5,5,204,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="191,304,250,331"/>
-<area shape="rect" id="node3" title=" " alt="" coords="78,155,158,181"/>
-<area shape="rect" id="node4" href="$constant_8hpp.html" title="Declaration of Constant class." alt="" coords="142,80,249,107"/>
-<area shape="rect" id="node5" href="$symbol_8hpp.html" title="Declaration of Symbol class." alt="" coords="233,155,331,181"/>
-<area shape="rect" id="node6" href="$symbolInterface_8hpp.html" title="Declaration of abstract SymbolInterface class." alt="" coords="284,229,440,256"/>
-</map>

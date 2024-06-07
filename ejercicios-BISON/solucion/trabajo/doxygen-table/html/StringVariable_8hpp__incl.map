@@ -1,8 +1,0 @@
-<map id="table/StringVariable.hpp" name="table/StringVariable.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,184,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="180,304,239,331"/>
-<area shape="rect" id="node3" title=" " alt="" coords="67,155,147,181"/>
-<area shape="rect" id="node4" href="$variable_8hpp.html" title="Declaration of Variable class." alt="" coords="133,80,235,107"/>
-<area shape="rect" id="node5" href="$symbol_8hpp.html" title="Declaration of Symbol class." alt="" coords="221,155,320,181"/>
-<area shape="rect" id="node6" href="$symbolInterface_8hpp.html" title="Declaration of abstract SymbolInterface class." alt="" coords="273,229,429,256"/>
-</map>
