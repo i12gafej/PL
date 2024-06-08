@@ -37,7 +37,6 @@ repetir
     !!escribir(' 8. Menú para ');
     lugar(20,10);
     escribir(' 0. Salir ');
-
     lugar(22,10);
     escribir(' Elige una opción: ');
     leer(opcion);
@@ -60,14 +59,18 @@ repetir
                 y := random();
 
                 !! Convertir los números aleatorios a valores en el rango [0,1)
-                x := (((x * 10)) % 3)-1;
-                y := (((x * 10)) % 3)-1;
+                x *:= 10;
+                x %:= 3;
+                x--;
+                y *:= 10;
+                y %:= 3;
+                y--;
 
                 !! Comprobar si el punto (x, y) está dentro del círculo unitario
                 
                 si ((x**2 + y**2) <= 1) entonces
                     dentro_circulo++;
-                fin_si;
+                fin_si
             fin_para
 
             !! Calcular la estimación de π
@@ -106,7 +109,7 @@ repetir
                     contador_cara++;
                 si_no
                     contador_cruz++;
-                fin_si;
+                fin_si
 
                 contador := contador + 1;
             hasta (contador > n_lanzamientos);
@@ -145,7 +148,7 @@ repetir
             si_no
                 lugar(17,10);
                 escribir('La moneda parece estar sesgada.');
-            fin_si;
+            fin_si
             lugar(20,10);
             escribir('Pulsa una tecla para continuar --> ');
             leer_cadena(pausa);
@@ -216,18 +219,17 @@ repetir
                         repetir
                             si (exponente % 2 = 1) entonces
                                 resultado := (resultado * base) % n;
-                            fin_si;
+                            fin_si
                             exponente := exponente // 2;
                             base := (base * base) % n;
                         hasta (exponente = 0);
 
                         si (resultado <> 1) entonces
                             es_probablemente_primo := falso;
-                            romper;
-                        fin_si;
+                        fin_si
 
                         k := k - 1;
-                    hasta (k = 0);
+                    hasta ((k = 0) #o (es_probablemente_primo = falso));
                 fin_si
             fin_si
 
@@ -245,7 +247,7 @@ repetir
                 escribir(n);
                 lugar(12,10);
                 escribir('no es primo.');
-            fin_si;
+            fin_si
             escribir('Pulsa una tecla para continuar --> ');
             leer_cadena(pausa);
         valor 5:
@@ -290,7 +292,7 @@ repetir
                 x := x0;
                 y := y0;
                 mcd := a;
-            fin_si;
+            fin_si
             borrar_pantalla;
 
             lugar(10, 10);
@@ -393,11 +395,11 @@ repetir
                                 fin_si
                             fin_si
                         fin_si
-                    fin_si;
+                    fin_si
 
                     hexadecimal := digito || hexadecimal;
                 hasta (n = 0);
-            fin_si;
+            fin_si
             borrar_pantalla;
             lugar(10,10);
             escribir('El número ');
