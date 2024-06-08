@@ -81,7 +81,7 @@ repetir
             escribir('Demostración con cadenas');
 
             lugar(12,10);
-            escribir('Operación: cadena := (1 > 0) ? verdadero : falso');
+            escribir('Operación: cadena := (1 > 0) ? \'verdadero\' : \'falso\'');
             cadena := (1 > 0) ? 'verdadero' : 'falso';
             lugar(13,10);
             escribir('Resultado: ');
@@ -89,7 +89,7 @@ repetir
             escribir(cadena);
 
             lugar(15,10);
-            escribir('Cambiando la condición: cadena := (1 < 0) ? verdadero : falso');
+            escribir('Cambiando la condición: cadena := (1 < 0) ? \'verdadero\' : \'falso\'');
             cadena := (1 < 0) ? 'verdadero' : 'falso';
             lugar(16,10);
             escribir('Resultado: ');
@@ -131,11 +131,17 @@ repetir
 
 
         valor 2:
+            variable := 0;
+
             repetir 
 
-                !! Menú de opciones
-
                 borrar_pantalla;
+                !! Menú de opcion_operaces
+                lugar(8, 10);
+                escribir(' Valor de la variable: ');
+                lugar(8, 35);
+                escribir(variable);
+
                 lugar(10,10);
                 escribir(' Pruebas de operación-asignación ');
                 lugar(12,10);
@@ -167,9 +173,6 @@ repetir
                 si_no
                     si (opcion_asg >= 1 #y opcion_asg <= 7)
                         entonces
-                            lugar(10,10);
-                            escribir('Introduce un número inicial: ');
-                            leer(numero_inicial);
 
                             lugar(11,10);
                             escribir('Introduce el valor a asignar: ');
@@ -179,58 +182,65 @@ repetir
                             si (opcion_asg = 1)
                                 entonces
                                     lugar(13,10);
-                                    numero_inicial +:= valor_asignar;
+                                    variable +:= valor_asignar;
                                     lugar(17,10);
                                     escribir('Resultado de +:= ');
-                                    escribir(numero_inicial);
+                                    lugar(17, 30);
+                                    escribir(variable);
                             si_no 
                                 si (opcion_asg = 2)
                                     entonces
                                         lugar(13,10);
-                                        numero_inicial -:= valor_asignar;
+                                        variable -:= valor_asignar;
                                         lugar(17,10);
                                         escribir('Resultado de -:= ');
-                                        escribir(numero_inicial);
+                                        lugar(17, 30);
+                                        escribir(variable);
                                 si_no 
                                     si (opcion_asg = 3)
                                         entonces
                                             lugar(13,10);
-                                            numero_inicial *:= valor_asignar;
+                                            variable *:= valor_asignar;
                                             lugar(17,10);
                                             escribir('Resultado de *:= ');
-                                            escribir(numero_inicial);
+                                            lugar(17, 30);
+                                            escribir(variable);
                                     si_no 
                                         si (opcion_asg = 4)
                                             entonces
                                                 lugar(13,10);
-                                                numero_inicial /:= valor_asignar;
+                                                variable /:= valor_asignar;
                                                 lugar(17,10);
                                                 escribir('Resultado de /:= ');
-                                                escribir(numero_inicial);
+                                                lugar(17, 30);
+                                                escribir(variable);
                                         si_no 
                                             si (opcion_asg = 5)
                                                 entonces
                                                     lugar(13,10);
-                                                    numero_inicial //:= valor_asignar;
+                                                    variable //:= valor_asignar;
                                                     lugar(17,10);
                                                     escribir('Resultado de //:= ');
-                                                    escribir(numero_inicial);
+                                                    lugar(17, 30);
+                                                    escribir(variable);
                                             si_no 
                                                 si (opcion_asg = 6)
                                                     entonces
                                                         lugar(13,10);
-                                                        numero_inicial %:= valor_asignar;
-                                                        lugar(14,10);
+                                                        variable %:= valor_asignar;
+                                                        lugar(17,10);
                                                         escribir('Resultado de %:= ');
-                                                        escribir(numero_inicial);
+                                                        lugar(17, 30);
+                                                        escribir(variable);
                                                 si_no 
                                                     si (opcion_asg = 7)
                                                         entonces
                                                             lugar(13,10);
-                                                            numero_inicial **:= valor_asignar;
-                                                            lugar(14,10);
+                                                            variable **:= valor_asignar;
+                                                            lugar(17,10);
                                                             escribir('Resultado de **:= ');
-                                                            escribir(numero_inicial);
+                                                            lugar(17, 30);
+                                                            escribir(variable);
                                                     fin_si;
                                                 fin_si;
                                             fin_si;
@@ -273,7 +283,6 @@ repetir
 
         valor 4:
             repetir
-
                 borrar_pantalla;
                 lugar(10,10);
                 escribir('Introduce el valor inicial del bucle: ');
@@ -284,68 +293,63 @@ repetir
                 leer(valor_final);
 
                 lugar(12,10);
-                escribir('¿Desea especificar un incremento? (s/n): ');
+                escribir('¿Desea especificar un incremento? (si/no): ');
                 leer_cadena(incremento);
 
                 posicion := 15;
 
-                si (incremento = 's')
-                    entonces
-                        lugar(13,10);
-                        escribir('Introduce el valor de incremento: ');
-                        leer(valor_incremento);
+                si (incremento = 'si') entonces
+                    lugar(13,10);
+                    escribir('Introduce el valor de incremento: ');
+                    leer(valor_incremento);
 
-                        si (((valor_inicial < valor_final) #y (valor_incremento < 0)) #o ((valor_inicial > valor_final) #y (valor_incremento > 0)))
-                            entonces
-                                lugar(15,10);
-                                escribir('Error: El incremento genera un bucle infinito.');
-                        si_no
-                            i := valor_inicial;
-                            posicion:=15;
-                            hacer
-                                lugar(posicion, 4);
-                                escribir('Valor de i: ');
-                                lugar(posicion, 20);
-                                escribir(i);
-                                posicion+:=2;
-                                i := i + valor_incremento;
-                            mientras ((i <= valor_final) #o (i >= valor_final));  !! El bucle termina si el incremento genera valores fuera del rango
-                        fin_si;
-                si_no
-                    si (valor_inicial < valor_final)
-                        entonces
-                            i := valor_inicial;
-                            posicion:=15;
-                            hacer
-                                lugar(posicion, 4);
-                                escribir('Valor de i: ');
-                                lugar(posicion, 20);
-                                escribir(i);
-                                posicion+:=2;
-                                i := i + 1;
-                            mientras (i <= valor_final);
+                    si (((valor_inicial < valor_final) #y (valor_incremento < 0)) #o ((valor_inicial > valor_final) #y (valor_incremento > 0))) entonces
+                        lugar(15,10);
+                        escribir('Error: El incremento genera un bucle infinito.');
                     si_no
-                        si (valor_inicial > valor_final)
-                            entonces
-                                i := valor_inicial;
-                                posicion:=15;
-                                hacer
-                                    lugar(posicion, 4);
-                                    escribir('Valor de i: ');
-                                    lugar(posicion, 20);
-                                    escribir(i);
-                                    posicion+:=2;
-                                    i := i + 1;
-                                mientras (i >= valor_final);
+                        i := valor_inicial;
+                        hacer
+                            lugar(posicion, 4);
+                            escribir('Valor de i: ');
+                            lugar(posicion, 17);
+                            posicion++;
+                            escribir(i);
+                            i := i + valor_incremento;
+                        mientras (((valor_inicial < valor_final) #y (i <= valor_final)) #o ((valor_inicial > valor_final) #y (i >= valor_final)));
+                    fin_si;
+                si_no
+                    si (valor_inicial < valor_final) entonces
+                        i := valor_inicial;
+                        hacer
+                            lugar(posicion, 4);
+                            escribir('Valor de i: ');
+                            lugar(posicion, 17);
+                            posicion++;
+                            escribir(i);
+                            i := i + 1;
+                        mientras (i <= valor_final);
+                    si_no
+                        si (valor_inicial > valor_final) entonces
+                            i := valor_inicial;
+                            hacer
+                                lugar(posicion, 4);
+                                escribir('Valor de i: ');
+                                lugar(posicion, 17);
+                                posicion++;
+                                escribir(i);
+                                i := i - 1;
+                            mientras (i >= valor_final);
                         fin_si;
                     fin_si;
                 fin_si;
 
-                lugar(17,10);
-                escribir('¿Desea realizar otro bucle? (si/no): ');
-                leer_cadena(respuesta);
-
-            hasta (respuesta = 'no');
+                lugar(posicion,10);
+                escribir('Desea realizar otro bucle? (si/no)? ');
+                leer_cadena(opt);
+                si (opt = 'no') entonces
+                    opcion_hacer := 0;
+                fin_si
+            hasta (opcion_hacer = 0);
         valor 5:
             repetir
 
@@ -494,37 +498,35 @@ repetir
                             mientras (((valor_inicial < valor_final) #y (i <= valor_final)) #o ((valor_inicial > valor_final) #y (i >= valor_final))) hacer
                                 lugar(posicion, 4);
                                 escribir('Valor de i: ');
-                                lugar(posicion-2, 20);
+                                lugar(posicion, 20);
                                 escribir(i);
-                                posicion+:=2;
+                                posicion++;
                                 i := i + valor_incremento;
                             fin_mientras;
                         fin_si;
                 si_no
                     si (valor_inicial < valor_final)
                         entonces
-                            borrar_pantalla;
                             i := valor_inicial;
                             posicion := 15;
                             mientras (i <= valor_final) hacer
                                 lugar(posicion, 4);
                                 escribir('Valor de i: ');
-                                lugar(posicion-2, 20);
+                                lugar(posicion, 20);
                                 escribir(i);
-                                posicion+:=2;
+                                posicion++;
                                 i := i + 1;
                             fin_mientras;
                     si_no
                         si (valor_inicial > valor_final)
                             entonces
-                                borrar_pantalla;
                                 i := valor_inicial;
                                 posicion := 15;
                                 mientras (i >= valor_final) hacer
                                     lugar(posicion, 4);
                                     escribir('Valor de i: ');
-                                    lugar(posicion-2, 20);
-                                    posicion+:=2;
+                                    lugar(posicion, 20);
+                                    posicion++;
                                     escribir(i);
                                     i := i - 1;
                                 fin_mientras;
@@ -532,45 +534,45 @@ repetir
                     fin_si;
                 fin_si;
 
-                lugar(20,10);
+                lugar(posicion,10);
                 escribir('¿Desea realizar otro bucle? (si/no): ');
                 leer_cadena(respuesta);
+                
 
             hasta (respuesta = 'no');
         valor 7:
-            variable:=0;
+            variable := 0;
+
             repetir 
-
-                !! Menú de opcion_operaces
-                
-
                 borrar_pantalla;
-                lugar(6,10);
-                escribir('Valor de variable');
-                lugar(8,10);
+                !! Menú de opcion_operaces
+                lugar(8, 10);
+                escribir(' Valor de la variable: ');
+                lugar(8, 35);
                 escribir(variable);
+                
                 lugar(10,10);
-                escribir(' Demostración de operaciones');
+                escribir(' Menú de operaciones ');
                 lugar(12,10);
-                escribir('1. Incrementar variable (++valor)');
+                escribir('1. Incrementar variable (++valor) ');
                 lugar(13,10);
-                escribir('2. Decrementar variable (--valor)');
+                escribir('2. Decrementar variable (--valor) ');
                 lugar(14,10);
-                escribir('3. Sumar y asignar (variable + número)');
+                escribir('3. Sumar y asignar (variable + número) ');
                 lugar(15,10);
-                escribir('4. Restar y asignar (variable - número)');
+                escribir('4. Restar y asignar (variable - número) ');
                 lugar(16,10);
-                escribir('5. Multiplicar y asignar (variable * número)');
+                escribir('5. Multiplicar y asignar (variable * número) ');
                 lugar(17,10);
-                escribir('6. Dividir y asignar (variable / número)');
+                escribir('6. Dividir y asignar (variable / número) ');
                 lugar(18,10);
-                escribir('7. División entera y asignar (variable // número)');
+                escribir('7. División entera y asignar (variable // número) ');
                 lugar(19,10);
-                escribir('8. Módulo y asignar (variable % número)');
+                escribir('8. Módulo y asignar (variable % número) ');
                 lugar(20,10);
-                escribir('9. Potencia y asignar (variable ** número)');
+                escribir('9. Potencia y asignar (variable ** número) ');
                 lugar(21,10);
-                escribir('0. Finalizar');
+                escribir('0. Finalizar ');
 
                 lugar(23,10);
                 escribir(' Elige una opción: ');
@@ -581,14 +583,14 @@ repetir
                 si (opcion_operac = 0)
                     entonces  
                         lugar(10,10);
-                        escribir(nombre);
-                        escribir(' Gracias por usar el intérprete ipe.exe ');
+                        
                 si_no
                     si (opcion_operac = 1)
                         entonces
                             ++variable;
                             lugar(10,10);
                             escribir('Variable incrementada: ');
+                            lugar(10, 35);
                             escribir(variable);
                     si_no 
                         si (opcion_operac = 2)
@@ -596,6 +598,7 @@ repetir
                                 --variable;
                                 lugar(10,10);
                                 escribir('Variable decrementada: ');
+                                lugar(10, 35);
                                 escribir(variable);
                         si_no
                             si (opcion_operac >= 3 #y opcion_operac <= 9)
@@ -608,9 +611,12 @@ repetir
                                         entonces
                                             variable := variable + numero;
                                             lugar(11,10);
-                                            escribir('Resultado de variable + ');
+                                            escribir('Resultado de variable (+) ');
+                                            lugar(11, 36);
                                             escribir(numero);
-                                            escribir(' = ');
+                                            lugar(11, 45);
+                                            escribir(' --> ');
+                                            lugar(11, 51);
                                             escribir(variable);
                                     si_no 
                                         si (opcion_operac = 4)
@@ -618,8 +624,11 @@ repetir
                                                 variable := variable - numero;
                                                 lugar(11,10);
                                                 escribir('Resultado de variable - ');
+                                                lugar(11, 36);
                                                 escribir(numero);
-                                                escribir(' = ');
+                                                lugar(11, 45);
+                                                escribir(' --> ');
+                                                lugar(11, 51);
                                                 escribir(variable);
                                         si_no 
                                             si (opcion_operac = 5)
@@ -627,8 +636,11 @@ repetir
                                                     variable := variable * numero;
                                                     lugar(11,10);
                                                     escribir('Resultado de variable * ');
+                                                    lugar(11, 36);
                                                     escribir(numero);
-                                                    escribir(' = ');
+                                                    lugar(11, 45);
+                                                    escribir(' --> ');
+                                                    lugar(11, 51);
                                                     escribir(variable);
                                             si_no 
                                                 si (opcion_operac = 6)
@@ -636,8 +648,11 @@ repetir
                                                         variable := variable / numero;
                                                         lugar(11,10);
                                                         escribir('Resultado de variable / ');
+                                                        lugar(11, 36);
                                                         escribir(numero);
-                                                        escribir(' = ');
+                                                        lugar(11, 45);
+                                                        escribir(' --> ');
+                                                        lugar(11, 51);
                                                         escribir(variable);
                                                 si_no 
                                                     si (opcion_operac = 7)
@@ -645,8 +660,11 @@ repetir
                                                             variable := variable // numero;
                                                             lugar(11,10);
                                                             escribir('Resultado de variable // ');
+                                                            lugar(11, 36);
                                                             escribir(numero);
-                                                            escribir(' = ');
+                                                            lugar(11, 45);
+                                                            escribir(' --> ');
+                                                            lugar(11, 51);
                                                             escribir(variable);
                                                     si_no 
                                                         si (opcion_operac = 8)
@@ -654,8 +672,11 @@ repetir
                                                                 variable := variable % numero;
                                                                 lugar(11,10);
                                                                 escribir('Resultado de variable % ');
+                                                                lugar(11, 36);
                                                                 escribir(numero);
-                                                                escribir(' = ');
+                                                                lugar(11, 45);
+                                                                escribir(' --> ');
+                                                                lugar(11, 51);
                                                                 escribir(variable);
                                                         si_no 
                                                             si (opcion_operac = 9)
@@ -663,8 +684,11 @@ repetir
                                                                     variable := variable ** numero;
                                                                     lugar(11,10);
                                                                     escribir('Resultado de variable ** ');
+                                                                    lugar(11, 36);
                                                                     escribir(numero);
-                                                                    escribir(' = ');
+                                                                    lugar(11, 45);
+                                                                    escribir(' --> ');
+                                                                    lugar(11, 51);
                                                                     escribir(variable);
                                                             fin_si;
                                                         fin_si;
@@ -681,57 +705,55 @@ repetir
                     fin_si;
                 fin_si;
 
-                lugar(25,10); 
-                escribir('\nPulsa una tecla para continuar --> ');
-                leer_cadena(pausa);
+                lugar(25,10);
 
             hasta (opcion_operac = 0);
 
         valor 8:
             repetir
 
-                borrar_pantalla;
-                lugar(10,10);
-                escribir('Introduce el valor inicial del bucle: ');
-                leer(valor_inicial);
+            borrar_pantalla;
+            lugar(10,10);
+            escribir('Introduce el valor inicial del bucle: ');
+            leer(valor_inicial);
 
-                lugar(11,10);
-                escribir('Introduce el valor final del bucle: ');
-                leer(valor_final);
+            lugar(11,10);
+            escribir('Introduce el valor final del bucle: ');
+            leer(valor_final);
 
-                lugar(12,10);
-                escribir('¿Desea incremento en el bucle? (si/no): ');
-                leer_cadena(incremento);
+            lugar(12,10);
+            escribir('¿Desea incremento en el bucle? (si/no): ');
+            leer_cadena(incremento);
 
-                si (incremento = 'si')
-                    entonces
-                        lugar(13,10);
-                        escribir('Introduce el valor de incremento: ');
-                        leer(valor_incremento);
-                        posicion := 15;
-                        para i desde valor_inicial hasta valor_final paso valor_incremento hacer
-                            lugar(posicion, 4);
-                            escribir('Valor de i: ');
-                            lugar(posicion-2, 20);
-                            escribir(i);
-                            posicion+:=2;
-                        fin_para;
-                si_no
+            si (incremento = 'si')
+                entonces
+                    lugar(13,10);
+                    escribir('Introduce el valor de incremento: ');
+                    leer(valor_incremento);
                     posicion := 15;
-                    para i desde valor_inicial hasta valor_final hacer
+                    para i desde valor_inicial hasta valor_final paso valor_incremento hacer
                         lugar(posicion, 4);
                         escribir('Valor de i: ');
-                        lugar(posicion-2, 20);
+                        lugar(posicion, 20);
                         escribir(i);
-                        posicion+:=2;
+                        posicion++;
                     fin_para;
-                fin_si;
+            si_no
+                posicion := 15;
+                para i desde valor_inicial hasta valor_final hacer
+                    lugar(posicion, 4);
+                    escribir('Valor de i: ');
+                    lugar(posicion, 20);
+                    escribir(i);
+                    posicion++;
+                fin_para;
+            fin_si;
 
-                lugar(17,10);
-                escribir('¿Desea realizar otro bucle? (si/no): ');
-                leer_cadena(respuesta);
+            lugar(posicion,10);
+            escribir('¿Desea realizar otro bucle? (si/no): ');
+            leer_cadena(respuesta);
 
-            hasta (respuesta = 'no');
+        hasta (respuesta = 'no');
 
     fin_casos
 
@@ -742,6 +764,6 @@ hasta (opcion = 0);
 !! Despedida final
 borrar_pantalla;
 lugar(10,10);
-escribir(nombre)
+escribir(nombre);
 escribir('Gracias por utilizar el intérprete.');
 escribir('El programa ha concluido. \n');

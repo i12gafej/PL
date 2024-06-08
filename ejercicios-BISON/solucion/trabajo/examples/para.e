@@ -39,22 +39,22 @@ repetir
             para i desde valor_inicial hasta valor_final paso valor_incremento hacer
                 lugar(posicion, 4);
                 escribir('Valor de i: ');
-                lugar(posicion-2, 20);
+                lugar(posicion, 20);
                 escribir(i);
-                posicion+:=2;
+                posicion++;
             fin_para;
     si_no
         posicion := 15;
         para i desde valor_inicial hasta valor_final hacer
             lugar(posicion, 4);
             escribir('Valor de i: ');
-            lugar(posicion-2, 20);
+            lugar(posicion, 20);
             escribir(i);
-            posicion+:=2;
+            posicion++;
         fin_para;
     fin_si;
 
-    lugar(17,10);
+    lugar(posicion,10);
     escribir('¿Desea realizar otro bucle? (si/no): ');
     leer_cadena(respuesta);
 

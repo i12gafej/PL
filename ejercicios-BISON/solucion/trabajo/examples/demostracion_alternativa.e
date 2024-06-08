@@ -51,7 +51,7 @@ lugar(10,10);
 escribir('Demostración con cadenas');
 
 lugar(12,10);
-escribir('Operación: cadena := (1 > 0) ? 'verdadero' : 'falso'');
+escribir('Operación: cadena := (1 > 0) ? \'verdadero\' : \'falso\'');
 cadena := (1 > 0) ? 'verdadero' : 'falso';
 lugar(13,10);
 escribir('Resultado: ');
@@ -59,7 +59,7 @@ lugar(13, 20);
 escribir(cadena);
 
 lugar(15,10);
-escribir('Cambiando la condición: cadena := (1 < 0) ? 'verdadero' : 'falso'');
+escribir('Cambiando la condición: cadena := (1 < 0) ? \'verdadero\' : \'falso\'');
 cadena := (1 < 0) ? 'verdadero' : 'falso';
 lugar(16,10);
 escribir('Resultado: ');

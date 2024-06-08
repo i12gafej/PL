@@ -78,14 +78,15 @@ repetir
         fin_si;
     fin_si;
 
-    lugar(25,10);
-    escribir('Pulsa una tecla para continuar --> ');
-    leer_cadena(pausa);
+    lugar(posicion,10);
+    escribir('Desea salir? (si/no)? ');
+    leer_cadena(opt);
+    si (opt = 'si') entonces
+        opcion_hacer := 0;
+    fin_si
 hasta (opcion_hacer = 0);
 
 lugar(30,10);
-escribir('Pulsa una tecla para continuar --> ');
-leer_cadena(pausa);
 
 !! Despedida final
 borrar_pantalla;

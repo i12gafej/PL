@@ -305,11 +305,11 @@ repetir
             escribir('Los coeficientes de Bézout son:');
             lugar(13, 10);
             escribir('x = ');
-            lugar(12, 15);
+            lugar(13, 15);
             escribir(x);
-            lugar(12, 25); 
+            lugar(13, 25); 
             escribir('y = ');
-            lugar(12, 30);
+            lugar(13, 30);
             escribir(y);
             lugar(14,10);
             escribir('El máximo común divisor es: ');

@@ -49,37 +49,35 @@ repetir
                 mientras (((valor_inicial < valor_final) #y (i <= valor_final)) #o ((valor_inicial > valor_final) #y (i >= valor_final))) hacer
                     lugar(posicion, 4);
                     escribir('Valor de i: ');
-                    lugar(posicion-2, 20);
+                    lugar(posicion, 20);
                     escribir(i);
-                    posicion+:=2;
+                    posicion++;
                     i := i + valor_incremento;
                 fin_mientras;
             fin_si;
     si_no
         si (valor_inicial < valor_final)
             entonces
-                borrar_pantalla;
                 i := valor_inicial;
                 posicion := 15;
                 mientras (i <= valor_final) hacer
                     lugar(posicion, 4);
                     escribir('Valor de i: ');
-                    lugar(posicion-2, 20);
+                    lugar(posicion, 20);
                     escribir(i);
-                    posicion+:=2;
+                    posicion++;
                     i := i + 1;
                 fin_mientras;
         si_no
             si (valor_inicial > valor_final)
                 entonces
-                    borrar_pantalla;
                     i := valor_inicial;
                     posicion := 15;
                     mientras (i >= valor_final) hacer
                         lugar(posicion, 4);
                         escribir('Valor de i: ');
-                        lugar(posicion-2, 20);
-                        posicion+:=2;
+                        lugar(posicion, 20);
+                        posicion++;
                         escribir(i);
                         i := i - 1;
                     fin_mientras;
@@ -87,7 +85,7 @@ repetir
         fin_si;
     fin_si;
 
-    lugar(20,10);
+    lugar(posicion,10);
     escribir('¿Desea realizar otro bucle? (si/no): ');
     leer_cadena(respuesta);
 

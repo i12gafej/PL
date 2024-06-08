@@ -18,32 +18,35 @@ leer_cadena(pausa);
 variable := 0;
 
 repetir 
-
-    !! Menú de opcion_operaces
-
     borrar_pantalla;
+    !! Menú de opcion_operaces
+    lugar(8, 10);
+    escribir(' Valor de la variable: ');
+    lugar(8, 35);
+    escribir(variable);
+    
     lugar(10,10);
-    escribir(' Menú de opcion_operaces ');
+    escribir(' Menú de operaciones ');
     lugar(12,10);
-    escribir(' Incrementar variable (++valor) ---------------------> 1 ');
+    escribir('1. Incrementar variable (++valor) ');
     lugar(13,10);
-    escribir(' Decrementar variable (--valor) ---------------------> 2 ');
+    escribir('2. Decrementar variable (--valor) ');
     lugar(14,10);
-    escribir(' Sumar y asignar (variable + número) -----------------> 3 ');
+    escribir('3. Sumar y asignar (variable + número) ');
     lugar(15,10);
-    escribir(' Restar y asignar (variable - número) ----------------> 4 ');
+    escribir('4. Restar y asignar (variable - número) ');
     lugar(16,10);
-    escribir(' Multiplicar y asignar (variable * número) -----------> 5 ');
+    escribir('5. Multiplicar y asignar (variable * número) ');
     lugar(17,10);
-    escribir(' Dividir y asignar (variable / número) ---------------> 6 ');
+    escribir('6. Dividir y asignar (variable / número) ');
     lugar(18,10);
-    escribir(' División entera y asignar (variable // número) -------> 7 ');
+    escribir('7. División entera y asignar (variable // número) ');
     lugar(19,10);
-    escribir(' Módulo y asignar (variable % número) ----------------> 8 ');
+    escribir('8. Módulo y asignar (variable % número) ');
     lugar(20,10);
-    escribir(' Potencia y asignar (variable ** número) -------------> 9 ');
+    escribir('9. Potencia y asignar (variable ** número) ');
     lugar(21,10);
-    escribir(' Finalizar -------------------------------------------> 0 ');
+    escribir('0. Finalizar ');
 
     lugar(23,10);
     escribir(' Elige una opción: ');
@@ -62,6 +65,7 @@ repetir
                 ++variable;
                 lugar(10,10);
                 escribir('Variable incrementada: ');
+                lugar(10, 35);
                 escribir(variable);
         si_no 
             si (opcion_operac = 2)
@@ -69,6 +73,7 @@ repetir
                     --variable;
                     lugar(10,10);
                     escribir('Variable decrementada: ');
+                    lugar(10, 35);
                     escribir(variable);
             si_no
                 si (opcion_operac >= 3 #y opcion_operac <= 9)
@@ -81,9 +86,12 @@ repetir
                             entonces
                                 variable := variable + numero;
                                 lugar(11,10);
-                                escribir('Resultado de variable + ');
+                                escribir('Resultado de variable (+) ');
+                                lugar(11, 36);
                                 escribir(numero);
-                                escribir(' = ');
+                                lugar(11, 45);
+                                escribir(' --> ');
+                                lugar(11, 51);
                                 escribir(variable);
                         si_no 
                             si (opcion_operac = 4)
@@ -91,8 +99,11 @@ repetir
                                     variable := variable - numero;
                                     lugar(11,10);
                                     escribir('Resultado de variable - ');
+                                    lugar(11, 36);
                                     escribir(numero);
-                                    escribir(' = ');
+                                    lugar(11, 45);
+                                    escribir(' --> ');
+                                    lugar(11, 51);
                                     escribir(variable);
                             si_no 
                                 si (opcion_operac = 5)
@@ -100,8 +111,11 @@ repetir
                                         variable := variable * numero;
                                         lugar(11,10);
                                         escribir('Resultado de variable * ');
+                                        lugar(11, 36);
                                         escribir(numero);
-                                        escribir(' = ');
+                                        lugar(11, 45);
+                                        escribir(' --> ');
+                                        lugar(11, 51);
                                         escribir(variable);
                                 si_no 
                                     si (opcion_operac = 6)
@@ -109,8 +123,11 @@ repetir
                                             variable := variable / numero;
                                             lugar(11,10);
                                             escribir('Resultado de variable / ');
+                                            lugar(11, 36);
                                             escribir(numero);
-                                            escribir(' = ');
+                                            lugar(11, 45);
+                                            escribir(' --> ');
+                                            lugar(11, 51);
                                             escribir(variable);
                                     si_no 
                                         si (opcion_operac = 7)
@@ -118,8 +135,11 @@ repetir
                                                 variable := variable // numero;
                                                 lugar(11,10);
                                                 escribir('Resultado de variable // ');
+                                                lugar(11, 36);
                                                 escribir(numero);
-                                                escribir(' = ');
+                                                lugar(11, 45);
+                                                escribir(' --> ');
+                                                lugar(11, 51);
                                                 escribir(variable);
                                         si_no 
                                             si (opcion_operac = 8)
@@ -127,8 +147,11 @@ repetir
                                                     variable := variable % numero;
                                                     lugar(11,10);
                                                     escribir('Resultado de variable % ');
+                                                    lugar(11, 36);
                                                     escribir(numero);
-                                                    escribir(' = ');
+                                                    lugar(11, 45);
+                                                    escribir(' --> ');
+                                                    lugar(11, 51);
                                                     escribir(variable);
                                             si_no 
                                                 si (opcion_operac = 9)
@@ -136,8 +159,11 @@ repetir
                                                         variable := variable ** numero;
                                                         lugar(11,10);
                                                         escribir('Resultado de variable ** ');
+                                                        lugar(11, 36);
                                                         escribir(numero);
-                                                        escribir(' = ');
+                                                        lugar(11, 45);
+                                                        escribir(' --> ');
+                                                        lugar(11, 51);
                                                         escribir(variable);
                                                 fin_si;
                                             fin_si;

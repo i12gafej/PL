@@ -15,29 +15,35 @@ lugar(40,10);
 escribir('Pulsa una tecla para continuar');
 leer_cadena(pausa);
 
+variable := 0;
+
 repetir 
 
-    !! Menú de opciones
-
     borrar_pantalla;
+    !! Menú de opcion_operaces
+    lugar(8, 10);
+    escribir(' Valor de la variable: ');
+    lugar(8, 35);
+    escribir(variable);
+
     lugar(10,10);
     escribir(' Pruebas de operación-asignación ');
     lugar(12,10);
-    escribir(' Sumar y asignar (+:=) --------------> 1 ');
+    escribir('1. Sumar y asignar (+:=)');
     lugar(13,10);
-    escribir(' Restar y asignar (-:=) -------------> 2 ');
+    escribir('2. Restar y asignar (-:=)');
     lugar(14,10);
-    escribir(' Multiplicar y asignar (*:=) ---------> 3 ');
+    escribir('3. Multiplicar y asignar (*:=)');
     lugar(15,10);
-    escribir(' Dividir y asignar (/:=) -------------> 4 ');
+    escribir('4. Dividir y asignar (/:=)');
     lugar(16,10);
-    escribir(' División entera y asignar (//:=) ----> 5 ');
+    escribir('5. División entera y asignar (//:=)');
     lugar(17,10);
-    escribir(' Módulo y asignar (%:=) --------------> 6 ');
+    escribir('6. Módulo y asignar (%:=)');
     lugar(18,10);
-    escribir(' Potencia y asignar (**:=) -----------> 7 ');
+    escribir('7. Potencia y asignar (**:=)');
     lugar(19,10);
-    escribir(' Finalizar --------------------------> 0 ');
+    escribir('0. Finalizar');
 
     lugar(21,10);
     escribir(' Elige una opción: ');
@@ -53,9 +59,6 @@ repetir
     si_no
         si (opcion >= 1 #y opcion <= 7)
             entonces
-                lugar(10,10);
-                escribir('Introduce un número inicial: ');
-                leer(numero_inicial);
 
                 lugar(11,10);
                 escribir('Introduce el valor a asignar: ');
@@ -65,58 +68,65 @@ repetir
                 si (opcion = 1)
                     entonces
                         lugar(13,10);
-                        numero_inicial +:= valor_asignar;
+                        variable +:= valor_asignar;
                         lugar(17,10);
                         escribir('Resultado de +:= ');
-                        escribir(numero_inicial);
+                        lugar(17, 30);
+                        escribir(variable);
                 si_no 
                     si (opcion = 2)
                         entonces
                             lugar(13,10);
-                            numero_inicial -:= valor_asignar;
+                            variable -:= valor_asignar;
                             lugar(17,10);
                             escribir('Resultado de -:= ');
-                            escribir(numero_inicial);
+                            lugar(17, 30);
+                            escribir(variable);
                     si_no 
                         si (opcion = 3)
                             entonces
                                 lugar(13,10);
-                                numero_inicial *:= valor_asignar;
+                                variable *:= valor_asignar;
                                 lugar(17,10);
                                 escribir('Resultado de *:= ');
-                                escribir(numero_inicial);
+                                lugar(17, 30);
+                                escribir(variable);
                         si_no 
                             si (opcion = 4)
                                 entonces
                                     lugar(13,10);
-                                    numero_inicial /:= valor_asignar;
+                                    variable /:= valor_asignar;
                                     lugar(17,10);
                                     escribir('Resultado de /:= ');
-                                    escribir(numero_inicial);
+                                    lugar(17, 30);
+                                    escribir(variable);
                             si_no 
                                 si (opcion = 5)
                                     entonces
                                         lugar(13,10);
-                                        numero_inicial //:= valor_asignar;
+                                        variable //:= valor_asignar;
                                         lugar(17,10);
                                         escribir('Resultado de //:= ');
-                                        escribir(numero_inicial);
+                                        lugar(17, 30);
+                                        escribir(variable);
                                 si_no 
                                     si (opcion = 6)
                                         entonces
                                             lugar(13,10);
-                                            numero_inicial %:= valor_asignar;
-                                            lugar(14,10);
+                                            variable %:= valor_asignar;
+                                            lugar(17,10);
                                             escribir('Resultado de %:= ');
-                                            escribir(numero_inicial);
+                                            lugar(17, 30);
+                                            escribir(variable);
                                     si_no 
                                         si (opcion = 7)
                                             entonces
                                                 lugar(13,10);
-                                                numero_inicial **:= valor_asignar;
-                                                lugar(14,10);
+                                                variable **:= valor_asignar;
+                                                lugar(17,10);
                                                 escribir('Resultado de **:= ');
-                                                escribir(numero_inicial);
+                                                lugar(17, 30);
+                                                escribir(variable);
                                         fin_si;
                                     fin_si;
                                 fin_si;
