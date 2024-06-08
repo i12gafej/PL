@@ -60,10 +60,10 @@ repetir
 
                 !! Convertir los números aleatorios a valores en el rango [0,1)
                 x *:= 10;
-                x %:= 3;
+                x %:= 2;
                 x--;
                 y *:= 10;
-                y %:= 3;
+                y %:= 2;
                 y--;
 
                 !! Comprobar si el punto (x, y) está dentro del círculo unitario
