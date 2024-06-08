@@ -59,12 +59,8 @@ repetir
                 y := random();
 
                 !! Convertir los números aleatorios a valores en el rango [0,1)
-                x *:= 10;
-                x %:= 2;
-                x--;
-                y *:= 10;
-                y %:= 2;
-                y--;
+                x := ((x * 10) % 3)-1;
+                y := ((x * 10) % 3)-1;
 
                 !! Comprobar si el punto (x, y) está dentro del círculo unitario
                 
