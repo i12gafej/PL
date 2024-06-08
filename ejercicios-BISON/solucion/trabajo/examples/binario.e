@@ -6,7 +6,7 @@ leer(n);
 
 r := ' ';
 
-mientras (n <> 0) hacer
+mientras (n <> 0) do
 	si ((n % 2) = 0) entonces
 		!! concatenación con 0
 		r := '0' || r;  
@@ -20,5 +20,4 @@ mientras (n <> 0) hacer
 fin_mientras;
 
 escribir('Número en código binario: ' || r || '\n');
-
 

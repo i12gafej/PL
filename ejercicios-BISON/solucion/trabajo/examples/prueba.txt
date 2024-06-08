@@ -1,5 +1,0 @@
-dato := 0;
-hacer
-    dato := dato + 1;
-    escribir(dato);
-mientras (dato < 5);

@@ -29,8 +29,8 @@ repetir
     escribir(' 4. Prueba de primalidad de Fermat ');
     lugar(16,10);
     escribir(' 5. Algoritmo de Euclides extendido (coef. Bézout)');
-    !!lugar(17,10);
-    !!escribir(' 6. Menú mientras ');
+    lugar(17,10);
+    escribir(' 6. Conversor de decimal a hexadecimal');
     !!lugar(18,10);
     !!escribir(' 7. Menú operaciones ');
     !!lugar(19,10);
@@ -316,6 +316,98 @@ repetir
             lugar(15, 20);
             escribir(mcd);
             escribir('Pulsa una tecla para continuar --> ');
+            leer_cadena(pausa);
+        valor 6:
+            borrar_pantalla;
+            lugar(10,10);
+            escribir('Conversión de número decimal a hexadecimal');
+            lugar(12,10);
+            escribir('Introduce un número decimal: ');
+            leer(decimal);
+            si (decimal = 0) entonces
+                hexadecimal := '0';
+            si_no
+                hexadecimal := '';
+                n := decimal;
+                repetir
+                    resto := n % 16;
+                    n := n // 16;
+                    
+                    si (resto = 0) entonces
+                        digito := '0';
+                    si_no 
+                        si (resto = 1) entonces
+                            digito := '1';
+                        si_no 
+                            si (resto = 2) entonces
+                                digito := '2';
+                            si_no 
+                                si (resto = 3) entonces
+                                    digito := '3';
+                                si_no 
+                                    si (resto = 4) entonces
+                                        digito := '4';
+                                    si_no 
+                                        si (resto = 5) entonces
+                                            digito := '5';
+                                        si_no 
+                                            si (resto = 6) entonces
+                                                digito := '6';
+                                            si_no 
+                                                si (resto = 7) entonces
+                                                    digito := '7';
+                                                si_no 
+                                                    si (resto = 8) entonces
+                                                        digito := '8';
+                                                    si_no 
+                                                        si (resto = 9) entonces
+                                                            digito := '9';
+                                                        si_no 
+                                                            si (resto = 10) entonces
+                                                                digito := 'A';
+                                                            si_no 
+                                                                si (resto = 11) entonces
+                                                                    digito := 'B';
+                                                                si_no 
+                                                                    si (resto = 12) entonces
+                                                                        digito := 'C';
+                                                                    si_no 
+                                                                        si (resto = 13) entonces
+                                                                            digito := 'D';
+                                                                        si_no 
+                                                                            si (resto = 14) entonces
+                                                                                digito := 'E';
+                                                                            si_no
+                                                                                digito := 'F';
+                                                                            fin_si
+                                                                        fin_si
+                                                                    fin_si
+                                                                fin_si
+                                                            fin_si
+                                                        fin_si
+                                                    fin_si
+                                                fin_si
+                                            fin_si
+                                        fin_si
+                                    fin_si
+                                fin_si
+                            fin_si
+                        fin_si
+                    fin_si;
+
+                    hexadecimal := digito || hexadecimal;
+                hasta (n = 0);
+            fin_si;
+            borrar_pantalla;
+            lugar(10,10);
+            escribir('El número ');
+            lugar(10, 20);
+            escribir(decimal);
+            lugar(11, 10);
+            escribir(' en hexadecimal es: ');
+            lugar(13, 20);
+            escribir(hexadecimal);
+            escribir('Pulsa una tecla para continuar');
             leer_cadena(pausa);
         
     fin_casos
